@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_cat"
+                android:title="Profile"/>
+        <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_home"
+                android:title="Home"/>
+        <item
+                android:id="@+id/nav_references"
+                android:icon="@drawable/ic_references"
+                android:title="References"/>
+        <item
+                android:id="@+id/nav_meshop"
+                android:icon="@drawable/ic_meshop"
+                android:title="MeShop"/>
+        <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings"/>
+    </group>
+
+    <item android:title="Get to know us">
+        <menu>
+            <item
+                    android:id="@+id/nav_aboutus"
+                    android:icon="@drawable/ic_info"
+                    android:title="About us"/>
+        </menu>
+    </item>
+
+</menu>
