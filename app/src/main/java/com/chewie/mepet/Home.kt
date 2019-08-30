@@ -8,10 +8,14 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
+import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
+import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.content_home.*
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -21,11 +25,16 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         setContentView(R.layout.activity_home)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
-        val fab: FloatingActionButton = findViewById(R.id.fab)
+        nav_view.getMenu().getItem(1).setChecked(true)
+        val fab: FloatingActionButton = findViewById(R.id.fab1)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Belum ada fungsi hehe", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show()
+            if (supportFragmentManager != null){
+                val sf = supportFragmentManager.beginTransaction()
+                sf.setCustomAnimations(R.anim.enter,R.anim.exit).replace(R.id.fragment, addPet())
+                sf.remove(homeFrag()).commit()
+                fab.setEnabled(false)
+                sf.addToBackStack(null)
+            }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -57,22 +66,27 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_profile -> {
-
+                Toast.makeText(this, "Belum ada hehe", Toast.LENGTH_LONG).show()
             }
             R.id.nav_home -> {
-
+                val sf = supportFragmentManager.beginTransaction()
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, homeFrag())
+                sf.addToBackStack(null)
+                sf.remove(addPet()).commit()
+                val fab: FloatingActionButton = findViewById(R.id.fab1)
+                fab.setEnabled(true)
             }
             R.id.nav_references -> {
-
+                Toast.makeText(this, "Sama ini juga belum", Toast.LENGTH_LONG).show()
             }
             R.id.nav_meshop -> {
-
+                Toast.makeText(this, "Udah, dibilangin belum selesai", Toast.LENGTH_LONG).show()
             }
             R.id.nav_settings -> {
-
+                Toast.makeText(this, "Apalagi ini", Toast.LENGTH_LONG).show()
             }
             R.id.nav_aboutus -> {
-
+                Toast.makeText(this, "Made by Chewie Team", Toast.LENGTH_LONG).show()
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

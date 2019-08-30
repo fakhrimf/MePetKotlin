@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="catTypes">
+        <item>Angora</item>
+        <item>Persia</item>
+        <item>British Shorthair</item>
+        <item>British Longhair</item>
+        <item>Siamese</item>
+        <item>Sphinx</item>
+        <item>Feral</item>
+        <item>Stray</item>
+        <item>Bengal</item>
+        <item>Egyptian Mau</item>
+        <item>Other</item>
+    </string-array>
+</resources>

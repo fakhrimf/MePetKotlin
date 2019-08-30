@@ -9,20 +9,15 @@
     tools:context=".Home"
     tools:showIn="@layout/app_bar_home">
 
-    <ListView
-        android:id="@+id/lv"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.chewie.mepet.homeFrag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <!--<TextView-->
-    <!--android:id="@+id/noPet"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="There's no pet yet."-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--android:fontFamily="@font/quicksand"/>-->
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_home" />
 
 </android.support.constraint.ConstraintLayout>
