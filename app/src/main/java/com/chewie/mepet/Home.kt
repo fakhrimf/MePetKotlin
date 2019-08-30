@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -53,6 +54,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+            fab1.setEnabled(true)
         }
     }
 
