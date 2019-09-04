@@ -41,23 +41,31 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
         navView.setNavigationItemSelectedListener(this)
     }
 
     private var doubleClick = false
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        val curr = supportFragmentManager.findFragmentById(R.id.fragment)
+        if (curr is homeFrag){
+            if (doubleClick){
+                this.finish()
+            } else {
+                Toast.makeText(this, "Tap twice to exit", Toast.LENGTH_SHORT).show()
+            }
+            doubleClick = true
+            Handler().postDelayed({doubleClick = false}, 2000)
+        } else if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            if(doubleClick){
-                super.onBackPressed()
+            super.onBackPressed()
+            val curr1 = supportFragmentManager.findFragmentById(R.id.fragment)
+            if(curr1 is homeFrag){
+                fab1.show()
             } else {
-                Toast.makeText(this,"Press back twice to exit", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"not working", Toast.LENGTH_LONG).show()
             }
-            this.doubleClick = true
-            Handler().postDelayed({ doubleClick = false }, 2000)
         }
     }
 
