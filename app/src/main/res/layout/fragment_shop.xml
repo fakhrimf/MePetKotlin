@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fefefe"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".shop">
+
+
+        <LinearLayout
+            android:id="@+id/hometext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/ivHome"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="MeShop"
+                android:textSize="40sp"
+                android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/toped"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_margin="10dp"
+            android:elevation="12dp"
+            app:cardCornerRadius="7dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hometext">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="40dp"
+                android:src="@drawable/topedsnip" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/bukalapak"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_margin="10dp"
+            android:elevation="12dp"
+            app:cardCornerRadius="7dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toped">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="35dp"
+                android:src="@drawable/bpsnip" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/shopee"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_margin="10dp"
+            android:elevation="12dp"
+            app:cardCornerRadius="7dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bukalapak">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="30dp"
+                android:src="@drawable/shopee" />
+        </android.support.v7.widget.CardView>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
