@@ -7,13 +7,32 @@
     android:background="#F2994A"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:src="@drawable/kocheng"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/kiri"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="90dp"
+            android:src="@drawable/kochenghiji" />
+
+        <ImageView
+            android:id="@+id/kanan"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-80dp"
+            android:layout_toRightOf="@+id/kiri"
+            android:scaleX="-1"
+            android:src="@drawable/kochenghiji" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
