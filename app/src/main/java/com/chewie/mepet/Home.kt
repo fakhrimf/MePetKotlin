@@ -48,7 +48,9 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val curr = supportFragmentManager.findFragmentById(R.id.fragment)
-        if (curr is homeFrag){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }else if (curr is homeFrag || curr is shop){
             if (doubleClick){
                 this.finish()
             } else {
@@ -56,15 +58,16 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
             doubleClick = true
             Handler().postDelayed({doubleClick = false}, 2000)
-        } else if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
+        } else if (curr is addPet){
+            val sf = supportFragmentManager.beginTransaction()
+            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, homeFrag()).commit()
+            sf.addToBackStack(null)
+            fab1.show()
         } else {
             super.onBackPressed()
             val curr1 = supportFragmentManager.findFragmentById(R.id.fragment)
             if(curr1 is homeFrag){
                 fab1.show()
-            } else {
-                Toast.makeText(this,"not working", Toast.LENGTH_LONG).show()
             }
         }
     }
