@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
@@ -127,8 +128,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:elevation="12dp"
-                app:cardUseCompatPadding="true"
                 app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintTop_toBottomOf="@+id/garis">
 
                 <LinearLayout
@@ -143,6 +144,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
+                        android:textSize="12sp"
                         android:fontFamily="@font/quicksand"
                         android:text="Next \nReminder"
                         android:textColor="#000" />
@@ -152,7 +154,7 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="2"
-                        android:src="@drawable/ic_cat" />
+                        android:src="@drawable/ic_food" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -171,12 +173,15 @@
                         android:layout_height="50dp"
                         android:layout_weight="1">
 
-                        <ImageView
-                            android:id="@+id/ivNextReminder"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            android:fontFamily="@font/quicksand"
+                            android:text="Reminder"
+                            android:textAllCaps="false"
+                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -186,6 +191,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/layoutFood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -196,12 +202,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardNextReminder">
 
                 <LinearLayout
-                    android:id="@+id/layoutFood"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp">
 
                     <TextView
+                        android:textSize="12sp"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_gravity="center_vertical"
@@ -298,14 +304,18 @@
 
                     <android.support.constraint.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_weight="1">
+                        android:layout_height="50dp">
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                        <Button
+                            android:id="@+id/btnToShop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            android:fontFamily="@font/quicksand"
+                            android:text="Shop"
+                            android:textAllCaps="false"
+                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

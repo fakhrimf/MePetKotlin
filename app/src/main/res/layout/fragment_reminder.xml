@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f2f2f2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reminderFrag">
+
+    <ImageView
+        android:id="@+id/ivPagi"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPagi"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/quicksand"
+        android:gravity="center"
+        android:text="07:00"
+        android:textColor="#000"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ivPagi"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivEditPagi"
+        android:layout_width="25dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_edit_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtPagi"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivSiang"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPagi" />
+
+    <TextView
+        android:id="@+id/txtSiang"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/quicksand"
+        android:gravity="center"
+        android:text="12:00"
+        android:textColor="#000"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ivSiang"
+        app:layout_constraintTop_toBottomOf="@+id/txtPagi" />
+
+    <ImageView
+        android:id="@+id/ivEditSiang"
+        android:layout_width="25dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_edit_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtSiang"
+        app:layout_constraintTop_toBottomOf="@+id/ivEditPagi" />
+
+    <ImageView
+        android:id="@+id/ivMalam"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSiang" />
+
+    <TextView
+        android:id="@+id/txtMalam"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/quicksand"
+        android:gravity="center"
+        android:text="20:00"
+        android:textColor="#000"
+        android:textSize="50sp"
+        app:layout_constraintStart_toEndOf="@+id/ivMalam"
+        app:layout_constraintTop_toBottomOf="@+id/txtSiang" />
+
+    <ImageView
+        android:id="@+id/ivEditMalam"
+        android:layout_width="25dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_edit_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtMalam"
+        app:layout_constraintTop_toBottomOf="@+id/ivEditSiang" />
+
+</android.support.constraint.ConstraintLayout>
