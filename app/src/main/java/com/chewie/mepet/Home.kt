@@ -134,7 +134,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 fab.hide()
             }
             R.id.nav_aboutus -> {
-                Toast.makeText(this, "Made by Chewie Team", Toast.LENGTH_LONG).show()
+                val sf = supportFragmentManager.beginTransaction()
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, aboutFrag()).commit()
+                sf.addToBackStack(null)
+                val fab: FloatingActionButton = findViewById(R.id.fab1)
+                fab.hide()
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context=".MainActivity"
+    android:background="#f5f5f5"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#F2994A">
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="15dp"
+                android:text="CHEWIE CORPS"
+                android:textColor="#fff"
+                android:textSize="40dp"
+                android:textStyle="bold"
+            />
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:text="MePet"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="20dp"/>
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="325dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="110dp">
+
+            <TextView
+                android:id="@+id/txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="TEAMS" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/fakhri"
+                        android:layout_below="@id/txt3"/>
+                    <TextView
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CEO"
+                        android:textStyle="bold"
+                        android:id="@+id/txt4"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/gilang"
+                        android:layout_below="@id/txt3"/>
+                    <TextView
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BACK END"
+                        android:textStyle="bold"
+                        android:id="@+id/txt5"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/sulthon"
+                        android:layout_below="@id/txt3"/>
+                    <TextView
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FRONT END"
+                        android:textStyle="bold"
+                        android:id="@+id/txt6"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/rifky"
+                        android:layout_below="@id/txt3"/>
+                    <TextView
+                        android:textSize="12dp"
+                        android:id="@+id/txt7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="FRONT END"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+
+
+
+
+
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/visi"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:text="VISI"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_below="@id/visi"
+            android:id="@+id/isivisi"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="50dp"
+            android:textSize="17dp"
+            android:layout_marginTop="60dp"
+            android:text="Menjadikan aplikasi mepet sebagai aplikasi yang dapat membantu orang-orang untuk memelihara hewannya dengan fitur-fitur yang telah disediakan"
+            android:layout_height="wrap_content"/>
+
+
+
+
+        <TextView
+            android:layout_below="@id/isivisi"
+            android:id="@+id/misi"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:textSize="25dp"
+            android:layout_marginTop="155dp"
+            android:text="MISI"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_below="@id/misi"
+            android:id="@+id/isimisi1"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="50dp"
+            android:textSize="17dp"
+            android:layout_marginTop="190dp"
+            android:text="1. Peliharaan menjadi lebih terawat"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/isimisi1"
+            android:id="@+id/isimisi2"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="50dp"
+            android:textSize="17dp"
+            android:layout_marginTop="210dp"
+            android:text="2. "
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/isimisi2"
+            android:id="@+id/isimisi3"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="50dp"
+            android:textSize="17dp"
+            android:layout_marginTop="230dp"
+            android:text="3. "
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/isimisi3"
+            android:id="@+id/isimisi4"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:textSize="17dp"
+        android:layout_marginTop="250dp"
+        android:text="4. "
+        android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/isimisi4"
+            android:id="@+id/isimisi5"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="50dp"
+            android:textSize="17dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginBottom="25dp"
+            android:text="5. "
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
