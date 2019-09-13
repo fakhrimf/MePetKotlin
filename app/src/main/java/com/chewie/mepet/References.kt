@@ -50,19 +50,19 @@ class References : Fragment(), BottomNavigationView.OnNavigationItemSelectedList
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initBtn()
+//        initBtn()
         nav_view.getMenu().getItem(1).setChecked(true)
     }
-    private fun initBtn(){
-        val toShop: Button = findViewById(R.id.btnToShop)
-        toShop.setOnClickListener{
-            val sf = supportFragmentManager.beginTransaction()
-            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop()).commit()
-            sf.addToBackStack(null)
-            fab1.hide()
-            nav_view.getMenu().getItem(4).setChecked(true)
-        }
-    }
+//    private fun initBtn(){
+//        val toShop: Button = findViewById(R.id.btnToShop)
+//        toShop.setOnClickListener{
+//            val sf = supportFragmentManager.beginTransaction()
+//            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop()).commit()
+//            sf.addToBackStack(null)
+//            fab1.hide()
+//            nav_view.getMenu().getItem(4).setChecked(true)
+//        }
+//    }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_pet -> {

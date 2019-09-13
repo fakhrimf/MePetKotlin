@@ -41,7 +41,7 @@
                 android:textSize="20dp"/>
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
+        <android.support.v7.widget.CardView
             android:layout_width="325dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
@@ -157,10 +157,10 @@
 
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </android.support.v7.widget.CardView>
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -262,7 +262,7 @@
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </android.support.v7.widget.CardView>
 
 
 </LinearLayout>
