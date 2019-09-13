@@ -17,13 +17,17 @@
             android:icon="@drawable/ic_references"
             android:title="References" />
         <item
+            android:id="@+id/nav_reminder"
+            android:icon="@drawable/ic_time"
+            android:title="Reminder" />
+        <item
             android:id="@+id/nav_meshop"
             android:icon="@drawable/ic_meshop"
             android:title="MeShop" />
-        <item
+        <!--<item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
-            android:title="Settings" />
+            android:title="Settings" />-->
     </group>
 
     <item android:title="Get to know us">

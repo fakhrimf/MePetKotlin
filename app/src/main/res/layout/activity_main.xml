@@ -7,32 +7,33 @@
     android:background="#F2994A"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+    <ImageView
+        android:id="@+id/kiri"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/kochenghiji"
+        android:layout_marginRight="41dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/kanan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/kanan"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/kiri"
+        android:scaleX="-1"
+        android:layout_marginLeft="41dp"
+        android:src="@drawable/kochenghiji"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="@+id/kiri"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/kiri"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="90dp"
-            android:src="@drawable/kochenghiji" />
 
-        <ImageView
-            android:id="@+id/kanan"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="-55dp"
-            android:layout_toRightOf="@+id/kiri"
-            android:scaleX="-1"
-            android:src="@drawable/kochenghiji" />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

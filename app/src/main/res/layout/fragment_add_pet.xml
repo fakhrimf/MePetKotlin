@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#40353535"
     tools:context=".addPet">
 
     <android.support.v7.widget.CardView
@@ -105,11 +106,15 @@
                 </LinearLayout>
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
+                    android:paddingStart="5dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:text="Add" />
+                    android:text="Add"
+                    android:drawableStart="@drawable/ic_add_black_24dp"
+                    android:textColor="#fff"
+                    android:background="@drawable/buttonbg"/>
             </LinearLayout>
         </ScrollView>
     </android.support.v7.widget.CardView>
