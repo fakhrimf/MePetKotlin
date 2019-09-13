@@ -28,7 +28,7 @@
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="-80dp"
+            android:layout_marginLeft="-55dp"
             android:layout_toRightOf="@+id/kiri"
             android:scaleX="-1"
             android:src="@drawable/kochenghiji" />
