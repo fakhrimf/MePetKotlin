@@ -144,10 +144,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:textSize="12sp"
                         android:fontFamily="@font/quicksand"
                         android:text="Next \nReminder"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="12sp"/>
 
                     <ImageView
                         android:layout_width="50dp"
@@ -207,23 +207,24 @@
                     android:padding="10dp">
 
                     <TextView
-                        android:textSize="12sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_width="55dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
                         android:fontFamily="@font/quicksand"
                         android:gravity="center_vertical"
                         android:text="Food"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="12dp"/>
 
                     <GridLayout
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:columnCount="3"
                         android:rowCount="3">
 
                         <LinearLayout
+
                             android:layout_width="200dp"
                             android:layout_height="wrap_content">
 
@@ -307,6 +308,7 @@
                         android:layout_height="50dp">
 
                         <Button
+                            android:layout_marginLeft="20dp"
                             android:id="@+id/btnToShop"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

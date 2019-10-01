@@ -113,8 +113,9 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 initBtn()
             }
             R.id.nav_references -> {
-                val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, References()).commit()
+
+               val sf = supportFragmentManager.beginTransaction()
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, Refere()).commit()
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()

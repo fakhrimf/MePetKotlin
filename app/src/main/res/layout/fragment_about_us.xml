@@ -27,6 +27,7 @@
                 android:text="CHEWIE CORPS"
                 android:textColor="#fff"
                 android:textSize="40dp"
+                android:fontFamily="@font/baloo_thambi"
                 android:textStyle="bold"
             />
 
@@ -38,6 +39,7 @@
                 android:text="MePet"
                 android:textAlignment="center"
                 android:textColor="#fff"
+                android:fontFamily="@font/baloo_thambi"
                 android:textSize="20dp"/>
         </RelativeLayout>
 
@@ -54,7 +56,9 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
-                android:text="TEAMS" />
+                android:text="TEAMS"
+                android:fontFamily="@font/baloo_thambi"
+            />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,6 +81,7 @@
                         android:src="@drawable/fakhri"
                         android:layout_below="@id/txt3"/>
                     <TextView
+                        android:fontFamily="@font/baloo_thambi"
                         android:textSize="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,6 +103,7 @@
                         android:src="@drawable/gilang"
                         android:layout_below="@id/txt3"/>
                     <TextView
+                        android:fontFamily="@font/baloo_thambi"
                         android:textSize="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -114,11 +120,13 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
                     <ImageView
+
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:src="@drawable/sulthon"
                         android:layout_below="@id/txt3"/>
                     <TextView
+                        android:fontFamily="@font/baloo_thambi"
                         android:textSize="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -140,6 +148,7 @@
                         android:src="@drawable/rifky"
                         android:layout_below="@id/txt3"/>
                     <TextView
+                        android:fontFamily="@font/baloo_thambi"
                         android:textSize="12dp"
                         android:id="@+id/txt7"
                         android:layout_width="wrap_content"
@@ -174,6 +183,7 @@
 
         <TextView
             android:id="@+id/visi"
+            android:fontFamily="@font/baloo_thambi"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
@@ -184,12 +194,13 @@
         android:layout_height="wrap_content"/>
 
         <TextView
+            android:fontFamily="@font/baloo_thambi"
             android:layout_below="@id/visi"
             android:id="@+id/isivisi"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="50dp"
-            android:textSize="17dp"
+            android:textSize="15sp"
             android:layout_marginTop="60dp"
             android:text="Menjadikan aplikasi mepet sebagai aplikasi yang dapat membantu orang-orang untuk memelihara hewannya dengan fitur-fitur yang telah disediakan"
             android:layout_height="wrap_content"/>
@@ -198,68 +209,63 @@
 
 
         <TextView
+            android:fontFamily="@font/baloo_thambi"
             android:layout_below="@id/isivisi"
             android:id="@+id/misi"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="30dp"
             android:textSize="25dp"
-            android:layout_marginTop="155dp"
+            android:layout_marginTop="170dp"
             android:text="MISI"
             android:textStyle="bold"
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:fontFamily="@font/baloo_thambi"
             android:layout_below="@id/misi"
             android:id="@+id/isimisi1"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="50dp"
-            android:textSize="17dp"
-            android:layout_marginTop="190dp"
+            android:textSize="15sp"
+            android:layout_marginTop="200dp"
             android:text="1. Peliharaan menjadi lebih terawat"
             android:layout_height="wrap_content"/>
         <TextView
+            android:fontFamily="@font/baloo_thambi"
             android:layout_below="@id/isimisi1"
             android:id="@+id/isimisi2"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="50dp"
-            android:textSize="17dp"
-            android:layout_marginTop="210dp"
-            android:text="2. "
+            android:textSize="15sp"
+            android:layout_marginTop="225dp"
+            android:text="2. Mencari berbagai informasi agar bisa \nmenghasilkan aplikasi yang baik"
             android:layout_height="wrap_content"/>
         <TextView
+            android:fontFamily="@font/baloo_thambi"
             android:layout_below="@id/isimisi2"
             android:id="@+id/isimisi3"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="50dp"
-            android:textSize="17dp"
-            android:layout_marginTop="230dp"
-            android:text="3. "
+            android:textSize="15sp"
+            android:layout_marginTop="275dp"
+            android:text="3. Memperbarui fitur-fitur dalam aplikasi"
             android:layout_height="wrap_content"/>
         <TextView
+            android:fontFamily="@font/baloo_thambi"
             android:layout_below="@id/isimisi3"
             android:id="@+id/isimisi4"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="50dp"
-        android:textSize="17dp"
-        android:layout_marginTop="250dp"
-        android:text="4. "
+        android:textSize="15sp"
+        android:layout_marginTop="300dp"
+        android:text="4. Membuat layout dengan desain yang \nmenarik bagi pengguna "
         android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_below="@id/isimisi4"
-            android:id="@+id/isimisi5"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="50dp"
-            android:textSize="17dp"
-            android:layout_marginTop="270dp"
-            android:layout_marginBottom="25dp"
-            android:text="5. "
-            android:layout_height="wrap_content"/>
+
 
     </RelativeLayout>
     </android.support.v7.widget.CardView>
