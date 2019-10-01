@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val animations = AnimationUtils.loadAnimation(this,R.anim.kekiri)
         kanan.startAnimation(animations)
 
+
         mWaitHandler.postDelayed({
             try {
                 intent = Intent(applicationContext, Home::class.java)

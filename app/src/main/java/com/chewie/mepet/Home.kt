@@ -113,8 +113,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 initBtn()
             }
             R.id.nav_references -> {
-//                TODO:Ton references eusian
-                Toast.makeText(this, "Mana ton belum jadi",Toast.LENGTH_LONG).show()
+                val sf = supportFragmentManager.beginTransaction()
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, References()).commit()
+                sf.addToBackStack(null)
+                val fab: FloatingActionButton = findViewById(R.id.fab1)
+                fab.hide()
             }
             R.id.nav_meshop -> {
                 val sf = supportFragmentManager.beginTransaction()
