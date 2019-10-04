@@ -129,6 +129,7 @@
                 android:layout_margin="10dp"
                 android:elevation="12dp"
                 app:cardCornerRadius="10dp"
+                android:background="?android:selectableItemBackground"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintTop_toBottomOf="@+id/garis">
 
@@ -137,13 +138,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:background="?android:selectableItemBackground">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
+                        android:autoSizeTextType="uniform"
                         android:fontFamily="@font/quicksand"
                         android:text="Next \nReminder"
                         android:textColor="#000"
@@ -176,10 +179,10 @@
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#00000000"
                             android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
                             android:fontFamily="@font/quicksand"
                             android:text="Reminder"
+                            android:background="?android:selectableItemBackground"
                             android:textAllCaps="false"
                             android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -191,7 +194,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/layoutFood"
+                android:id="@+id/cardFood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -199,12 +202,15 @@
                 android:elevation="12dp"
                 app:cardCornerRadius="10dp"
                 app:cardUseCompatPadding="true"
+                android:background="?android:selectableItemBackground"
                 app:layout_constraintTop_toBottomOf="@+id/cardNextReminder">
 
                 <LinearLayout
+                    android:id="@+id/layoutFood"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:background="?android:selectableItemBackground">
 
                     <TextView
                         android:layout_width="55dp"
@@ -213,6 +219,7 @@
                         android:fontFamily="@font/quicksand"
                         android:gravity="center_vertical"
                         android:text="Food"
+                        android:autoSizeTextType="uniform"
                         android:textColor="#000"
                         android:textSize="12dp"/>
 
@@ -304,15 +311,15 @@
                     </GridLayout>
 
                     <android.support.constraint.ConstraintLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp">
 
                         <Button
-                            android:layout_marginLeft="20dp"
+                            android:layout_marginStart="20dp"
                             android:id="@+id/btnToShop"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#00000000"
+                            android:background="?android:selectableItemBackground"
                             android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
                             android:fontFamily="@font/quicksand"
                             android:text="Shop"

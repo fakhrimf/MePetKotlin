@@ -2,7 +2,9 @@ package com.chewie.mepet
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -17,9 +19,9 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -34,13 +36,34 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         setSupportActionBar(toolbar)
         nav_view.setCheckedItem(R.id.nav_home)
         val fab: FloatingActionButton = findViewById(R.id.fab1)
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener {
             if (supportFragmentManager != null) {
                 val sf = supportFragmentManager.beginTransaction()
                 sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, addPet())
                     .commit()
                 fab.hide()
                 sf.addToBackStack(null)
+            }
+        }
+
+        var fragmentIntent = intent?.extras?.getString("fragment")
+        if (fragmentIntent != null) {
+            if (fragmentIntent == "reminder") {
+                val sf = supportFragmentManager.beginTransaction()
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                    .replace(R.id.fragment, reminderFrag()).commit()
+                sf.addToBackStack(null)
+                val fab: FloatingActionButton = findViewById(R.id.fab1)
+                fab.hide()
+                nav_view.setCheckedItem(R.id.nav_reminder)
+            } else if (fragmentIntent == "shop"){
+                val sf = supportFragmentManager.beginTransaction()
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                    .replace(R.id.fragment, shop()).commit()
+                sf.addToBackStack(null)
+                val fab: FloatingActionButton = findViewById(R.id.fab1)
+                fab.hide()
+                nav_view.setCheckedItem(R.id.nav_meshop)
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -60,15 +83,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
 
     private fun initBtn() {
-        val toShop: Button = findViewById(R.id.btnToShop)
-        toShop.setOnClickListener {
-            val sf = supportFragmentManager.beginTransaction()
-            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop())
-                .commit()
-            sf.addToBackStack(null)
-            fab1.hide()
-            nav_view.getMenu().getItem(4).setChecked(true)
-        }
+//        val toShop: Button = findViewById(R.id.btnToShop)
+//        toShop.setOnClickListener {
+//            val sf = supportFragmentManager.beginTransaction()
+//            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop())
+//                .commit()
+//            sf.addToBackStack(null)
+//            fab1.hide()
+//            nav_view.getMenu().getItem(4).setChecked(true)
     }
 
     private var doubleClick = false
@@ -77,9 +99,9 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val curr = supportFragmentManager.findFragmentById(R.id.fragment)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (curr is homeFrag || curr is shop || curr is profileFrag || curr is aboutFrag) {
+        } else if (curr is homeFrag || curr is shop || curr is profileFrag || curr is aboutFrag || curr is reminderFrag) {
             if (doubleClick) {
-                this.finish()
+                this.finishAffinity()
             } else {
                 Toast.makeText(this, "Tap twice to exit", Toast.LENGTH_SHORT).show()
             }
@@ -116,6 +138,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
+                tvMepet.text = "Profile"
             }
             R.id.nav_home -> {
                 val sf = supportFragmentManager.beginTransaction()
@@ -125,15 +148,16 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.show()
                 initBtn()
+                tvMepet.text = "Home"
             }
             R.id.nav_references -> {
-
                 val sf = supportFragmentManager.beginTransaction()
                 sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, Refere())
                     .commit()
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
+                tvMepet.text = "References"
             }
             R.id.nav_meshop -> {
                 val sf = supportFragmentManager.beginTransaction()
@@ -142,6 +166,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
+                tvMepet.text = "MeShop"
             }
             R.id.nav_reminder -> {
                 val sf = supportFragmentManager.beginTransaction()
@@ -150,6 +175,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
+                tvMepet.text = "Reminders"
                 notifyMe() //this is a test
             }
             R.id.nav_aboutus -> {
@@ -159,6 +185,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
+                tvMepet.text = "About Us"
             }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -192,11 +219,22 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
     private val NOTIFICATION_ID = 0
     private fun getNotificationBuilder(): NotificationCompat.Builder {
+        val intentReminder = Intent(this, Home::class.java)
+        val intentShop = Intent(this, Home::class.java)
+        intentReminder.putExtra("fragment", "reminder")
+        intentShop.putExtra("fragment", "shop")
+        val pendingIntentReminder =
+            PendingIntent.getActivity(this, 0, intentReminder, Intent.FILL_IN_ACTION)
+        val pendingIntentShop =
+            PendingIntent.getActivity(this, 0, intentShop, Intent.FILL_IN_ACTION)
         val notifyBuilder =
             NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID)
                 .setContentTitle("Feed your Pet!")
                 .setContentText("Hey it's time to feed your pet!")
                 .setSmallIcon(R.drawable.ic_food)
+                .setContentIntent(pendingIntentReminder)
+                .addAction(R.drawable.ic_meshop, "Shop", pendingIntentShop)
+                .setAutoCancel(true)
         return notifyBuilder
     }
 
@@ -205,7 +243,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val mNotificationManager: NotificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notifyBuilder = getNotificationBuilder()
-        mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build())
+        mNotificationManager.notify(NOTIFICATION_ID, notifyBuilder.build())
     }
 
 }

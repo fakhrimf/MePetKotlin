@@ -2,30 +2,43 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#f2f2f2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f2f2"
     tools:context=".reminderFrag">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:text="Reminders"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivPagi"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/ic_food"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtPagi"
-        android:layout_width="130dp"
+        android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
+        android:background="?android:selectableItemBackground"
         android:text="07:00"
+        android:padding="15dp"
         android:textColor="#000"
         android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@+id/ivPagi"
@@ -33,9 +46,12 @@
 
     <ImageView
         android:id="@+id/ivEditPagi"
-        android:layout_width="25dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="50dp"
+        android:padding="37dp"
+        android:cropToPadding="true"
+        android:layout_marginTop="100dp"
+        android:background="?android:selectableItemBackground"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtPagi"
@@ -53,12 +69,14 @@
 
     <TextView
         android:id="@+id/txtSiang"
-        android:layout_width="130dp"
+        android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginStart="50dp"
+        android:padding="15dp"
         android:layout_marginTop="50dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
+        android:background="?android:selectableItemBackground"
         android:text="12:00"
         android:textColor="#000"
         android:textSize="50sp"
@@ -67,9 +85,12 @@
 
     <ImageView
         android:id="@+id/ivEditSiang"
-        android:layout_width="25dp"
+        android:padding="37dp"
+        android:cropToPadding="true"
         android:layout_height="100dp"
+        android:layout_width="100dp"
         android:layout_marginTop="50dp"
+        android:background="?android:selectableItemBackground"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtSiang"
@@ -87,10 +108,12 @@
 
     <TextView
         android:id="@+id/txtMalam"
-        android:layout_width="130dp"
+        android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginStart="50dp"
+        android:padding="15dp"
+        android:background="?android:selectableItemBackground"
         android:layout_marginTop="50dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
         android:text="20:00"
@@ -101,9 +124,12 @@
 
     <ImageView
         android:id="@+id/ivEditMalam"
-        android:layout_width="25dp"
         android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:cropToPadding="true"
+        android:padding="37dp"
         android:layout_marginTop="50dp"
+        android:background="?android:selectableItemBackground"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtMalam"

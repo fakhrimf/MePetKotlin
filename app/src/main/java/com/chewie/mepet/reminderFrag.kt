@@ -30,11 +30,23 @@ class reminderFrag : Fragment() {
             showTimePicker("pagi")
         }
 
+        txtPagi.setOnClickListener{
+            showTimePicker("pagi")
+        }
+
         ivEditSiang.setOnClickListener {
             showTimePicker("siang")
         }
 
+        txtSiang.setOnClickListener{
+            showTimePicker("siang")
+        }
+
         ivEditMalam.setOnClickListener {
+            showTimePicker("malam")
+        }
+
+        txtMalam.setOnClickListener {
             showTimePicker("malam")
         }
     }
@@ -47,7 +59,7 @@ class reminderFrag : Fragment() {
 //            tv.text = SimpleDateFormat("HH:mm", Locale.US).format(time.time)
             if (waktu == "pagi") {
                 txtPagi.text = SimpleDateFormat("HH:mm", Locale.US).format(time.time)
-            } else if (waktu == "siang"){
+            } else if (waktu == "siang") {
                 txtSiang.text = SimpleDateFormat("HH:mm", Locale.US).format(time.time)
             } else {
                 txtMalam.text = SimpleDateFormat("HH:mm", Locale.US).format(time.time)
