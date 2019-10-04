@@ -1,9 +1,10 @@
 package com.chewie.mepet
 
+import android.app.ActivityOptions
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.support.v7.app.AppCompatActivity
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,12 +26,14 @@ class MainActivity : AppCompatActivity() {
         mWaitHandler.postDelayed({
             try {
                 intent = Intent(applicationContext, Home::class.java)
-                startActivity(intent)
-                finish()
+                startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
             } catch (ignored: Exception) {
                 ignored.printStackTrace()
             }
         }, 2600)  // Delay dalam millisekon
+        mWaitHandler.postDelayed({
+            finish()
+        },4000)
     }
 
     public override fun onDestroy() {

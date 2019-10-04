@@ -17,8 +17,10 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.transition.Explode
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -29,6 +31,12 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        with(window){
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            // set an exit transition
+            enterTransition = Explode()
+            exitTransition = Explode()
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         initBtn()
