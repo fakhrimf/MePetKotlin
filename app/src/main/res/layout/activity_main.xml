@@ -13,8 +13,8 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_centerVertical="true"
+        android:layout_marginEnd="18dp"
         android:src="@drawable/kochenghiji"
-        android:layout_marginRight="41dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/kanan"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,15 +25,14 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/kiri"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/kiri"
         android:scaleX="-1"
-        android:layout_marginLeft="41dp"
         android:src="@drawable/kochenghiji"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/kiri"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--TODO : Ubah Fragment ini ke Constraint Layout, Codingnya udah dirapihin.-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".MainActivity"
+    android:layout_height="match_parent"
     android:background="#f5f5f5"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,32 +23,33 @@
                 android:id="@+id/txt1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:layout_marginTop="15dp"
+                android:fontFamily="@font/baloo_thambi"
                 android:text="CHEWIE CORPS"
+                android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="40dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:textStyle="bold"
-            />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txt2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="65dp"
+                android:fontFamily="@font/baloo_thambi"
                 android:text="MePet"
                 android:textAlignment="center"
                 android:textColor="#fff"
-                android:fontFamily="@font/baloo_thambi"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
         </RelativeLayout>
 
         <android.support.v7.widget.CardView
             android:layout_width="325dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="110dp">
+            android:layout_marginTop="110dp"
+            app:cardCornerRadius="10dp"
+            app:cardUseCompatPadding="true">
 
             <TextView
                 android:id="@+id/txt3"
@@ -55,10 +57,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:text="TEAMS"
                 android:fontFamily="@font/baloo_thambi"
-            />
+                android:text="TEAMS"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,102 +68,102 @@
                 android:weightSum="4">
 
 
-
-
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:src="@drawable/fakhri"
-                        android:layout_below="@id/txt3"/>
+                        android:layout_below="@id/txt3"
+                        android:src="@drawable/fakhri" />
+
                     <TextView
-                        android:fontFamily="@font/baloo_thambi"
-                        android:textSize="12dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CEO"
-                        android:textStyle="bold"
                         android:id="@+id/txt4"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/baloo_thambi"
+                        android:text="CEO"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:src="@drawable/gilang"
-                        android:layout_below="@id/txt3"/>
+                        android:layout_below="@id/txt3"
+                        android:src="@drawable/gilang" />
+
                     <TextView
-                        android:fontFamily="@font/baloo_thambi"
-                        android:textSize="12dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="BACK END"
-                        android:textStyle="bold"
                         android:id="@+id/txt5"
-                        android:layout_marginTop="10dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <ImageView
-
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/sulthon"
-                        android:layout_below="@id/txt3"/>
-                    <TextView
-                        android:fontFamily="@font/baloo_thambi"
-                        android:textSize="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FRONT END"
-                        android:textStyle="bold"
-                        android:id="@+id/txt6"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/baloo_thambi"
+                        android:text="BACK END"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_height="match_parent"
                     android:orientation="vertical">
+
+                    <ImageView
+
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_below="@id/txt3"
+                        android:src="@drawable/sulthon" />
+
+                    <TextView
+                        android:id="@+id/txt6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/baloo_thambi"
+                        android:text="FRONT END"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:src="@drawable/rifky"
-                        android:layout_below="@id/txt3"/>
+                        android:layout_below="@id/txt3"
+                        android:src="@drawable/rifky" />
+
                     <TextView
-                        android:fontFamily="@font/baloo_thambi"
-                        android:textSize="12dp"
                         android:id="@+id/txt7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/baloo_thambi"
                         android:text="FRONT END"
-                        android:textStyle="bold"/>
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-
-
-
-
-
-
 
 
             </LinearLayout>
@@ -173,101 +174,111 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="25dp"
+            android:layout_gravity="center">
 
-
-        <TextView
-            android:id="@+id/visi"
-            android:fontFamily="@font/baloo_thambi"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:textSize="25dp"
-        android:layout_marginTop="25dp"
-        android:text="VISI"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"/>
-
-        <TextView
-            android:fontFamily="@font/baloo_thambi"
-            android:layout_below="@id/visi"
-            android:id="@+id/isivisi"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="50dp"
-            android:textSize="15sp"
-            android:layout_marginTop="60dp"
-            android:text="Menjadikan aplikasi mepet sebagai aplikasi yang dapat membantu orang-orang untuk memelihara hewannya dengan fitur-fitur yang telah disediakan"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/visi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="VISI"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
 
+            <TextView
+                android:id="@+id/isivisi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/visi"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="@string/visi"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/misi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/isivisi"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="170dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="MISI"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/isimisi1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/misi"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="210dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="@string/misi_1"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/isimisi2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/isimisi1"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="235dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="@string/misi_2"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/isimisi3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/isimisi2"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="285dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="@string/misi_3"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/isimisi4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/isimisi3"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="310dp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="@string/misi_4"
+                android:textSize="15sp"/>
 
 
-        <TextView
-            android:fontFamily="@font/baloo_thambi"
-            android:layout_below="@id/isivisi"
-            android:id="@+id/misi"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="30dp"
-            android:textSize="25dp"
-            android:layout_marginTop="170dp"
-            android:text="MISI"
-            android:textStyle="bold"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:fontFamily="@font/baloo_thambi"
-            android:layout_below="@id/misi"
-            android:id="@+id/isimisi1"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="50dp"
-            android:textSize="15sp"
-            android:layout_marginTop="200dp"
-            android:text="1. Peliharaan menjadi lebih terawat"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:fontFamily="@font/baloo_thambi"
-            android:layout_below="@id/isimisi1"
-            android:id="@+id/isimisi2"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="50dp"
-            android:textSize="15sp"
-            android:layout_marginTop="225dp"
-            android:text="2. Mencari berbagai informasi agar bisa \nmenghasilkan aplikasi yang baik"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:fontFamily="@font/baloo_thambi"
-            android:layout_below="@id/isimisi2"
-            android:id="@+id/isimisi3"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="50dp"
-            android:textSize="15sp"
-            android:layout_marginTop="275dp"
-            android:text="3. Memperbarui fitur-fitur dalam aplikasi"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:fontFamily="@font/baloo_thambi"
-            android:layout_below="@id/isimisi3"
-            android:id="@+id/isimisi4"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="50dp"
-        android:textSize="15sp"
-        android:layout_marginTop="300dp"
-        android:text="4. Membuat layout dengan desain yang \nmenarik bagi pengguna "
-        android:layout_height="wrap_content"/>
-
-
-    </RelativeLayout>
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 
