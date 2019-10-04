@@ -50,16 +50,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                    .replace(R.id.fragment, reminderFrag()).commit()
+                sf.replace(R.id.fragment, reminderFrag()).commit()
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
                 nav_view.setCheckedItem(R.id.nav_reminder)
             } else if (fragmentIntent == "shop"){
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                    .replace(R.id.fragment, shop()).commit()
+                sf.replace(R.id.fragment, shop()).commit()
                 sf.addToBackStack(null)
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
