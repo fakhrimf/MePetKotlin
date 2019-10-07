@@ -72,12 +72,12 @@
                     android:textSize="25sp" />
             </GridLayout>
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="20dp"
-                android:src="@drawable/ic_cat"
+                android:src="@drawable/smudge"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,8 +97,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/baloo_thambi"
-                android:text="Kocheng"
-                android:textColor="#000"
+                android:text="Smudge"
+                android:layout_marginTop="10dp"
+                android:textColor="#D9000000"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivProfile" />
@@ -109,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/quicksand"
-                android:text="Jenisnya"
+                android:text="Angora"
                 android:textColor="#000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -154,11 +155,12 @@
                         android:textSize="12sp"/>
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:id="@+id/ivFood"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="2"
-                        android:src="@drawable/ic_food" />
+                        android:src="@drawable/ic_morning" />
 
                     <TextView
                         android:id="@+id/tvTime"
