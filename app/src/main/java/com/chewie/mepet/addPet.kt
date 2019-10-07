@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chewie.mepet.pojo.pet_detail_profile
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -47,6 +48,12 @@ class addPet : Fragment() {
         npBeratBadanSekunder.setMinValue(1)
         npBeratBadanSekunder.setMaxValue(9)
         npBeratBadanUtama.setMaxValue(18)
+    }
+
+    fun insertData(){
+        var success:Boolean = false;
+        val pet:pet_detail_profile = pet_detail_profile();
+        pet.pet_name=
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
