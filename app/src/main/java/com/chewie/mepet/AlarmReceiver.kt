@@ -8,14 +8,12 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
-import android.widget.Toast
 
 class AlarmReceiver : BroadcastReceiver() {
     private val pcid = "primary_notification_channel"
 
     override fun onReceive(context: Context?, intent: Intent?) {
-//        println("notification "+mNotificationManager)
-        Toast.makeText(context, "Received", Toast.LENGTH_SHORT).show()
+//        println("notification "+mNotificationManager))
         val notification = intent?.getParcelableExtra("notification") as Notification
         val mNotificationManager: NotificationManager =
             context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -32,7 +30,7 @@ class AlarmReceiver : BroadcastReceiver() {
             nChannel.vibrationPattern = long
             nChannel.description = "Reminds you to feed your pet"
             mNotificationManager.createNotificationChannel(nChannel)
-            Toast.makeText(context, "Channel Created", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(context, "Channel Created", Toast.LENGTH_SHORT).show()
         }
         mNotificationManager.notify(0, notification)
         print("Notification = ")

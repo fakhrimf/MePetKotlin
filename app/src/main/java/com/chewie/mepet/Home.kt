@@ -2,7 +2,6 @@ package com.chewie.mepet
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -35,19 +34,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val fragmentIntent = intent?.extras?.getString("fragment")
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
+                Toast.makeText(this,"Opened Reminder",Toast.LENGTH_SHORT).show()
                 val sf = supportFragmentManager.beginTransaction()
                 sf.replace(R.id.fragment, reminderFrag()).commit()
                 sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.hide()
                 nav_view.setCheckedItem(R.id.nav_reminder)
-            } else if (fragmentIntent == "shop") {
-                val sf = supportFragmentManager.beginTransaction()
-                sf.replace(R.id.fragment, shop()).commit()
-                sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.hide()
-                nav_view.setCheckedItem(R.id.nav_meshop)
             }
         } else {
             val sf = supportFragmentManager.beginTransaction()

@@ -63,17 +63,19 @@ class homeFrag : Fragment() {
         //Lol
         if (Calendar.getInstance().timeInMillis >= calPagi.timeInMillis){
             cekPagi.setImageResource(R.drawable.ic_check_black_24dp)
-            tvTime.text = "12:00" //Next Reminder in db
+            ivFood.setImageResource(R.drawable.ic_sun)
+            tvTime.text = "12:00" //Next Reminder in db Todo: Implementasi Waktu dari database
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis){
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
                 tvTime.text = "20:00"
+                ivFood.setImageResource(R.drawable.ic_night)
                 if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis){
                     cekMalam.setImageResource(R.drawable.ic_check_black_24dp)
                     tvTime.text = "07:00"
+                    ivFood.setImageResource(R.drawable.ic_morning)
                 }
             }
         }
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

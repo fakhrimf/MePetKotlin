@@ -97,19 +97,20 @@ class reminderFrag : Fragment() {
 
     private fun getNotificationBuilder(): Notification {
         val intentReminder = Intent(context, Home::class.java)
-        val intentShop = Intent(context, Home::class.java)
+//        val intentShop = Intent(context, Home::class.java)
         intentReminder.putExtra("fragment", "reminder")
-        intentShop.putExtra("fragment", "shop")
         val pendingIntentReminder =
             PendingIntent.getActivity(context, 0, intentReminder, Intent.FILL_IN_ACTION)
 //        val pendingIntentShop =
 //            PendingIntent.getActivity(context, 0, intentShop, Intent.FILL_IN_ACTION)
+//        val icon = BitmapFactory.decodeResource(context?.resources,R.drawable.ic_food)
         val notifyBuilder =
             NotificationCompat.Builder(context as Context, "primary_notification_channel")
                 .setContentTitle("Feed your Pet!")
                 .setContentText("Hey it's time to feed your pet!")
-                .setSmallIcon(R.drawable.ic_food)
-                .setContentIntent(pendingIntentReminder)
+                .setSmallIcon(R.drawable.ic_kochengoneblack)
+//                .setLargeIcon(icon)
+                .setContentIntent(pendingIntentReminder) //Unused due to error in emptyFrag fragment
 //                .addAction(R.drawable.ic_meshop, "Shop", pendingIntentShop)
                 .setAutoCancel(true)
         return notifyBuilder.build()
@@ -118,6 +119,7 @@ class reminderFrag : Fragment() {
     private fun scheduleNotifPagi(jam: String, menit: String, notif: Notification) {
         val intentReminder = Intent(context, AlarmReceiver::class.java)
         intentReminder.putExtra("notification", notif)
+        intentReminder.putExtra("reminder", "reminder")
         val pendingIntent = PendingIntent.getBroadcast(
             context,
             0,

@@ -18,13 +18,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:layout_marginStart="30dp"
+        android:text="Pagi"
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivPagi"
+        app:layout_constraintStart_toStartOf="parent" />
     <ImageView
         android:id="@+id/ivPagi"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/ic_food"
+        android:src="@drawable/ic_morning"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,13 +68,25 @@
         app:layout_constraintStart_toEndOf="@+id/txtPagi"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:layout_marginStart="30dp"
+        android:text="Siang"
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivSiang"
+        app:layout_constraintStart_toStartOf="parent" />
     <ImageView
         android:id="@+id/ivSiang"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:padding="10dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/ic_food"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/ic_sun"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPagi" />
 
@@ -72,7 +95,7 @@
         android:layout_width="180dp"
         android:layout_height="100dp"
         android:padding="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
@@ -89,20 +112,32 @@
         android:cropToPadding="true"
         android:layout_height="100dp"
         android:layout_width="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:background="?android:selectableItemBackground"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtSiang"
         app:layout_constraintTop_toBottomOf="@+id/ivEditPagi" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:layout_marginStart="30dp"
+        android:text="Malam"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivMalam"
+        app:layout_constraintStart_toStartOf="parent" />
     <ImageView
         android:id="@+id/ivMalam"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/ic_food"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/ic_night"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivSiang" />
 
@@ -112,7 +147,7 @@
         android:layout_height="100dp"
         android:padding="15dp"
         android:background="?android:selectableItemBackground"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
@@ -128,7 +163,7 @@
         android:layout_width="100dp"
         android:cropToPadding="true"
         android:padding="37dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:background="?android:selectableItemBackground"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"

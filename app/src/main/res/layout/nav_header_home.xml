@@ -17,7 +17,7 @@
             android:layout_width="83dp"
             android:layout_height="94dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:srcCompat="@drawable/kocheng"
+            app:srcCompat="@drawable/ic_kochengwhite"
             android:contentDescription="@string/nav_header_desc"
             android:id="@+id/imageView"/>
 
