@@ -1,17 +1,9 @@
 package com.chewie.mepet
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
-import android.support.v4.app.NotificationCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -24,14 +16,13 @@ import android.view.Window
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        with(window){
+        with(window) {
             requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             // set an exit transition
             enterTransition = Explode()
@@ -39,22 +30,9 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        initBtn()
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        nav_view.setCheckedItem(R.id.nav_home)
-        val fab: FloatingActionButton = findViewById(R.id.fab1)
-        fab.setOnClickListener {
-            if (supportFragmentManager != null) {
-                val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, addPet())
-                    .commit()
-                fab.hide()
-                sf.addToBackStack(null)
-            }
-        }
-
-        var fragmentIntent = intent?.extras?.getString("fragment")
+        val fragmentIntent = intent?.extras?.getString("fragment")
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
                 val sf = supportFragmentManager.beginTransaction()
@@ -63,7 +41,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 val fab: FloatingActionButton = findViewById(R.id.fab1)
                 fab.hide()
                 nav_view.setCheckedItem(R.id.nav_reminder)
-            } else if (fragmentIntent == "shop"){
+            } else if (fragmentIntent == "shop") {
                 val sf = supportFragmentManager.beginTransaction()
                 sf.replace(R.id.fragment, shop()).commit()
                 sf.addToBackStack(null)
@@ -71,6 +49,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 fab.hide()
                 nav_view.setCheckedItem(R.id.nav_meshop)
             }
+        } else {
+            val sf = supportFragmentManager.beginTransaction()
+            sf.replace(R.id.fragment, homeFrag()).commit()
+            sf.addToBackStack(null)
+            nav_view.setCheckedItem(R.id.nav_home)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -84,20 +67,9 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
-        setChannel()
+//        setChannel()
     }
 
-
-    private fun initBtn() {
-//        val toShop: Button = findViewById(R.id.btnToShop)
-//        toShop.setOnClickListener {
-//            val sf = supportFragmentManager.beginTransaction()
-//            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop())
-//                .commit()
-//            sf.addToBackStack(null)
-//            fab1.hide()
-//            nav_view.getMenu().getItem(4).setChecked(true)
-    }
 
     private var doubleClick = false
     override fun onBackPressed() {
@@ -118,13 +90,9 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, homeFrag())
                 .commit()
             sf.addToBackStack(null)
-            fab1.show()
+//            fab1.show()
         } else {
             super.onBackPressed()
-            val curr1 = supportFragmentManager.findFragmentById(R.id.fragment)
-            if (curr1 is homeFrag) {
-                fab1.show()
-            }
         }
     }
 
@@ -136,61 +104,64 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
+        val handler = Handler()
+        val delay:Long = 300
         when (item.itemId) {
             R.id.nav_profile -> {
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                    .replace(R.id.fragment, profileFrag()).commit()
-                sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.hide()
+                handler.postDelayed({
+                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                        .replace(R.id.fragment, profileFrag()).commit()
+                    sf.addToBackStack(null)
+                }, delay)
                 tvMepet.text = "Profile"
             }
             R.id.nav_home -> {
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, homeFrag())
-                    .commit()
-                sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.show()
-                initBtn()
+                handler.postDelayed({
+                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                        .replace(R.id.fragment, homeFrag())
+                        .commit()
+                    sf.addToBackStack(null)
+                }, delay)
                 tvMepet.text = "Home"
             }
             R.id.nav_references -> {
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, Refere())
-                    .commit()
-                sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.hide()
+                handler.postDelayed({
+                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                        .replace(R.id.fragment, Refere())
+                        .commit()
+                    sf.addToBackStack(null)
+                }, delay)
                 tvMepet.text = "References"
             }
             R.id.nav_meshop -> {
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop())
-                    .commit()
-                sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.hide()
+                handler.postDelayed({
+                    sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop())
+                        .commit()
+                    sf.addToBackStack(null)
+                }, delay)
                 tvMepet.text = "MeShop"
             }
             R.id.nav_reminder -> {
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                    .replace(R.id.fragment, reminderFrag()).commit()
-                sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.hide()
+                handler.postDelayed({
+                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                        .replace(R.id.fragment, reminderFrag()).commit()
+                    sf.addToBackStack(null)
+                }, delay)
                 tvMepet.text = "Reminders"
-                notifyMe() //this is a test
+//                notifyMe() //this is a test
             }
             R.id.nav_aboutus -> {
                 val sf = supportFragmentManager.beginTransaction()
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                    .replace(R.id.fragment, aboutFrag()).commit()
-                sf.addToBackStack(null)
-                val fab: FloatingActionButton = findViewById(R.id.fab1)
-                fab.hide()
+                handler.postDelayed({
+                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                        .replace(R.id.fragment, aboutFrag()).commit()
+                    sf.addToBackStack(null)
+                }, delay)
                 tvMepet.text = "About Us"
             }
         }
@@ -199,57 +170,5 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return true
     }
 
-    private val PRIMARY_CHANNEL_ID = "primary_notification_channel"
-
-    private fun setChannel() {
-//        println("notification "+mNotificationManager)
-
-        val mNotificationManager: NotificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val nChannel = NotificationChannel(
-                PRIMARY_CHANNEL_ID,
-                "Reminder Notification",
-                NotificationManager.IMPORTANCE_HIGH
-            )
-            nChannel.enableLights(true)
-            nChannel.setLightColor(Color.YELLOW)
-            nChannel.enableVibration(true)
-            var long = longArrayOf(0, 10, 5, 15)
-            nChannel.setVibrationPattern(long)
-            nChannel.setDescription("Reminds you to feed your pet")
-            mNotificationManager.createNotificationChannel(nChannel)
-//            Toast.makeText(this,"Channel Created",Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private val NOTIFICATION_ID = 0
-    private fun getNotificationBuilder(): NotificationCompat.Builder {
-        val intentReminder = Intent(this, Home::class.java)
-        val intentShop = Intent(this, Home::class.java)
-        intentReminder.putExtra("fragment", "reminder")
-        intentShop.putExtra("fragment", "shop")
-        val pendingIntentReminder =
-            PendingIntent.getActivity(this, 0, intentReminder, Intent.FILL_IN_ACTION)
-        val pendingIntentShop =
-            PendingIntent.getActivity(this, 0, intentShop, Intent.FILL_IN_ACTION)
-        val notifyBuilder =
-            NotificationCompat.Builder(this, PRIMARY_CHANNEL_ID)
-                .setContentTitle("Feed your Pet!")
-                .setContentText("Hey it's time to feed your pet!")
-                .setSmallIcon(R.drawable.ic_food)
-                .setContentIntent(pendingIntentReminder)
-                .addAction(R.drawable.ic_meshop, "Shop", pendingIntentShop)
-                .setAutoCancel(true)
-        return notifyBuilder
-    }
-
-    // Todo : Bikin fungsi ngecek waktu dari database buat ngejalanin fungsi notifyMe
-    private fun notifyMe() {
-        val mNotificationManager: NotificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notifyBuilder = getNotificationBuilder()
-        mNotificationManager.notify(NOTIFICATION_ID, notifyBuilder.build())
-    }
-
+    //Fungsi Notifikasi ada di AlarmReceiver sama reminderFrag
 }
