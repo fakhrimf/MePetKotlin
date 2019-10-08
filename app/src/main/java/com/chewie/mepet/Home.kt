@@ -75,8 +75,8 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
             doubleClick = true
             Handler().postDelayed({ doubleClick = false }, 2000)
-        } else if (curr is addPet || curr is editKochengFrag) {
-            toFragment(homeFrag(),"Home")
+        } else if (curr is addPet) {
+            toFragment(homeFrag(),"Home", R.id.nav_home)
 //            fab1.show()
         } else {
             super.onBackPressed()
@@ -98,7 +98,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return super.onPrepareOptionsMenu(menu)
     }
 
-    private fun toFragment(fragment: Fragment, title:String){
+    private fun toFragment(fragment: Fragment, title:String, item:Int){
         val handler = Handler()
         val delay: Long = 300
         val sf = supportFragmentManager.beginTransaction()
@@ -107,7 +107,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 .replace(R.id.fragment, fragment).commit()
             sf.addToBackStack(null)
         }, delay)
+        handler.postDelayed({
+            invalidateOptionsMenu()
+        }, delay + 50)
         tvMepet.text = title
+        nav_view.setCheckedItem(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -115,12 +119,12 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val handler = Handler()
         val delay: Long = 300
         when (item.itemId) {
-            R.id.nav_profile -> toFragment(profileFrag(),"Profile")
-            R.id.nav_home -> toFragment(homeFrag(),"Home")
-            R.id.nav_references -> toFragment(Refere(), "References")
-            R.id.nav_meshop -> toFragment(shop(), "MeShop")
-            R.id.nav_reminder -> toFragment(reminderFrag(),"Reminders")
-            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us")
+            R.id.nav_profile -> toFragment(profileFrag(),"Profile", R.id.nav_profile)
+            R.id.nav_home -> toFragment(homeFrag(),"Home", R.id.nav_home)
+            R.id.nav_references -> toFragment(Refere(), "References", R.id.nav_references)
+            R.id.nav_meshop -> toFragment(shop(), "MeShop", R.id.nav_meshop)
+            R.id.nav_reminder -> toFragment(reminderFrag(),"Reminders", R.id.nav_reminder)
+            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us", R.id.nav_aboutus)
         }
         handler.postDelayed({
             invalidateOptionsMenu()
@@ -130,10 +134,24 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return true
     }
 
+    private fun newInstance(id:Int):addPet{
+        val args = Bundle()
+        args.putInt("id",id)
+        val addpet = addPet()
+        addpet.arguments = args
+        return addpet
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.editPetBtn -> {
-                toFragment(editKochengFrag(),"Edit Pet")
+                val id = 1
+                newInstance(id)
+//                Toast.makeText(this, "$id",Toast.LENGTH_SHORT).show()
+                toFragment(newInstance(id),"Edit Pet", R.id.nav_home)
+                Handler().postDelayed({
+                    invalidateOptionsMenu()
+                },50)
             }
         }
         return super.onOptionsItemSelected(item)
