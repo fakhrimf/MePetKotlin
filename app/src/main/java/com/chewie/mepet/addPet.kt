@@ -10,6 +10,10 @@ import android.support.v4.widget.DrawerLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.pojo.pet_detail_profile
+import com.chewie.mepet.pojo.pet_profile
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -27,6 +31,13 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class addPet : Fragment() {
+
+    var petName:String=""
+    var petAge:String=""
+    var petType:String=""
+    var firstWeight:String=""
+    var secondWeight:String=""
+    var petWeight:Float= 0.0F
 
     companion object {
         fun newInstance(): addPet {
@@ -49,9 +60,40 @@ class addPet : Fragment() {
         npBeratBadanUtama.setMaxValue(18)
     }
 
+    fun initialization(){
+        petName = et_petname.toString()
+        petAge = et_age.toString()
+        petType = cbx_pettype.selectedItem.toString()
+        firstWeight = npBeratBadanUtama.value.toString()
+        secondWeight = npBeratBadanSekunder.value.toString()
+        petWeight = (firstWeight+"."+secondWeight).toFloat()
+    }
+
+    fun insertData(){
+        val db = MepetDatabaseHelper(context)
+        var success:Boolean = false;
+        val pet:pet_detail_profile = pet_detail_profile();
+        val petProfile = pet_profile()
+
+        pet.pet_name = this.petName
+        pet.pet_type = this.petType
+        pet.pet_age = this.petAge
+        pet.pet_weight = this.petWeight
+
+
+        petProfile.id_detail_profile = pet.id_pet
+        db.insertPet(pet,petProfile)
+        Toast.makeText(context,"Berhasil! "+pet.id_pet,Toast.LENGTH_LONG).show()
+
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
+        initialization()
+        btnAddPet.setOnClickListener{
+            insertData()
+        }
     }
 }
 

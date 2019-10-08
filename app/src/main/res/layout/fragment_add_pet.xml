@@ -36,6 +36,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Pet Name"
+                        android:id="@+id/et_petname"
                         android:fontFamily="@font/quicksand" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -44,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
+                    android:id="@+id/cbx_pettype"
                     android:entries="@array/catTypes"
                     android:fontFamily="@font/quicksand" />
 
@@ -58,6 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Age"
+                        android:id="@+id/et_age"
                         android:inputType="number"
                         android:fontFamily="@font/quicksand" />
                 </android.support.design.widget.TextInputLayout>
@@ -106,6 +109,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btnAddPet"
                     android:layout_width="100dp"
                     android:paddingStart="5dp"
                     android:layout_height="wrap_content"
