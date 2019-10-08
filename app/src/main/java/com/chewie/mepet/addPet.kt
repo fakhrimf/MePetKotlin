@@ -136,13 +136,14 @@ class addPet : Fragment() {
         if (id != null) {
             val detailProfile = dbManager.getPetById(id)
             et_petname.setText(detailProfile.pet_name)
-            et_age.setText(detailProfile.pet_age)
+            et_age.setText(detailProfile.pet_age.toString())
 //            Toast.makeText(context,"jenis = "+detailProfile.pet_type,Toast.LENGTH_LONG).show()
             cbx_pettype.setSelection(getCbxIndex(detailProfile.pet_type))
             val beratFirst = detailProfile.pet_weight.toString().split(".")[0].toInt()
             val beratKedua = detailProfile.pet_weight.toString().split(".")[1].toInt()
             npBeratBadanUtama.value = beratFirst
             npBeratBadanSekunder.value = beratKedua
+            btnAddPet.text = "Update"
         }
     }
 

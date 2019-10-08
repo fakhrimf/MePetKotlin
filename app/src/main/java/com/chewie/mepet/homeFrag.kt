@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.db.MepetDatabaseHelper
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
@@ -87,45 +88,55 @@ class homeFrag : Fragment() {
 
         tvNama.text = detailProfile.pet_name
         tvAge.text = detailProfile.pet_age.toString()
-        tvWeight.text = detailProfile.pet_weight.toString()
+        tvWeight.text = detailProfile.pet_weight.toString()+" Kg"
         tvJenis.text = detailProfile.pet_type
         Log.v("Berat",detailProfile.pet_weight.toString())
     }
 
-    private fun toFragment(fragment: Fragment){
+    private fun toFragment(fragment: Fragment, title:String, item:Int){
         val handler = Handler()
-        val delay: Long = 50
+        val delay: Long = 300
         val sf = fragmentManager?.beginTransaction()
-        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
-            ?.replace(R.id.fragment, fragment)
-            ?.commit()
-        sf?.addToBackStack(null)
-        activity?.fab1?.hide()
-        activity?.tvMepet?.text = "Edit Pet"
+        handler.postDelayed({
+            sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
+                ?.replace(R.id.fragment, fragment)?.commit()
+            sf?.addToBackStack(null)
+        }, delay)
         handler.postDelayed({
             activity?.invalidateOptionsMenu()
-        }, delay)
+        }, delay + 50)
+        activity?.tvMepet?.text = title
+        activity?.nav_view?.setCheckedItem(item)
+    }
+
+    private fun toAddPet(id: Int): addPet {
+        val args = Bundle()
+        args.putInt("id", id)
+        val addpet = addPet()
+        addpet.arguments = args
+        return addpet
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         cekFoodAndReminder()
         showData()
+        val id = 1
 
         ivProfile.setOnClickListener {
-            toFragment(editKochengFrag())
+            toFragment(toAddPet(id), "Edit Pet", R.id.nav_home)
         }
         btnToShop.setOnClickListener{
-            toFragment(shop())
+            toFragment(shop(), "MeShop", R.id.nav_meshop)
         }
         layoutFood.setOnClickListener {
-            toFragment(shop())
+            toFragment(shop(), "MeShop", R.id.nav_meshop)
         }
         btnToReminder.setOnClickListener{
-            toFragment(reminderFrag())
+            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
         }
         layoutNextReminder.setOnClickListener {
-            toFragment(reminderFrag())
+            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect
@@ -138,7 +149,7 @@ class homeFrag : Fragment() {
         }
         val fab: FloatingActionButton? = view?.findViewById(R.id.fab1)
         fab?.setOnClickListener {
-            toFragment(addPet())
+            toFragment(addPet(), "Add Pet", R.id.nav_home)
         }
         fab?.show()
     }
