@@ -1,15 +1,19 @@
 package com.chewie.mepet
 
 import android.os.Bundle
+import android.os.Handler
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.pojo.pet_detail_profile
 import com.chewie.mepet.pojo.pet_profile
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,10 +52,10 @@ class addPet : Fragment() {
     }
 
     private fun setNpValue() {
-        npBeratBadanUtama.setMinValue(0)
-        npBeratBadanSekunder.setMinValue(1)
-        npBeratBadanSekunder.setMaxValue(9)
-        npBeratBadanUtama.setMaxValue(18)
+        npBeratBadanUtama.minValue = 0
+        npBeratBadanSekunder.minValue = 1
+        npBeratBadanSekunder.maxValue = 9
+        npBeratBadanUtama.maxValue = 18
     }
 
     private fun initialization(){
@@ -93,9 +97,27 @@ class addPet : Fragment() {
 
             petProfile.id_detail_profile = pet.id_pet
             db.insertPet(pet, petProfile)
-            Toast.makeText(context, "Berhasil! " + pet.id_pet, Toast.LENGTH_LONG).show()
+//            Toast.makeText(context, "Berhasil! " + pet.id_pet, Toast.LENGTH_LONG).show()
+            Snackbar.make(activity!!.findViewById(android.R.id.content),"Data berhasil Masuk!",Snackbar.LENGTH_SHORT).show()
+            toFragment(homeFrag(), "Home", R.id.nav_home)
             println(petName)
         }
+    }
+
+    private fun toFragment(fragment: Fragment, title: String, item:Int) {
+        val handler = Handler()
+        val delay: Long = 50
+        val sf = fragmentManager?.beginTransaction()
+        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
+            ?.replace(R.id.fragment, fragment)
+            ?.commit()
+        sf?.addToBackStack(null)
+        activity?.fab1?.hide()
+        activity?.tvMepet?.text = title
+        handler.postDelayed({
+            activity?.invalidateOptionsMenu()
+        }, delay)
+        activity?.nav_view?.setCheckedItem(item)
     }
 
     private fun getCbxIndex(type:String):Int {
@@ -129,7 +151,11 @@ class addPet : Fragment() {
         setNpValue()
         editSet()
         btnAddPet.setOnClickListener{
-            insertData()
+            if(activity?.tvMepet?.text == "Edit Pet"){
+//                UpdatePet()
+            } else {
+                insertData()
+            }
         }
     }
 }
