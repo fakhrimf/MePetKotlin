@@ -1,6 +1,7 @@
 package com.chewie.mepet
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -8,8 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.pojo.pet_detail_profile
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,17 +29,17 @@ class homeFrag : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    private fun cekFoodAndReminder(){
+    private fun cekFoodAndReminder() {
         val sdfJam = SimpleDateFormat("HH", Locale.US)
         val sdfMenit = SimpleDateFormat("mm", Locale.US)
-        var jamPagiDate:Date = sdfJam.parse("07")
-        var menitPagiDate:Date = sdfMenit.parse("00")
+        var jamPagiDate: Date = sdfJam.parse("07")
+        var menitPagiDate: Date = sdfMenit.parse("00")
 
-        var jamSiangDate:Date = sdfJam.parse("12")
-        var menitSiangDate:Date = sdfMenit.parse("00")
+        var jamSiangDate: Date = sdfJam.parse("12")
+        var menitSiangDate: Date = sdfMenit.parse("00")
 
-        var jamMalamDate:Date = sdfJam.parse("20")
-        var menitMalamDate:Date = sdfMenit.parse("00")
+        var jamMalamDate: Date = sdfJam.parse("20")
+        var menitMalamDate: Date = sdfMenit.parse("00")
 
 
         val jamPagi = SimpleDateFormat("HH", Locale.US).format(jamPagiDate).toInt()
@@ -64,15 +64,15 @@ class homeFrag : Fragment() {
         calMalam.set(Calendar.MINUTE, menitMalam)
 
         //Lol
-        if (Calendar.getInstance().timeInMillis >= calPagi.timeInMillis){
+        if (Calendar.getInstance().timeInMillis >= calPagi.timeInMillis) {
             cekPagi.setImageResource(R.drawable.ic_check_black_24dp)
             ivFood.setImageResource(R.drawable.ic_sun)
             tvTime.text = "12:00" //Next Reminder in db Todo: Implementasi Waktu dari database
-            if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis){
+            if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
                 tvTime.text = "20:00"
                 ivFood.setImageResource(R.drawable.ic_night)
-                if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis){
+                if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis) {
                     cekMalam.setImageResource(R.drawable.ic_check_black_24dp)
                     tvTime.text = "07:00"
                     ivFood.setImageResource(R.drawable.ic_morning)
@@ -80,14 +80,28 @@ class homeFrag : Fragment() {
             }
         }
     }
-    fun showData(){
+    private fun showData(){
         val dbManager = MepetDatabaseHelper(context)
         val id = 1
         val detailProfile = dbManager.getPetById(id)
 
-        tvNama.text = dbManager.getPetById(id).pet_name.toString()
-        Log.v("Berat",detailProfile?.pet_name)
+        tvNama.text = detailProfile.pet_name
+        Log.v("Berat",detailProfile.pet_weight.toString())
+    }
 
+    private fun toFragment(fragment: Fragment){
+        val handler = Handler()
+        val delay: Long = 50
+        val sf = fragmentManager?.beginTransaction()
+        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
+            ?.replace(R.id.fragment, fragment)
+            ?.commit()
+        sf?.addToBackStack(null)
+        activity?.fab1?.hide()
+        activity?.tvMepet?.text = "Edit Pet"
+        handler.postDelayed({
+            activity?.invalidateOptionsMenu()
+        }, delay)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -95,21 +109,20 @@ class homeFrag : Fragment() {
         cekFoodAndReminder()
         showData()
 
+        ivProfile.setOnClickListener {
+            toFragment(editKochengFrag())
+        }
+        btnToShop.setOnClickListener{
+            toFragment(shop())
+        }
         layoutFood.setOnClickListener {
-            val sf = fragmentManager?.beginTransaction()
-            sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, shop())
-                ?.commit()
-            sf?.addToBackStack(null)
-            activity?.fab1?.hide()
-            activity?.nav_view?.setCheckedItem(R.id.nav_meshop)
+            toFragment(shop())
+        }
+        btnToReminder.setOnClickListener{
+            toFragment(reminderFrag())
         }
         layoutNextReminder.setOnClickListener {
-            val sf = fragmentManager?.beginTransaction()
-            sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, reminderFrag())
-                ?.commit()
-            sf?.addToBackStack(null)
-            activity?.fab1?.hide()
-            activity?.nav_view?.setCheckedItem(R.id.nav_reminder)
+            toFragment(reminderFrag())
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect
@@ -117,17 +130,13 @@ class homeFrag : Fragment() {
         cardFood.setOnClickListener {
             //For Ripple Effect
         }
+        randomRef.setOnClickListener {
+            //Same
+        }
         val fab: FloatingActionButton? = view?.findViewById(R.id.fab1)
         fab?.setOnClickListener {
-            if (fragmentManager != null) {
-                val sf = fragmentManager?.beginTransaction()
-                sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, addPet())
-                    ?.commit()
-                fab.hide()
-                sf?.addToBackStack(null)
-            }
+            toFragment(addPet())
         }
         fab?.show()
     }
-
 }

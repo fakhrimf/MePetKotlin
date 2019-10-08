@@ -1,12 +1,7 @@
 package com.chewie.mepet
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +10,6 @@ import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.pojo.pet_detail_profile
 import com.chewie.mepet.pojo.pet_profile
 import kotlinx.android.synthetic.main.fragment_add_pet.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,26 +47,26 @@ class addPet : Fragment() {
         return inflater.inflate(R.layout.fragment_add_pet, container, false)
     }
 
-    fun setNpValue() {
+    private fun setNpValue() {
         npBeratBadanUtama.setMinValue(0)
         npBeratBadanSekunder.setMinValue(1)
         npBeratBadanSekunder.setMaxValue(9)
         npBeratBadanUtama.setMaxValue(18)
     }
 
-    fun initialization(){
-        petName = et_petname.toString()
-        petAge = et_age.toString()
+    private fun initialization(){
+        petName = et_petname.text.toString()
+        petAge = et_age.text.toString()
         petType = cbx_pettype.selectedItem.toString()
         firstWeight = npBeratBadanUtama.value.toString()
         secondWeight = npBeratBadanSekunder.value.toString()
-        petWeight = (firstWeight+"."+secondWeight).toFloat()
+        petWeight = ("$firstWeight.$secondWeight").toFloat()
     }
 
-    fun insertData(){
+    private fun insertData(){
         val db = MepetDatabaseHelper(context)
-        var success:Boolean = false;
-        val pet:pet_detail_profile = pet_detail_profile();
+        var success:Boolean = false
+        val pet:pet_detail_profile = pet_detail_profile()
         val petProfile = pet_profile()
 
         pet.pet_name = this.petName
@@ -90,8 +84,8 @@ class addPet : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
-        initialization()
         btnAddPet.setOnClickListener{
+            initialization()
             insertData()
         }
     }
