@@ -3,6 +3,7 @@ package com.chewie.mepet
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -34,7 +35,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val fragmentIntent = intent?.extras?.getString("fragment")
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
-                Toast.makeText(this,"Opened Reminder",Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Opened Reminder", Toast.LENGTH_SHORT).show()
                 val sf = supportFragmentManager.beginTransaction()
                 sf.replace(R.id.fragment, reminderFrag()).commit()
                 sf.addToBackStack(null)
@@ -58,9 +59,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
-//        setChannel()
     }
-
 
     private var doubleClick = false
     override fun onBackPressed() {
@@ -76,11 +75,8 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
             doubleClick = true
             Handler().postDelayed({ doubleClick = false }, 2000)
-        } else if (curr is addPet) {
-            val sf = supportFragmentManager.beginTransaction()
-            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, homeFrag())
-                .commit()
-            sf.addToBackStack(null)
+        } else if (curr is addPet || curr is editKochengFrag) {
+            toFragment(homeFrag(),"Home")
 //            fab1.show()
         } else {
             super.onBackPressed()
@@ -93,72 +89,54 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return true
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val curr = supportFragmentManager.findFragmentById(R.id.fragment)
+        if (curr is homeFrag) {
+            menuInflater.inflate(R.menu.homewithedit, menu)
+        }
+//        Toast.makeText(this, "onPrepareOptionsMenu called.", Toast.LENGTH_SHORT).show()
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    private fun toFragment(fragment: Fragment, title:String){
+        val handler = Handler()
+        val delay: Long = 300
+        val sf = supportFragmentManager.beginTransaction()
+        handler.postDelayed({
+            sf.setCustomAnimations(R.anim.enter, R.anim.exit)
+                .replace(R.id.fragment, fragment).commit()
+            sf.addToBackStack(null)
+        }, delay)
+        tvMepet.text = title
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         val handler = Handler()
-        val delay:Long = 300
+        val delay: Long = 300
         when (item.itemId) {
-            R.id.nav_profile -> {
-                val sf = supportFragmentManager.beginTransaction()
-                handler.postDelayed({
-                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                        .replace(R.id.fragment, profileFrag()).commit()
-                    sf.addToBackStack(null)
-                }, delay)
-                tvMepet.text = "Profile"
-            }
-            R.id.nav_home -> {
-                val sf = supportFragmentManager.beginTransaction()
-                handler.postDelayed({
-                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                        .replace(R.id.fragment, homeFrag())
-                        .commit()
-                    sf.addToBackStack(null)
-                }, delay)
-                tvMepet.text = "Home"
-            }
-            R.id.nav_references -> {
-                val sf = supportFragmentManager.beginTransaction()
-                handler.postDelayed({
-                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                        .replace(R.id.fragment, Refere())
-                        .commit()
-                    sf.addToBackStack(null)
-                }, delay)
-                tvMepet.text = "References"
-            }
-            R.id.nav_meshop -> {
-                val sf = supportFragmentManager.beginTransaction()
-                handler.postDelayed({
-                    sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, shop())
-                        .commit()
-                    sf.addToBackStack(null)
-                }, delay)
-                tvMepet.text = "MeShop"
-            }
-            R.id.nav_reminder -> {
-                val sf = supportFragmentManager.beginTransaction()
-                handler.postDelayed({
-                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                        .replace(R.id.fragment, reminderFrag()).commit()
-                    sf.addToBackStack(null)
-                }, delay)
-                tvMepet.text = "Reminders"
-//                notifyMe() //this is a test
-            }
-            R.id.nav_aboutus -> {
-                val sf = supportFragmentManager.beginTransaction()
-                handler.postDelayed({
-                    sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                        .replace(R.id.fragment, aboutFrag()).commit()
-                    sf.addToBackStack(null)
-                }, delay)
-                tvMepet.text = "About Us"
-            }
+            R.id.nav_profile -> toFragment(profileFrag(),"Profile")
+            R.id.nav_home -> toFragment(homeFrag(),"Home")
+            R.id.nav_references -> toFragment(Refere(), "References")
+            R.id.nav_meshop -> toFragment(shop(), "MeShop")
+            R.id.nav_reminder -> toFragment(reminderFrag(),"Reminders")
+            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us")
         }
+        handler.postDelayed({
+            invalidateOptionsMenu()
+        }, delay + 50)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.editPetBtn -> {
+                toFragment(editKochengFrag(),"Edit Pet")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     //Fungsi Notifikasi ada di AlarmReceiver sama reminderFrag
