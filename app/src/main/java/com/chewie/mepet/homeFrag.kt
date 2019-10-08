@@ -81,30 +81,28 @@ class homeFrag : Fragment() {
             }
         }
     }
-    private fun showData(){
+
+    private fun showData() {
         val dbManager = MepetDatabaseHelper(context)
         val id = 1
         val detailProfile = dbManager.getPetById(id)
 
         tvNama.text = detailProfile.pet_name
         tvAge.text = detailProfile.pet_age.toString()
-        tvWeight.text = detailProfile.pet_weight.toString()+" Kg"
+        tvWeight.text = detailProfile.pet_weight.toString() + " Kg"
         tvJenis.text = detailProfile.pet_type
-        Log.v("Berat",detailProfile.pet_weight.toString())
+        Log.v("Berat", detailProfile.pet_weight.toString())
     }
 
-    private fun toFragment(fragment: Fragment, title:String, item:Int){
+    private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
-        val delay: Long = 300
         val sf = fragmentManager?.beginTransaction()
-        handler.postDelayed({
-            sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
-                ?.replace(R.id.fragment, fragment)?.commit()
-            sf?.addToBackStack(null)
-        }, delay)
+        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
+            ?.replace(R.id.fragment, fragment)?.commit()
+        sf?.addToBackStack(null)
         handler.postDelayed({
             activity?.invalidateOptionsMenu()
-        }, delay + 50)
+        }, 50)
         activity?.tvMepet?.text = title
         activity?.nav_view?.setCheckedItem(item)
     }
@@ -126,13 +124,13 @@ class homeFrag : Fragment() {
         ivProfile.setOnClickListener {
             toFragment(toAddPet(id), "Edit Pet", R.id.nav_home)
         }
-        btnToShop.setOnClickListener{
+        btnToShop.setOnClickListener {
             toFragment(shop(), "MeShop", R.id.nav_meshop)
         }
         layoutFood.setOnClickListener {
             toFragment(shop(), "MeShop", R.id.nav_meshop)
         }
-        btnToReminder.setOnClickListener{
+        btnToReminder.setOnClickListener {
             toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
         }
         layoutNextReminder.setOnClickListener {

@@ -35,13 +35,13 @@ class shop : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        ivToped.setOnClickListener{
+        ivToped?.setOnClickListener{
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://tokopedia.com")))
         }
-        ivBuka.setOnClickListener {
+        ivBuka?.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://bukalapak.com")))
         }
-        ivShopi.setOnClickListener {
+        ivShopi?.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://shopee.com")))
         }
     }
