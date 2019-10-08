@@ -47,8 +47,8 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
     }
 
     fun getPetById(id:Int):pet_detail_profile{
-        val db = this.writableDatabase
-        val selectQuery = "Select * from $DETAIL_PROFILE_TABLE where $ID_DETAIL_PROFILE = 1"
+        val db = this.readableDatabase
+        val selectQuery = "Select * from $DETAIL_PROFILE_TABLE where $ID_DETAIL_PROFILE = $id "
         val cursor = db.rawQuery(selectQuery,null)
         val detailProfile = pet_detail_profile()
         if (cursor.count>0){
@@ -60,6 +60,7 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
             detailProfile.pet_age = cursor.getString(cursor.getColumnIndex(PET_WEIGHT))
         }
         cursor.close()
+
         return detailProfile
     }
 

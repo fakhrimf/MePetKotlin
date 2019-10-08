@@ -85,8 +85,8 @@ class homeFrag : Fragment() {
         val id = 1
         val detailProfile = dbManager.getPetById(id)
 
-        tvNama.text = detailProfile?.pet_name
-        Log.v("Berat",detailProfile?.pet_weight.toString())
+        tvNama.text = dbManager.getPetById(id).pet_name.toString()
+        Log.v("Berat",detailProfile?.pet_name)
 
     }
 
