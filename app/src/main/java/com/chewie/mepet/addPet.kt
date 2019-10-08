@@ -87,7 +87,7 @@ class addPet : Fragment() {
 
             pet.pet_name = this.petName
             pet.pet_type = this.petType
-            pet.pet_age = this.petAge
+            pet.pet_age = this.petAge.toInt()
             pet.pet_weight = this.petWeight
 
 

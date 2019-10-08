@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.chewie.mepet.pet
 import com.chewie.mepet.pojo.pet_detail_profile
 import com.chewie.mepet.pojo.pet_profile
 
@@ -46,6 +47,17 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
         return (Integer.parseInt("$_success")!=-1)
     }
 
+    fun insertReminderPagi(petProfile: pet_profile):Boolean{
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(JAM_PAGI, petProfile.jam_pagi)
+
+        val _success = db.insert(PROFILE_TABLE,null,values)
+        db.close()
+        return (Integer.parseInt("$_success")!=-1)
+    }
+
+
     fun getPetById(id:Int):pet_detail_profile{
         val db = this.readableDatabase
         val selectQuery = "Select * from $DETAIL_PROFILE_TABLE where $ID_DETAIL_PROFILE = $id "
@@ -56,8 +68,8 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
             detailProfile.id_pet = cursor.getInt(cursor.getColumnIndex(ID_DETAIL_PROFILE))
             detailProfile.pet_name = cursor.getString(cursor.getColumnIndex(PET_NAME))
             detailProfile.pet_type = cursor.getString(cursor.getColumnIndex(PET_TYPE))
-            detailProfile.pet_age = cursor.getString(cursor.getColumnIndex(PET_AGE))
-            detailProfile.pet_age = cursor.getString(cursor.getColumnIndex(PET_WEIGHT))
+            detailProfile.pet_age = cursor.getInt(cursor.getColumnIndex(PET_AGE))
+            detailProfile.pet_weight = cursor.getFloat(cursor.getColumnIndex(PET_WEIGHT))
         }
         cursor.close()
 
