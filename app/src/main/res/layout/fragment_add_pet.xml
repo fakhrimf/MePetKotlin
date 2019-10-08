@@ -45,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
+                    android:id="@+id/cbx_pettype"
                     android:entries="@array/catTypes"
                     android:fontFamily="@font/quicksand" />
 
@@ -108,6 +109,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btnAddPet"
                     android:layout_width="100dp"
                     android:paddingStart="5dp"
                     android:layout_height="wrap_content"
