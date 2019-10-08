@@ -13,6 +13,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.pojo.pet_detail_profile
+import com.chewie.mepet.pojo.pet_profile
 import kotlinx.android.synthetic.main.fragment_reminder.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -75,6 +78,14 @@ class reminderFrag : Fragment() {
                 "pagi" -> {
                     txtPagi.text = SimpleDateFormat("HH:mm", Locale.US).format(time.time)
                     scheduleNotifPagi(jam, menit, getNotificationBuilder())
+
+                    val db = MepetDatabaseHelper(context)
+                    var success: Boolean = false
+                    val petProfile = pet_profile()
+
+                    petProfile.jam_pagi = txtPagi.text.toString()
+                    db.insertReminderPagi(petProfile)
+                    Toast.makeText(context,txtPagi.text.toString(),Toast.LENGTH_LONG).show()
                 }
                 "siang" -> {
                     txtSiang.text = SimpleDateFormat("HH:mm", Locale.US).format(time.time)
