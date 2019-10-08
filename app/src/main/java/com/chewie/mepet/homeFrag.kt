@@ -9,8 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.pojo.pet_detail_profile
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
@@ -82,14 +80,13 @@ class homeFrag : Fragment() {
             }
         }
     }
-    fun showData(){
+    private fun showData(){
         val dbManager = MepetDatabaseHelper(context)
         val id = 1
         val detailProfile = dbManager.getPetById(id)
 
-        tvNama.text = detailProfile?.pet_name
-        Log.v("Berat",detailProfile?.pet_weight.toString())
-
+        tvNama.text = detailProfile.pet_name
+        Log.v("Berat",detailProfile.pet_weight.toString())
     }
 
     private fun toFragment(fragment: Fragment){
@@ -110,6 +107,7 @@ class homeFrag : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         cekFoodAndReminder()
+        showData()
 
         ivProfile.setOnClickListener {
             toFragment(editKochengFrag())
