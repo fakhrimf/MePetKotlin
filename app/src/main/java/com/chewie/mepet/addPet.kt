@@ -98,9 +98,36 @@ class addPet : Fragment() {
         }
     }
 
+    private fun getCbxIndex(type:String):Int {
+        for (i in 0 until cbx_pettype.count){
+            if(cbx_pettype.getItemAtPosition(i) == type){
+                return i
+            }
+        }
+        return 0
+    }
+
+    private fun editSet(){
+        val dbManager = MepetDatabaseHelper(context)
+        val args = arguments
+        val id = args?.getInt("id")
+        if (id != null) {
+            val detailProfile = dbManager.getPetById(id)
+            et_petname.setText(detailProfile.pet_name)
+            et_age.setText(detailProfile.pet_age)
+//            Toast.makeText(context,"jenis = "+detailProfile.pet_type,Toast.LENGTH_LONG).show()
+            cbx_pettype.setSelection(getCbxIndex(detailProfile.pet_type))
+            val beratFirst = detailProfile.pet_weight.toString().split(".")[0].toInt()
+            val beratKedua = detailProfile.pet_weight.toString().split(".")[1].toInt()
+            npBeratBadanUtama.value = beratFirst
+            npBeratBadanSekunder.value = beratKedua
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
+        editSet()
         btnAddPet.setOnClickListener{
             initialization()
             insertData()
