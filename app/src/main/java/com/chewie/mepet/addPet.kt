@@ -63,28 +63,44 @@ class addPet : Fragment() {
         petWeight = ("$firstWeight.$secondWeight").toFloat()
     }
 
+    private fun cekEmpty():Boolean {
+        if(petName.isEmpty() || petAge.isEmpty()) {
+            if (petName.isEmpty()) {
+                et_petname.error = "Nama Harus diisi"
+            }
+            if (petAge.isEmpty()) {
+                et_age.error = "Usia harus diisi"
+            }
+        } else {
+            return true
+        }
+        return false
+    }
+
     private fun insertData(){
-        val db = MepetDatabaseHelper(context)
-        var success:Boolean = false
-        val pet:pet_detail_profile = pet_detail_profile()
-        val petProfile = pet_profile()
+        initialization()
+        if(cekEmpty()) {
+            val db = MepetDatabaseHelper(context)
+            var success: Boolean = false
+            val pet: pet_detail_profile = pet_detail_profile()
+            val petProfile = pet_profile()
 
-        pet.pet_name = this.petName
-        pet.pet_type = this.petType
-        pet.pet_age = this.petAge
-        pet.pet_weight = this.petWeight
+            pet.pet_name = this.petName
+            pet.pet_type = this.petType
+            pet.pet_age = this.petAge
+            pet.pet_weight = this.petWeight
 
 
-        petProfile.id_detail_profile = pet.id_pet
-        db.insertPet(pet,petProfile)
-        Toast.makeText(context,"Berhasil! "+pet.id_pet,Toast.LENGTH_LONG).show()
-
+            petProfile.id_detail_profile = pet.id_pet
+            db.insertPet(pet, petProfile)
+            Toast.makeText(context, "Berhasil! " + pet.id_pet, Toast.LENGTH_LONG).show()
+            println(petName)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
-        initialization()
         btnAddPet.setOnClickListener{
             insertData()
         }
