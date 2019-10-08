@@ -12,10 +12,10 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
     //var fk_id_dp:String=""
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_TABLE_DP = "Create table $DETAIL_PROFILE_TABLE " +
-                "($ID_DETAIL_PROFILE Integer PRIMARY KEY AUTO_INCREMENT, $PET_NAME TEXT, $PET_TYPE TEXT,$PET_AGE Integer, $PET_WEIGHT REAL)"
+                "($ID_DETAIL_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $PET_NAME TEXT, $PET_TYPE TEXT,$PET_AGE Integer, $PET_WEIGHT REAL)"
 
         val CREATE_TABLE_PROFILE = "Create table $PROFILE_TABLE " +
-                "($ID_PROFILE Integer PRIMARY KEY AUTO_INCREMENT, $FK_ID_DETAIL_PROFILE Integer,$JAM_PAGI TEXT,$JAM_SIANG TEXT,$JAM_MALAM TEXT)"
+                "($ID_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $FK_ID_DETAIL_PROFILE Integer,$JAM_PAGI TEXT,$JAM_SIANG TEXT,$JAM_MALAM TEXT)"
 
         db?.execSQL(CREATE_TABLE_DP)
         db?.execSQL(CREATE_TABLE_PROFILE)
@@ -44,6 +44,23 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
         Log.v("InsertedID","$_success")
         Log.v("InsertedIDDetail","$_suc")
         return (Integer.parseInt("$_success")!=-1)
+    }
+
+    fun getPetById(id:Int):pet_detail_profile{
+        val db = this.writableDatabase
+        val selectQuery = "Select * from $DETAIL_PROFILE_TABLE where $ID_DETAIL_PROFILE = 1"
+        val cursor = db.rawQuery(selectQuery,null)
+        val detailProfile = pet_detail_profile()
+        if (cursor.count>0){
+            cursor.moveToFirst()
+            detailProfile.id_pet = cursor.getInt(cursor.getColumnIndex(ID_DETAIL_PROFILE))
+            detailProfile.pet_name = cursor.getString(cursor.getColumnIndex(PET_NAME))
+            detailProfile.pet_type = cursor.getString(cursor.getColumnIndex(PET_TYPE))
+            detailProfile.pet_age = cursor.getString(cursor.getColumnIndex(PET_AGE))
+            detailProfile.pet_age = cursor.getString(cursor.getColumnIndex(PET_WEIGHT))
+        }
+        cursor.close()
+        return detailProfile
     }
 
 

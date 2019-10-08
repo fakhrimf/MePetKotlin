@@ -13,6 +13,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.Toast
+import com.chewie.mepet.db.MepetDatabaseHelper
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
@@ -160,6 +161,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
 
     //Fungsi Notifikasi ada di AlarmReceiver sama reminderFrag
 }
