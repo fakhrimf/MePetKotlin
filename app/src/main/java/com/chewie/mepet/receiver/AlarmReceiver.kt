@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat
 import android.widget.Toast
 import com.chewie.mepet.R
 import com.chewie.mepet.view.Home
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
@@ -35,7 +36,8 @@ class AlarmReceiver : BroadcastReceiver() {
             mNotificationManager.createNotificationChannel(nChannel)
 //            Toast.makeText(context, "Channel Created", Toast.LENGTH_SHORT).show()
         }
-        mNotificationManager.notify(0, getNotificationBuilder(context))
+        val uniqueId = ((Date().time / 1000L) % Integer.MAX_VALUE).toInt()
+        mNotificationManager.notify(uniqueId, getNotificationBuilder(context))
     }
 
     private fun getNotificationBuilder(context: Context): Notification {
@@ -47,10 +49,11 @@ class AlarmReceiver : BroadcastReceiver() {
 //        val pendingIntentShop =
 //            PendingIntent.getActivity(context, 0, intentShop, Intent.FILL_IN_ACTION)
 //        val icon = BitmapFactory.decodeResource(context?.resources,R.drawable.ic_food)
+        val time = SimpleDateFormat("HH:mm",Locale.US).format(Date())
         val notifyBuilder =
             NotificationCompat.Builder(context, "primary_notification_channel")
                 .setContentTitle("Feed your Pet!")
-                .setContentText("Hey it's time to feed your pet!")
+                .setContentText("Hey it's $time, time to feed your pet!")
                 .setSmallIcon(R.drawable.ic_kochengoneblack)
 //                .setLargeIcon(icon)
                 .setContentIntent(pendingIntentReminder) //Unused due to error in emptyFrag fragment
@@ -92,7 +95,7 @@ class AlarmReceiver : BroadcastReceiver() {
 //        intentReminder.putExtra("reminder", "reminder")
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            0,
+            1,
             intentReminder,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -120,7 +123,7 @@ class AlarmReceiver : BroadcastReceiver() {
 //        intentReminder.putExtra("reminder", "reminder")
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            0,
+            2,
             intentReminder,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
