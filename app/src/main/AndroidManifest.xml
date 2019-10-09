@@ -12,12 +12,12 @@
         android:hardwareAccelerated="true">
         <activity android:name=".LvRow"/>
         <activity
-            android:name=".Home"
+            android:name=".view.Home"
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <receiver android:name = ".AlarmReceiver" />
+        <receiver android:name = ".receiver.AlarmReceiver" />
     </application>
 
 </manifest>

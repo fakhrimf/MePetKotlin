@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -14,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.Toast
+import com.chewie.mepet.R
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
@@ -118,19 +119,29 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val handler = Handler()
         val delay: Long = 300
         when (item.itemId) {
-            R.id.nav_profile -> toFragment(profileFrag(),"Profile", R.id.nav_profile,delay)
-            R.id.nav_home -> toFragment(homeFrag(),"Home", R.id.nav_home,delay)
-            R.id.nav_references -> toFragment(Refere(), "References", R.id.nav_references,delay)
-            R.id.nav_meshop -> toFragment(shop(), "MeShop", R.id.nav_meshop,delay)
-            R.id.nav_reminder -> toFragment(reminderFrag(),"Reminders", R.id.nav_reminder,delay)
-            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us", R.id.nav_aboutus,delay)
+            R.id.nav_profile -> toFragment(
+                profileFrag(),"Profile",
+                R.id.nav_profile,delay)
+            R.id.nav_home -> toFragment(
+                homeFrag(),"Home",
+                R.id.nav_home,delay)
+            R.id.nav_references -> toFragment(References(), "References",
+                R.id.nav_references,delay)
+            R.id.nav_meshop -> toFragment(
+                shop(), "MeShop",
+                R.id.nav_meshop,delay)
+            R.id.nav_reminder -> toFragment(
+                reminderFrag(),"Reminders",
+                R.id.nav_reminder,delay)
+            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us",
+                R.id.nav_aboutus,delay)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    private fun newInstance(id:Int):addPet{
+    private fun newInstance(id:Int): addPet {
         val args = Bundle()
         args.putInt("id",id)
         val addpet = addPet()

@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -93,7 +94,7 @@ class homeFrag : Fragment() {
         tvJenis.text = detailProfile.pet_type
         Log.v("Berat", detailProfile.pet_weight.toString())
     }
-
+//
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
         val sf = fragmentManager?.beginTransaction()
@@ -131,10 +132,16 @@ class homeFrag : Fragment() {
             toFragment(shop(), "MeShop", R.id.nav_meshop)
         }
         btnToReminder.setOnClickListener {
-            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
+            toFragment(
+                reminderFrag(), "Reminders",
+                R.id.nav_reminder
+            )
         }
         layoutNextReminder.setOnClickListener {
-            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
+            toFragment(
+                reminderFrag(), "Reminders",
+                R.id.nav_reminder
+            )
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect
