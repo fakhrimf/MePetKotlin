@@ -36,25 +36,33 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
         val _success = db.insert(DETAIL_PROFILE_TABLE,null,values)
 
 
-        val value = ContentValues();
-        value.put(FK_ID_DETAIL_PROFILE,petDetailProfile.id_pet)
-        val _suc = db.insert(PROFILE_TABLE,null,value)
-
-
         db.close()
         Log.v("InsertedID","$_success")
-        Log.v("InsertedIDDetail","$_suc")
         return (Integer.parseInt("$_success")!=-1)
     }
 
-    fun insertReminderPagi(petProfile: pet_profile):Boolean{
+    fun updateReminder(petProfile: pet_profile,id: Int){
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(JAM_PAGI, petProfile.jam_pagi)
+        values.put(JAM_SIANG,petProfile.jam_siang)
+        values.put(JAM_MALAM,petProfile.jam_malam)
 
-        val _success = db.insert(PROFILE_TABLE,null,values)
+        db.update(PROFILE_TABLE,values,"$ID_DETAIL_PROFILE="+id,null)
         db.close()
-        return (Integer.parseInt("$_success")!=-1)
+    }
+
+    fun insertReminder(petProfile: pet_profile){
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(FK_ID_DETAIL_PROFILE,petProfile.id_detail_profile)
+        values.put(JAM_PAGI,petProfile.jam_pagi)
+        values.put(JAM_SIANG,petProfile.jam_siang)
+        values.put(JAM_MALAM,petProfile.jam_malam)
+
+        db.insert(PROFILE_TABLE,null,values)
+        db.close()
+        Log.v("Inserted Jam",values.toString())
     }
 
 
@@ -74,6 +82,25 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
         cursor.close()
 
         return detailProfile
+    }
+
+    fun getReminder(id:Int?):pet_profile{
+        val db = this.readableDatabase
+        val selectQuery = "Select * from $PROFILE_TABLE where $FK_ID_DETAIL_PROFILE = $id"
+        val cursor = db.rawQuery(selectQuery,null)
+        val profile = pet_profile()
+
+        if (cursor.count>0){
+            cursor.moveToFirst()
+            profile.id_profile = cursor.getInt(cursor.getColumnIndex(ID_PROFILE))
+            profile.id_detail_profile = cursor.getInt(cursor.getColumnIndex(ID_DETAIL_PROFILE))
+            profile.jam_pagi = cursor.getString(cursor.getColumnIndex(JAM_PAGI))
+            profile.jam_siang = cursor.getString(cursor.getColumnIndex(JAM_SIANG))
+            profile.jam_malam = cursor.getString(cursor.getColumnIndex(JAM_MALAM))
+
+        }
+        cursor.close()
+        return profile
     }
 
 

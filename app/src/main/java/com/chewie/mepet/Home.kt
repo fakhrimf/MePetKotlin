@@ -123,7 +123,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             R.id.nav_home -> toFragment(homeFrag(),"Home", R.id.nav_home)
             R.id.nav_references -> toFragment(Refere(), "References", R.id.nav_references)
             R.id.nav_meshop -> toFragment(shop(), "MeShop", R.id.nav_meshop)
-            R.id.nav_reminder -> toFragment(reminderFrag(),"Reminders", R.id.nav_reminder)
+            R.id.nav_reminder -> {
+                val id = 1
+                reminderInstance(id)
+                toFragment(reminderInstance(id),"Reminders",R.id.nav_reminder)
+                Handler().postDelayed({
+                    invalidateOptionsMenu()
+                },50)
+            }
             R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us", R.id.nav_aboutus)
         }
         handler.postDelayed({
@@ -140,6 +147,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val addpet = addPet()
         addpet.arguments = args
         return addpet
+    }
+
+    private fun reminderInstance(id:Int):reminderFrag{
+        val args = Bundle()
+        args.putInt("id",id)
+        val reminderFrag = reminderFrag()
+        reminderFrag.arguments = args
+        return reminderFrag
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

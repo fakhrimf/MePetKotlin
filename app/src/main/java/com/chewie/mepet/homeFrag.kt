@@ -68,14 +68,19 @@ class homeFrag : Fragment() {
         if (Calendar.getInstance().timeInMillis >= calPagi.timeInMillis) {
             cekPagi.setImageResource(R.drawable.ic_check_black_24dp)
             ivFood.setImageResource(R.drawable.ic_sun)
-            tvTime.text = "12:00" //Next Reminder in db Todo: Implementasi Waktu dari database
+            val db = MepetDatabaseHelper(context)
+            val id = 1
+
+            val profile = db.getReminder(id)
+
+            tvTime.text = profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
-                tvTime.text = "20:00"
+                tvTime.text = profile.jam_malam
                 ivFood.setImageResource(R.drawable.ic_night)
                 if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis) {
                     cekMalam.setImageResource(R.drawable.ic_check_black_24dp)
-                    tvTime.text = "07:00"
+                    tvTime.text = profile.jam_pagi
                     ivFood.setImageResource(R.drawable.ic_morning)
                 }
             }
@@ -90,7 +95,6 @@ class homeFrag : Fragment() {
         tvAge.text = detailProfile.pet_age.toString()
         tvWeight.text = detailProfile.pet_weight.toString()+" Kg"
         tvJenis.text = detailProfile.pet_type
-        Log.v("Berat",detailProfile.pet_weight.toString())
     }
 
     private fun toFragment(fragment: Fragment, title:String, item:Int){
@@ -117,6 +121,14 @@ class homeFrag : Fragment() {
         return addpet
     }
 
+    private fun reminderFrag(id: Int):reminderFrag{
+        val args = Bundle()
+        args.putInt("id",id)
+        val reminderFrag = reminderFrag()
+        reminderFrag.arguments = args
+        return reminderFrag
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         cekFoodAndReminder()
@@ -133,10 +145,10 @@ class homeFrag : Fragment() {
             toFragment(shop(), "MeShop", R.id.nav_meshop)
         }
         btnToReminder.setOnClickListener{
-            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
+            toFragment(reminderFrag(id), "Reminders", R.id.nav_reminder)
         }
         layoutNextReminder.setOnClickListener {
-            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
+            toFragment(reminderFrag(id), "Reminders", R.id.nav_reminder)
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect
