@@ -14,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.Toast
+import com.chewie.mepet.listPetProfile.listProfileFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
@@ -119,7 +120,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val handler = Handler()
         val delay: Long = 300
         when (item.itemId) {
-            R.id.nav_profile -> toFragment(profileFrag(),"Profile", R.id.nav_profile)
+            R.id.nav_profile -> toFragment(listProfileFragment(),"Profile", R.id.nav_profile)
             R.id.nav_home -> toFragment(homeFrag(),"Home", R.id.nav_home)
             R.id.nav_references -> toFragment(Refere(), "References", R.id.nav_references)
             R.id.nav_meshop -> toFragment(shop(), "MeShop", R.id.nav_meshop)

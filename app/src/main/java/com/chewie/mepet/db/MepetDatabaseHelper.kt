@@ -2,12 +2,14 @@ package com.chewie.mepet.db
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.chewie.mepet.pet
 import com.chewie.mepet.pojo.pet_detail_profile
 import com.chewie.mepet.pojo.pet_profile
+import java.lang.reflect.Array
 
 class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,null, DB_VER){
     //var fk_id_dp:String=""
@@ -65,7 +67,29 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
         Log.v("Inserted Jam",values.toString())
     }
 
+    fun getAllProfile():List<pet_detail_profile>{
+        var petList = ArrayList<pet_detail_profile>()
+        var db = this.readableDatabase
+        var column = arrayOf(ID_DETAIL_PROFILE, PET_NAME, PET_TYPE, PET_AGE, PET_WEIGHT)
+        var cursor = db.query(DETAIL_PROFILE_TABLE,column,null,null,null,null,null)
 
+        while (cursor.moveToNext()){
+            var id = cursor.getInt(0)
+            var name = cursor.getString(1)
+            var type = cursor.getString(2)
+            var age = cursor.getInt(3)
+            var weight = cursor.getFloat(4)
+
+            val petProfile = pet_detail_profile()
+            petProfile.id_pet = id
+            petProfile.pet_name = name
+            petProfile.pet_type = type
+            petProfile.pet_age = age
+            petProfile.pet_weight = weight
+            petList.add(petProfile)
+        }
+        return petList
+    }
     fun getPetById(id:Int):pet_detail_profile{
         val db = this.readableDatabase
         val selectQuery = "Select * from $DETAIL_PROFILE_TABLE where $ID_DETAIL_PROFILE = $id "
