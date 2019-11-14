@@ -1,13 +1,13 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -121,7 +121,7 @@ class homeFrag : Fragment() {
         return addpet
     }
 
-    private fun reminderFrag(id: Int):reminderFrag{
+    private fun reminderFrag(id: Int): reminderFrag {
         val args = Bundle()
         args.putInt("id",id)
         val reminderFrag = reminderFrag()

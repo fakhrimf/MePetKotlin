@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
 import android.content.Intent
 import android.net.Uri
@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chewie.mepet.R
 import kotlinx.android.synthetic.main.fragment_shop.*
 
 

@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
 import android.app.AlarmManager
 import android.app.Notification
@@ -9,18 +9,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.NotificationCompat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.pojo.pet_detail_profile
-import com.chewie.mepet.pojo.pet_profile
+import com.chewie.mepet.model.pet_profile
 import kotlinx.android.synthetic.main.fragment_reminder.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class reminderFrag : Fragment() {

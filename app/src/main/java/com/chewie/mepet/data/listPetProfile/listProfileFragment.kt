@@ -1,4 +1,4 @@
-package com.chewie.mepet.listPetProfile
+package com.chewie.mepet.data.listPetProfile
 
 
 import android.os.Bundle
@@ -10,8 +10,7 @@ import android.view.ViewGroup
 
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.listPetProfile.adapter.listProfileAdapter
-import com.chewie.mepet.pojo.pet_detail_profile
+import com.chewie.mepet.data.listPetProfile.adapter.listProfileAdapter
 import kotlinx.android.synthetic.main.fragment_list_profile.*
 
 /**

@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,9 +7,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.pojo.pet_detail_profile
-import com.chewie.mepet.pojo.pet_profile
+import com.chewie.mepet.model.pet_detail_profile
+import com.chewie.mepet.model.pet_profile
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*

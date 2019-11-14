@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
 import android.os.Bundle
 import android.os.Handler
@@ -14,7 +14,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.Toast
-import com.chewie.mepet.listPetProfile.listProfileFragment
+import com.chewie.mepet.R
+import com.chewie.mepet.data.listPetProfile.listProfileFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
@@ -120,19 +121,34 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val handler = Handler()
         val delay: Long = 300
         when (item.itemId) {
-            R.id.nav_profile -> toFragment(listProfileFragment(),"Profile", R.id.nav_profile)
-            R.id.nav_home -> toFragment(homeFrag(),"Home", R.id.nav_home)
-            R.id.nav_references -> toFragment(Refere(), "References", R.id.nav_references)
-            R.id.nav_meshop -> toFragment(shop(), "MeShop", R.id.nav_meshop)
+            R.id.nav_profile -> toFragment(
+                listProfileFragment(),"Profile",
+                R.id.nav_profile
+            )
+            R.id.nav_home -> toFragment(
+                homeFrag(),"Home",
+                R.id.nav_home
+            )
+            R.id.nav_references -> toFragment(
+                Refere(), "References",
+                R.id.nav_references
+            )
+            R.id.nav_meshop -> toFragment(
+                shop(), "MeShop",
+                R.id.nav_meshop
+            )
             R.id.nav_reminder -> {
                 val id = 1
                 reminderInstance(id)
-                toFragment(reminderInstance(id),"Reminders",R.id.nav_reminder)
+                toFragment(reminderInstance(id),"Reminders", R.id.nav_reminder)
                 Handler().postDelayed({
                     invalidateOptionsMenu()
                 },50)
             }
-            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us", R.id.nav_aboutus)
+            R.id.nav_aboutus -> toFragment(
+                aboutFrag(),"About Us",
+                R.id.nav_aboutus
+            )
         }
         handler.postDelayed({
             invalidateOptionsMenu()
@@ -142,7 +158,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return true
     }
 
-    private fun newInstance(id:Int):addPet{
+    private fun newInstance(id:Int): addPet {
         val args = Bundle()
         args.putInt("id",id)
         val addpet = addPet()
@@ -150,7 +166,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return addpet
     }
 
-    private fun reminderInstance(id:Int):reminderFrag{
+    private fun reminderInstance(id:Int): reminderFrag {
         val args = Bundle()
         args.putInt("id",id)
         val reminderFrag = reminderFrag()

@@ -1,12 +1,11 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.activity_home.*
+import com.chewie.mepet.R
 
 class Refere : Fragment() {
     companion object {

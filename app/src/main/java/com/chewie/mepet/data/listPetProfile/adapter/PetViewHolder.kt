@@ -1,11 +1,11 @@
-package com.chewie.mepet.listPetProfile.adapter
+package com.chewie.mepet.data.listPetProfile.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.chewie.mepet.R
-import com.chewie.mepet.pojo.pet_detail_profile
+import com.chewie.mepet.model.pet_detail_profile
 
 class PetViewHolder(inflater: LayoutInflater, parent:ViewGroup):RecyclerView.ViewHolder(inflater.inflate(R.layout.item_pet_profile,parent,false)){
     private var txtName: TextView? = null

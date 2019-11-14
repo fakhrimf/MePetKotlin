@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
 import android.app.Notification
 import android.app.NotificationChannel

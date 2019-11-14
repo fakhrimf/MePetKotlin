@@ -1,21 +1,14 @@
-package com.chewie.mepet
+package com.chewie.mepet.data
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
-import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
+import com.chewie.mepet.R
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,7 +60,10 @@ class References : Fragment(), BottomNavigationView.OnNavigationItemSelectedList
         when (item.itemId) {
             R.id.nav_pet -> {
                 val sf = activity!!.supportFragmentManager.beginTransaction();
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, pet()).commit()
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(
+                    R.id.fragment,
+                    pet()
+                ).commit()
                 sf.addToBackStack(null)
 
             }
