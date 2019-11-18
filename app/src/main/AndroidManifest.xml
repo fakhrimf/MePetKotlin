@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
-        <activity android:name="com.chewie.mepet.profile.listPetProfile.listPetProfile"/>
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"

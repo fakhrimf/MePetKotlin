@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@drawable/listbg"
-    tools:context=".profile.listPetProfile.listPetProfile"
     tools:layout_editor_absoluteX="10dp"
     tools:layout_editor_absoluteY="10dp">
 

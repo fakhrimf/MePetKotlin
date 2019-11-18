@@ -1,4 +1,4 @@
-package com.chewie.mepet.data.listPetProfile.adapter
+package com.chewie.mepet.references
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

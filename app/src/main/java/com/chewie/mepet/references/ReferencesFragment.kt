@@ -1,7 +1,6 @@
 package com.chewie.mepet.references
 
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -9,17 +8,11 @@ import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.chewie.mepet.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class ReferencesFragment : Fragment() {
-
-    var tabLayout: TabLayout? = null
+    private var tabLayout: TabLayout? = null
     var viewPager: ViewPager? = null
-    var icon:Drawable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +21,10 @@ class ReferencesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_frag_references, container, false)
     }
 
-
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
-        viewPager = view.findViewById<ViewPager>(R.id.viewPager)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        tabLayout = view?.findViewById(R.id.tabLayout)
+        viewPager = view?.findViewById(R.id.viewPager)
 
 
         tabLayout!!.addTab(tabLayout!!.newTab().setIcon(R.drawable.pawprint))
@@ -44,7 +33,6 @@ class ReferencesFragment : Fragment() {
 
 
         val adapter = MyAdapter(
-            context,
             fragmentManager,
             tabLayout!!.tabCount
         )
@@ -56,13 +44,14 @@ class ReferencesFragment : Fragment() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPager!!.currentItem = tab.position
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab) {
 
             }
+
             override fun onTabReselected(tab: TabLayout.Tab) {
 
             }
         })
-
     }
 }

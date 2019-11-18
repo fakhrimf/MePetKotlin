@@ -1,20 +1,19 @@
-package com.chewie.mepet.data.references
+package com.chewie.mepet.references
 
-import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 
-class MyAdapter(private val myContext:Context?,fm: FragmentManager?, internal var totalTabs:Int):FragmentPagerAdapter(fm) {
+class MyAdapter(fm: FragmentManager?, private var totalTabs: Int) : FragmentPagerAdapter(fm) {
     override fun getItem(p0: Int): Fragment? {
-        when(p0){
-            0->{
-                return PetListFragment()
+        return when (p0) {
+            0 -> {
+                PetListFragment()
             }
-            1->{
-                return TipsFragment()
+            1 -> {
+                TipsFragment()
             }
-            else -> return null
+            else -> null
         }
     }
 

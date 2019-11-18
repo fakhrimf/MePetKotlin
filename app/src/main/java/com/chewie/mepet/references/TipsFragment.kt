@@ -1,4 +1,4 @@
-package com.chewie.mepet.data.references
+package com.chewie.mepet.references
 
 
 import android.os.Bundle
