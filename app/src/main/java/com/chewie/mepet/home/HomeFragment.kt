@@ -5,13 +5,10 @@ import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.shop.ShopFragment
-import com.chewie.mepet.reminder.ReminderFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -23,6 +20,11 @@ class HomeFragment : Fragment() {
         fun newInstance(): HomeFragment {
             return HomeFragment()
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -76,7 +78,9 @@ class HomeFragment : Fragment() {
 
             val profile = db.getReminder(id)
 
-            tvTime.text = profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
+            //Todo: si Waktunya ga muncul di home, pls fix
+            tvTime.text =
+                profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
                 tvTime.text = profile.jam_malam
@@ -101,7 +105,8 @@ class HomeFragment : Fragment() {
         tvJenis.text = detailProfile.pet_type
         Log.v("Berat", detailProfile.pet_weight.toString())
     }
-//
+
+    //
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
         val sf = fragmentManager?.beginTransaction()
@@ -115,20 +120,19 @@ class HomeFragment : Fragment() {
         activity?.nav_view?.setCheckedItem(item)
     }
 
-    private fun toAddPet(id: Int): AddPetFragment {
-        val args = Bundle()
-        args.putInt("id", id)
-        val addpet = AddPetFragment()
-        addpet.arguments = args
-        return addpet
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater!!.inflate(R.menu.homewithedit, menu)
     }
 
-    private fun reminderFrag(id: Int): ReminderFragment {
-        val args = Bundle()
-        args.putInt("id",id)
-        val reminderFrag = ReminderFragment()
-        reminderFrag.arguments = args
-        return reminderFrag
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.editPetBtn -> {
+                val id = 1
+                val vm = HomeVM()
+                toFragment(vm.newAddPetInstance(id), "Edit Pet", R.id.nav_home)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -136,9 +140,11 @@ class HomeFragment : Fragment() {
         cekFoodAndReminder()
         showData()
         val id = 1
+        val vm = HomeVM()
 
+        //Todo:Ganti ke data binding
         ivProfile.setOnClickListener {
-            toFragment(toAddPet(id), "Edit Pet", R.id.nav_home)
+            toFragment(vm.newAddPetInstance(id), "Edit Pet", R.id.nav_home)
         }
         btnToShop.setOnClickListener {
             toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
@@ -146,11 +152,11 @@ class HomeFragment : Fragment() {
         layoutFood.setOnClickListener {
             toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
         }
-        btnToReminder.setOnClickListener{
-            toFragment(reminderFrag(id), "Reminders", R.id.nav_reminder)
+        btnToReminder.setOnClickListener {
+            toFragment(vm.reminderFrag(id), "Reminders", R.id.nav_reminder)
         }
         layoutNextReminder.setOnClickListener {
-            toFragment(reminderFrag(id), "Reminders", R.id.nav_reminder)
+            toFragment(vm.reminderFrag(id), "Reminders", R.id.nav_reminder)
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect

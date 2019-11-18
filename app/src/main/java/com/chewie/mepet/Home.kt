@@ -91,21 +91,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.home, menu)
-        return true
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        val curr = supportFragmentManager.findFragmentById(R.id.fragment)
-        if (curr is HomeFragment) {
-            menuInflater.inflate(R.menu.homewithedit, menu)
-        }
-//        Toast.makeText(this, "onPrepareOptionsMenu called.", Toast.LENGTH_SHORT).show()
-        return super.onPrepareOptionsMenu(menu)
-    }
-
     private fun toFragment(fragment: Fragment, title: String, item: Int, delay: Long) {
         val handler = Handler()
         val sf = supportFragmentManager.beginTransaction()
@@ -114,17 +99,13 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 .replace(R.id.fragment, fragment).commit()
             sf.addToBackStack(null)
         }, delay)
-        handler.postDelayed({
-            invalidateOptionsMenu()
-        }, delay + 50)
         tvMepet.text = title
         nav_view.setCheckedItem(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        val handler = Handler()
-        val delay: Long = 320
+        val delay: Long = 330
         when (item.itemId) {
             R.id.nav_profile -> toFragment(
                 ListProfileFragment(),
@@ -152,14 +133,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return true
     }
 
-    private fun newInstance(id: Int): AddPetFragment {
-        val args = Bundle()
-        args.putInt("id", id)
-        val addpet = AddPetFragment()
-        addpet.arguments = args
-        return addpet
-    }
-
     private fun reminderInstance(id: Int): ReminderFragment {
         val args = Bundle()
         args.putInt("id", id)
@@ -167,21 +140,4 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         reminderFrag.arguments = args
         return reminderFrag
     }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.editPetBtn -> {
-                val id = 1
-                newInstance(id)
-//                Toast.makeText(this, "$id",Toast.LENGTH_SHORT).show()
-                toFragment(newInstance(id), "Edit Pet", R.id.nav_home, 0)
-                Handler().postDelayed({
-                    invalidateOptionsMenu()
-                }, 50)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    //Fungsi Notifikasi ada di AlarmReceiver sama unusedReminderFragment
 }

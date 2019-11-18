@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.references.pet.PetFragment
+import kotlinx.android.synthetic.main.app_bar_home.*
 
 /**
  * A simple [Fragment] subclass.
