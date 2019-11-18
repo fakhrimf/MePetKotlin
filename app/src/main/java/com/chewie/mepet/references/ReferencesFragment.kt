@@ -1,71 +1,68 @@
 package com.chewie.mepet.references
 
+
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+
 import com.chewie.mepet.R
-import com.chewie.mepet.references.pet.PetFragment
-import kotlinx.android.synthetic.main.app_bar_home.*
 
 /**
  * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [ReferencesFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [ReferencesFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
-class ReferencesFragment : Fragment(), BottomNavigationView.OnNavigationItemSelectedListener {
+class ReferencesFragment : Fragment() {
 
-    companion object {
-        fun newInstance(): ReferencesFragment {
-            return ReferencesFragment()
-        }
-    }
+    var tabLayout: TabLayout? = null
+    var viewPager: ViewPager? = null
+    var icon:Drawable? = null
 
     override fun onCreateView(
-
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
     ): View? {
-        return inflater.inflate(R.layout.fragment_references, container, false)
+        return inflater.inflate(R.layout.fragment_frag_references, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//        initBtn()
-    }
-//    private fun initBtn(){
-//        val toShop: Button = findViewById(R.id.btnToShop)
-//        toShop.setOnClickListener{
-//            val sf = supportFragmentManager.beginTransaction()
-//            sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, ShopFragment()).commit()
-//            sf.addToBackStack(null)
-//            fab1.hide()
-//            nav_view.getMenu().getItem(4).setChecked(true)
-//        }
-//    }
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_pet -> {
-                val sf = activity!!.supportFragmentManager.beginTransaction();
-                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(
-                    R.id.fragment,
-                    PetFragment()
-                ).commit()
-                sf.addToBackStack(null)
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
+        viewPager = view.findViewById<ViewPager>(R.id.viewPager)
+
+
+        tabLayout!!.addTab(tabLayout!!.newTab().setIcon(R.drawable.pawprint))
+        tabLayout!!.addTab(tabLayout!!.newTab().setIcon(R.drawable.icons_light))
+        tabLayout!!.tabGravity = TabLayout.GRAVITY_FILL
+
+
+        val adapter = MyAdapter(
+            context,
+            fragmentManager,
+            tabLayout!!.tabCount
+        )
+        viewPager!!.adapter = adapter
+
+        viewPager!!.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+
+        tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                viewPager!!.currentItem = tab.position
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab) {
 
             }
-        }
-        return true
+            override fun onTabReselected(tab: TabLayout.Tab) {
+
+            }
+        })
+
     }
 }
-
-
-
