@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -15,6 +15,7 @@ import android.view.MenuItem
 import android.view.Window
 import android.widget.Toast
 import com.chewie.mepet.listPetProfile.listProfileFragment
+import com.chewie.mepet.R
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
@@ -77,7 +78,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             doubleClick = true
             Handler().postDelayed({ doubleClick = false }, 2000)
         } else if (curr is addPet) {
-            toFragment(homeFrag(),"Home", R.id.nav_home)
+            toFragment(homeFrag(), "Home", R.id.nav_home, 0)
 //            fab1.show()
         } else {
             super.onBackPressed()
@@ -99,9 +100,8 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         return super.onPrepareOptionsMenu(menu)
     }
 
-    private fun toFragment(fragment: Fragment, title:String, item:Int){
+    private fun toFragment(fragment: Fragment, title: String, item: Int, delay: Long) {
         val handler = Handler()
-        val delay: Long = 300
         val sf = supportFragmentManager.beginTransaction()
         handler.postDelayed({
             sf.setCustomAnimations(R.anim.enter, R.anim.exit)
@@ -134,17 +134,14 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
             R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us", R.id.nav_aboutus)
         }
-        handler.postDelayed({
-            invalidateOptionsMenu()
-        }, delay + 50)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    private fun newInstance(id:Int):addPet{
+    private fun newInstance(id: Int): addPet {
         val args = Bundle()
-        args.putInt("id",id)
+        args.putInt("id", id)
         val addpet = addPet()
         addpet.arguments = args
         return addpet
@@ -164,10 +161,10 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 val id = 1
                 newInstance(id)
 //                Toast.makeText(this, "$id",Toast.LENGTH_SHORT).show()
-                toFragment(newInstance(id),"Edit Pet", R.id.nav_home)
+                toFragment(newInstance(id), "Edit Pet", R.id.nav_home, 0)
                 Handler().postDelayed({
                     invalidateOptionsMenu()
-                },50)
+                }, 50)
             }
         }
         return super.onOptionsItemSelected(item)

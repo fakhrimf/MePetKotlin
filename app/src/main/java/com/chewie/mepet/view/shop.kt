@@ -1,4 +1,4 @@
-package com.chewie.mepet
+package com.chewie.mepet.view
 
 import android.content.Intent
 import android.net.Uri
@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.chewie.mepet.R
 import kotlinx.android.synthetic.main.fragment_shop.*
 
 
@@ -35,13 +36,13 @@ class shop : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        ivToped.setOnClickListener{
+        ivToped?.setOnClickListener{
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://tokopedia.com")))
         }
-        ivBuka.setOnClickListener {
+        ivBuka?.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://bukalapak.com")))
         }
-        ivShopi.setOnClickListener {
+        ivShopi?.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://shopee.com")))
         }
     }

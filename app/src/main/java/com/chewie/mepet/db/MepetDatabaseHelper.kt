@@ -10,6 +10,8 @@ import com.chewie.mepet.pet
 import com.chewie.mepet.pojo.pet_detail_profile
 import com.chewie.mepet.pojo.pet_profile
 import java.lang.reflect.Array
+import com.chewie.mepet.model.pet_detail_profile
+import com.chewie.mepet.model.pet_profile
 
 class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,null, DB_VER){
     //var fk_id_dp:String=""
