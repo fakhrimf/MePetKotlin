@@ -1,4 +1,4 @@
-package com.chewie.mepet.view
+package com.chewie.mepet.home
 
 import android.os.Bundle
 import android.os.Handler
@@ -10,16 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.shop.ShopFragment
+import com.chewie.mepet.reminder.ReminderFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class homeFrag : Fragment() {
+class HomeFragment : Fragment() {
     companion object {
-        fun newInstance(): homeFrag {
-            return homeFrag()
+        fun newInstance(): HomeFragment {
+            return HomeFragment()
         }
     }
 
@@ -113,18 +115,18 @@ class homeFrag : Fragment() {
         activity?.nav_view?.setCheckedItem(item)
     }
 
-    private fun toAddPet(id: Int): addPet {
+    private fun toAddPet(id: Int): AddPetFragment {
         val args = Bundle()
         args.putInt("id", id)
-        val addpet = addPet()
+        val addpet = AddPetFragment()
         addpet.arguments = args
         return addpet
     }
 
-    private fun reminderFrag(id: Int):reminderFrag{
+    private fun reminderFrag(id: Int): ReminderFragment {
         val args = Bundle()
         args.putInt("id",id)
-        val reminderFrag = reminderFrag()
+        val reminderFrag = ReminderFragment()
         reminderFrag.arguments = args
         return reminderFrag
     }
@@ -139,10 +141,10 @@ class homeFrag : Fragment() {
             toFragment(toAddPet(id), "Edit Pet", R.id.nav_home)
         }
         btnToShop.setOnClickListener {
-            toFragment(shop(), "MeShop", R.id.nav_meshop)
+            toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
         }
         layoutFood.setOnClickListener {
-            toFragment(shop(), "MeShop", R.id.nav_meshop)
+            toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
         }
         btnToReminder.setOnClickListener{
             toFragment(reminderFrag(id), "Reminders", R.id.nav_reminder)
@@ -161,7 +163,7 @@ class homeFrag : Fragment() {
         }
         val fab: FloatingActionButton? = view?.findViewById(R.id.fab1)
         fab?.setOnClickListener {
-            toFragment(addPet(), "Add Pet", R.id.nav_home)
+            toFragment(AddPetFragment(), "Add Pet", R.id.nav_home)
         }
         fab?.show()
     }

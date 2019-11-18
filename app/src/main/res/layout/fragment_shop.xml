@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="#f2f2f2"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".view.shop">
+        tools:context=".shop.ShopFragment">
 
 
         <LinearLayout

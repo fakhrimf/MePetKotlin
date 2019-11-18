@@ -1,4 +1,4 @@
-package com.chewie.mepet.receiver
+package com.chewie.mepet.utils
 
 import android.app.*
 import android.content.BroadcastReceiver
@@ -9,7 +9,7 @@ import android.os.Build
 import android.support.v4.app.NotificationCompat
 import android.widget.Toast
 import com.chewie.mepet.R
-import com.chewie.mepet.view.Home
+import com.chewie.mepet.Home
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,7 +32,7 @@ class AlarmReceiver : BroadcastReceiver() {
             nChannel.enableVibration(true)
             val long = longArrayOf(0, 10, 5, 15)
             nChannel.vibrationPattern = long
-            nChannel.description = "Reminds you to feed your pet"
+            nChannel.description = "Reminds you to feed your PetFragment"
             mNotificationManager.createNotificationChannel(nChannel)
 //            Toast.makeText(context, "Channel Created", Toast.LENGTH_SHORT).show()
         }
@@ -53,7 +53,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val notifyBuilder =
             NotificationCompat.Builder(context, "primary_notification_channel")
                 .setContentTitle("Feed your Pet!")
-                .setContentText("Hey it's $time, time to feed your pet!")
+                .setContentText("Hey it's $time, time to feed your PetFragment!")
                 .setSmallIcon(R.drawable.ic_kochengoneblack)
 //                .setLargeIcon(icon)
                 .setContentIntent(pendingIntentReminder) //Unused due to error in emptyFrag fragment

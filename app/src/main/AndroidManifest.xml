@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
-        <activity android:name=".listPetProfile.listPetProfile"/>
+        <activity android:name="com.chewie.mepet.profile.listPetProfile.listPetProfile"/>
         <activity
-            android:name=".view.Home"
+            android:name=".Home"
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <receiver android:name = ".receiver.AlarmReceiver" />
+        <receiver android:name = ".utils.AlarmReceiver" />
     </application>
 
 </manifest>

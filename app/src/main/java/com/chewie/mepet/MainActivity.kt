@@ -1,4 +1,4 @@
-package com.chewie.mepet.view
+package com.chewie.mepet
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.animation.AnimationUtils
-import com.chewie.mepet.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val animations = AnimationUtils.loadAnimation(this, R.anim.kekiri)
         kanan.startAnimation(animations)
 
+        window.navigationBarColor = resources.getColor(R.color.colorPrimary, theme)
 
         mWaitHandler.postDelayed({
             try {

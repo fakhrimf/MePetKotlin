@@ -1,4 +1,4 @@
-package com.chewie.mepet.view
+package com.chewie.mepet.home
 
 import android.os.Bundle
 import android.os.Handler
@@ -9,9 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.pojo.pet_detail_profile
-import com.chewie.mepet.pojo.pet_profile
-import com.chewie.mepet.viewmodel.addPetVM
+import com.chewie.mepet.model.pet_detail_profile
+import com.chewie.mepet.model.pet_profile
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
@@ -20,18 +19,18 @@ import kotlinx.android.synthetic.main.fragment_home.*
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [addPet.OnFragmentInteractionListener] interface
+ * [AddPetFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [addPet.newInstance] factory method to
+ * Use the [AddPetFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class addPet : Fragment() {
+class AddPetFragment : Fragment() {
 
-    private var addPetVM:addPetVM? = null
+    private var AddPetVM: AddPetVM? = null
 
     companion object {
-        fun newInstance(): addPet {
-            return addPet()
+        fun newInstance(): AddPetFragment {
+            return AddPetFragment()
         }
     }
 
@@ -107,12 +106,12 @@ class addPet : Fragment() {
 
             petProfile.id_detail_profile = pet.id_pet
             db.insertPet(pet, petProfile)
-//            Toast.makeText(context, "Berhasil! " + pet.id_pet, Toast.LENGTH_LONG).show()
+//            Toast.makeText(context, "Berhasil! " + PetFragment.id_pet, Toast.LENGTH_LONG).show()
             Snackbar.make(
                 activity!!.findViewById(android.R.id.content), "Data berhasil Masuk!",
                 Snackbar.LENGTH_SHORT
             ).show()
-            toFragment(homeFrag(), "Home", R.id.nav_home)
+            toFragment(HomeFragment(), "Home", R.id.nav_home)
         }
     }
 
@@ -153,7 +152,7 @@ class addPet : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
-        addPetVM = addPetVM(context,activity,fragmentManager)
+        AddPetVM = AddPetVM(context, activity, fragmentManager)
         editSet(arguments)
         btnAddPet.setOnClickListener{
             if(activity?.tvMepet?.text == "Edit Pet"){

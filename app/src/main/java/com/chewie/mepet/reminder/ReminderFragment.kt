@@ -1,4 +1,4 @@
-package com.chewie.mepet.view
+package com.chewie.mepet.reminder
 
 import android.app.TimePickerDialog
 import android.content.Context
@@ -9,16 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.pojo.pet_profile
-import com.chewie.mepet.receiver.AlarmReceiver
+import com.chewie.mepet.model.pet_profile
+import com.chewie.mepet.utils.AlarmReceiver
 import kotlinx.android.synthetic.main.fragment_reminder.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class reminderFrag : Fragment() {
+class ReminderFragment : Fragment() {
     companion object {
-        fun newInstance(): reminderFrag {
-            return reminderFrag()
+        fun newInstance(): ReminderFragment {
+            return ReminderFragment()
         }
     }
 

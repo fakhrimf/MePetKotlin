@@ -1,4 +1,4 @@
-package com.chewie.mepet.view
+package com.chewie.mepet.shop
 
 import android.content.Intent
 import android.net.Uri
@@ -8,21 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
+import com.chewie.mepet.home.AddPetFragment
 import kotlinx.android.synthetic.main.fragment_shop.*
 
 
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [shop.OnFragmentInteractionListener] interface
+ * [ShopFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [shop.newInstance] factory method to
+ * Use the [ShopFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class shop : Fragment() {
+class ShopFragment : Fragment() {
     companion object {
-        fun newInstance(): addPet {
-            return addPet()
+        fun newInstance(): AddPetFragment {
+            return AddPetFragment()
         }
     }
 
