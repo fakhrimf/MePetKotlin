@@ -74,7 +74,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val curr = supportFragmentManager.findFragmentById(R.id.fragment)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (curr is homeFrag || curr is shop || curr is profileFrag || curr is aboutFrag || curr is reminderFrag) {
+        } else if (curr is homeFrag || curr is shop || curr is listProfileFragment || curr is aboutFrag || curr is reminderFrag || curr is FragReferences) {
             if (doubleClick) {
                 this.finishAffinity()
             } else {
@@ -143,9 +143,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 R.id.nav_meshop
             )
             R.id.nav_reminder -> {
-                val id = 1
-                reminderInstance(id)
-                toFragment(reminderInstance(id),"Reminders", R.id.nav_reminder)
+                toFragment(reminderFrag(),"Reminders", R.id.nav_reminder)
                 Handler().postDelayed({
                     invalidateOptionsMenu()
                 },50)

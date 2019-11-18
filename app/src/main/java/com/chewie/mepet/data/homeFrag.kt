@@ -72,7 +72,6 @@ class homeFrag : Fragment() {
             cekPagi.setImageResource(R.drawable.ic_check_black_24dp)
             ivFood.setImageResource(R.drawable.ic_sun)
             val db = MepetDatabaseHelper(context)
-            val id = 1
 
             val profile = db.getReminder(id)
 
@@ -91,9 +90,7 @@ class homeFrag : Fragment() {
     }
     private fun showData(){
         val dbManager = MepetDatabaseHelper(context)
-        sharPref = activity!!.getSharedPreferences("pref",0)
-        val id = sharPref!!.getInt("id",0)
-        val detailProfile = dbManager.getPetById(id)
+        val detailProfile = dbManager.getPetById(id!!)
 
         tvNama.text = detailProfile.pet_name
         tvAge.text = detailProfile.pet_age.toString()
@@ -117,7 +114,7 @@ class homeFrag : Fragment() {
         activity?.nav_view?.setCheckedItem(item)
     }
 
-    private fun toAddPet(id: Int): addPet {
+       private fun toAddPet(id: Int): addPet {
         val args = Bundle()
         args.putInt("id", id)
         val addpet = addPet()
@@ -125,22 +122,19 @@ class homeFrag : Fragment() {
         return addpet
     }
 
-    private fun reminderFrag(id: Int): reminderFrag {
-        val args = Bundle()
-        args.putInt("id",id)
-        val reminderFrag = reminderFrag()
-        reminderFrag.arguments = args
-        return reminderFrag
-    }
 
+    var id:Int?=null
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        sharPref = context!!.getSharedPreferences("pref",0)
+        id = sharPref!!.getInt("id",0)
+
         cekFoodAndReminder()
         showData()
-        val id = 1
 
         ivProfile.setOnClickListener {
-            toFragment(toAddPet(id), "Edit Pet", R.id.nav_home)
+            toFragment(toAddPet(id!!), "Edit Pet", R.id.nav_home)
         }
         btnToShop.setOnClickListener{
             toFragment(shop(), "MeShop", R.id.nav_meshop)
@@ -149,10 +143,10 @@ class homeFrag : Fragment() {
             toFragment(shop(), "MeShop", R.id.nav_meshop)
         }
         btnToReminder.setOnClickListener{
-            toFragment(reminderFrag(id), "Reminders", R.id.nav_reminder)
+            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
         }
         layoutNextReminder.setOnClickListener {
-            toFragment(reminderFrag(id), "Reminders", R.id.nav_reminder)
+            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect

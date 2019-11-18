@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.NotificationCompat
@@ -21,6 +22,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class reminderFrag : Fragment() {
+    var sharPref:SharedPreferences?=null
+    private var id:Int?=null
+
     companion object {
         fun newInstance(): reminderFrag {
             return reminderFrag()
@@ -80,8 +84,6 @@ class reminderFrag : Fragment() {
                     scheduleNotifPagi(jam, menit, getNotificationBuilder())
 
                     val db = MepetDatabaseHelper(context)
-                    val args = arguments
-                    val id = args?.getInt("id")
 
                     val petProfile = pet_profile()
                     val profile = db.getReminder(id)
@@ -89,14 +91,14 @@ class reminderFrag : Fragment() {
 
                     if (id!=null){
                         if(profile.jam_pagi.equals("")&&profile.jam_siang.equals("")&&profile.jam_malam.equals("")){
-                            petProfile.id_detail_profile = id
+                            petProfile.id_detail_profile = id as Int
                             petProfile.jam_pagi = txtPagi.text.toString()
                             db.insertReminder(petProfile)
                         }else{
                             petProfile.jam_pagi = txtPagi.text.toString()
                             petProfile.jam_siang = txtSiang.text.toString()
                             petProfile.jam_malam = txtMalam.text.toString()
-                            db.updateReminder(petProfile,id)
+                            db.updateReminder(petProfile,id as Int)
                         }
                         //Toast.makeText(context,id.toString(),Toast.LENGTH_SHORT).show()
                     }
@@ -107,23 +109,20 @@ class reminderFrag : Fragment() {
                     scheduleNotifSiang(jam, menit, getNotificationBuilder())
 
                     val db = MepetDatabaseHelper(context)
-                    val args = arguments
-                    val id = args?.getInt("id")
-
                     val petProfile = pet_profile()
                     val profile = db.getReminder(id)
 
 
                     if (id!=null){
                         if(profile.jam_pagi.equals("")&&profile.jam_siang.equals("")&&profile.jam_malam.equals("")){
-                            petProfile.id_detail_profile = id
+                            petProfile.id_detail_profile = id as Int
                             petProfile.jam_siang = txtSiang.text.toString()
                             db.insertReminder(petProfile)
                         }else{
                             petProfile.jam_siang = txtSiang.text.toString()
                             petProfile.jam_pagi = txtPagi.text.toString()
                             petProfile.jam_malam = txtMalam.text.toString()
-                            db.updateReminder(petProfile,id)
+                            db.updateReminder(petProfile,id as Int)
                         }
                         //Toast.makeText(context,id.toString(),Toast.LENGTH_SHORT).show()
                     }
@@ -133,8 +132,6 @@ class reminderFrag : Fragment() {
                     scheduleNotifMalam(jam, menit, getNotificationBuilder())
 
                     val db = MepetDatabaseHelper(context)
-                    val args = arguments
-                    val id = args?.getInt("id")
 
                     val petProfile = pet_profile()
                     val profile = db.getReminder(id)
@@ -142,14 +139,14 @@ class reminderFrag : Fragment() {
 
                     if (id!=null){
                         if(profile.jam_pagi.equals("")&&profile.jam_siang.equals("")&&profile.jam_malam.equals("")){
-                            petProfile.id_detail_profile = id
+                            petProfile.id_detail_profile = id as Int
                             petProfile.jam_malam = txtMalam.text.toString()
                             db.insertReminder(petProfile)
                         }else{
                             petProfile.jam_malam = txtMalam.text.toString()
                             petProfile.jam_siang = txtSiang.text.toString()
                             petProfile.jam_pagi = txtPagi.text.toString()
-                            db.updateReminder(petProfile,id)
+                            db.updateReminder(petProfile,id as Int)
                         }
                         //Toast.makeText(context,id.toString(),Toast.LENGTH_SHORT).show()
                     }
@@ -272,19 +269,28 @@ class reminderFrag : Fragment() {
     }
     private fun showData(){
         val db = MepetDatabaseHelper(context)
-        val args = arguments
-        val id = args?.getInt("id")
-
         val profile = db.getReminder(id)
 
         txtPagi.text = profile.jam_pagi
         txtSiang.text = profile.jam_siang
         txtMalam.text = profile.jam_malam
+
+        if (txtPagi.text.equals("")){
+            txtPagi.text = getString(R.string.addreminder)
+        }
+        if (txtSiang.text.equals("")){
+            txtSiang.text = getString(R.string.addreminder)
+        }
+        if (txtMalam.text.equals("")){
+            txtMalam.text = getString(R.string.addreminder)
+        }
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        sharPref = context!!.getSharedPreferences("pref",0)
+        id = sharPref!!.getInt("id",0)
         initBtn()
         showData()
     }
