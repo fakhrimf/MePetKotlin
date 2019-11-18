@@ -1,4 +1,4 @@
-package com.chewie.mepet.model
+package com.chewie.mepet.pojo
 
 class pet_detail_profile {
     var id_pet = 0;

@@ -120,19 +120,19 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val handler = Handler()
         val delay: Long = 300
         when (item.itemId) {
-            R.id.nav_profile -> toFragment(listProfileFragment(),"Profile", R.id.nav_profile)
-            R.id.nav_home -> toFragment(homeFrag(),"Home", R.id.nav_home)
-            R.id.nav_references -> toFragment(Refere(), "References", R.id.nav_references)
-            R.id.nav_meshop -> toFragment(shop(), "MeShop", R.id.nav_meshop)
+            R.id.nav_profile -> toFragment(listProfileFragment(),"Profile", R.id.nav_profile,50)
+            R.id.nav_home -> toFragment(homeFrag(),"Home", R.id.nav_home,50)
+            R.id.nav_references -> toFragment(References(), "References", R.id.nav_references,50)
+            R.id.nav_meshop -> toFragment(shop(), "MeShop", R.id.nav_meshop,50)
             R.id.nav_reminder -> {
                 val id = 1
                 reminderInstance(id)
-                toFragment(reminderInstance(id),"Reminders",R.id.nav_reminder)
+                toFragment(reminderInstance(id),"Reminders",R.id.nav_reminder,50)
                 Handler().postDelayed({
                     invalidateOptionsMenu()
                 },50)
             }
-            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us", R.id.nav_aboutus)
+            R.id.nav_aboutus -> toFragment(aboutFrag(),"About Us", R.id.nav_aboutus,50)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)

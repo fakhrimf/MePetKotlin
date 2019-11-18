@@ -17,6 +17,8 @@ import android.widget.Toast
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.pojo.pet_detail_profile
 import com.chewie.mepet.pojo.pet_profile
+import com.chewie.mepet.receiver.AlarmReceiver
+import com.chewie.mepet.view.Home
 import kotlinx.android.synthetic.main.fragment_reminder.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate

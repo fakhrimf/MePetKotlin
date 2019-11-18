@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.model.pet_detail_profile
-import com.chewie.mepet.model.pet_profile
+import com.chewie.mepet.pojo.pet_detail_profile
+import com.chewie.mepet.pojo.pet_profile
 import com.chewie.mepet.viewmodel.addPetVM
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*

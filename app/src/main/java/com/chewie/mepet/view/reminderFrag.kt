@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.model.pet_profile
+import com.chewie.mepet.pojo.pet_profile
 import com.chewie.mepet.receiver.AlarmReceiver
 import kotlinx.android.synthetic.main.fragment_reminder.*
 import java.text.SimpleDateFormat
@@ -81,7 +81,7 @@ class reminderFrag : Fragment() {
                     val petProfile = pet_profile()
 
                     petProfile.jam_pagi = txtPagi.text.toString()
-                    db.insertReminderPagi(petProfile)
+                    db.insertReminder(petProfile)
 //                    Toast.makeText(context,txtPagi.text.toString(),Toast.LENGTH_LONG).show()
                 }
                 "siang" -> {
