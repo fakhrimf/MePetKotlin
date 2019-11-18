@@ -1,4 +1,4 @@
-package com.chewie.mepet.data.listPetProfile
+package com.chewie.mepet.profile.listPetProfile
 
 
 import android.os.Bundle
@@ -10,13 +10,13 @@ import android.view.ViewGroup
 
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.data.listPetProfile.adapter.listProfileAdapter
+import com.chewie.mepet.profile.listPetProfile.adapter.ListProfileAdapter
 import kotlinx.android.synthetic.main.fragment_list_profile.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class listProfileFragment : Fragment() {
+class ListProfileFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +32,7 @@ class listProfileFragment : Fragment() {
         val db = MepetDatabaseHelper(context)
         var petList = db.getAllProfile()
 
-        val petAdapter = listProfileAdapter(petList)
+        val petAdapter = ListProfileAdapter(petList)
 
         listView.apply {
             layoutManager = LinearLayoutManager(context)

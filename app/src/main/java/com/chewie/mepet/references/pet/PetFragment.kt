@@ -1,4 +1,4 @@
-package com.chewie.mepet.data
+package com.chewie.mepet.references.pet
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -15,15 +15,15 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [pet.OnFragmentInteractionListener] interface
+ * [PetFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [pet.newInstance] factory method to
+ * Use the [PetFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class pet : Fragment() {
+class PetFragment : Fragment() {
     companion object {
-        fun newInstance(): pet {
-            return pet()
+        fun newInstance(): PetFragment {
+            return PetFragment()
         }
     }
 

@@ -8,7 +8,7 @@ import android.util.Log
 import com.chewie.mepet.model.pet_detail_profile
 import com.chewie.mepet.model.pet_profile
 
-class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,null, DB_VER){
+class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME, null, DB_VER) {
     //var fk_id_dp:String=""
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_TABLE_DP = "Create table $DETAIL_PROFILE_TABLE " +
@@ -25,52 +25,52 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
 
     }
 
-    fun insertPet(petDetailProfile: pet_detail_profile,petProfile: pet_profile):Boolean{
+    fun insertPet(petDetailProfile: pet_detail_profile, petProfile: pet_profile): Boolean {
         val db = this.writableDatabase;
         val values = ContentValues();
         values.put(PET_NAME, petDetailProfile.pet_name)
-        values.put(PET_TYPE,petDetailProfile.pet_type)
-        values.put(PET_AGE,petDetailProfile.pet_age)
-        values.put(PET_WEIGHT,petDetailProfile.pet_weight)
-        val _success = db.insert(DETAIL_PROFILE_TABLE,null,values)
+        values.put(PET_TYPE, petDetailProfile.pet_type)
+        values.put(PET_AGE, petDetailProfile.pet_age)
+        values.put(PET_WEIGHT, petDetailProfile.pet_weight)
+        val _success = db.insert(DETAIL_PROFILE_TABLE, null, values)
 
 
         db.close()
-        Log.v("InsertedID","$_success")
-        return (Integer.parseInt("$_success")!=-1)
+        Log.v("InsertedID", "$_success")
+        return (Integer.parseInt("$_success") != -1)
     }
 
-    fun updateReminder(petProfile: pet_profile,id: Int){
+    fun updateReminder(petProfile: pet_profile, id: Int) {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(JAM_PAGI, petProfile.jam_pagi)
-        values.put(JAM_SIANG,petProfile.jam_siang)
-        values.put(JAM_MALAM,petProfile.jam_malam)
+        values.put(JAM_SIANG, petProfile.jam_siang)
+        values.put(JAM_MALAM, petProfile.jam_malam)
 
-        db.update(PROFILE_TABLE,values,"$ID_DETAIL_PROFILE="+id,null)
+        db.update(PROFILE_TABLE, values, "$ID_DETAIL_PROFILE=" + id, null)
         db.close()
     }
 
-    fun insertReminder(petProfile: pet_profile){
+    fun insertReminder(petProfile: pet_profile) {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(FK_ID_DETAIL_PROFILE,petProfile.id_detail_profile)
-        values.put(JAM_PAGI,petProfile.jam_pagi)
-        values.put(JAM_SIANG,petProfile.jam_siang)
-        values.put(JAM_MALAM,petProfile.jam_malam)
+        values.put(FK_ID_DETAIL_PROFILE, petProfile.id_detail_profile)
+        values.put(JAM_PAGI, petProfile.jam_pagi)
+        values.put(JAM_SIANG, petProfile.jam_siang)
+        values.put(JAM_MALAM, petProfile.jam_malam)
 
-        db.insert(PROFILE_TABLE,null,values)
+        db.insert(PROFILE_TABLE, null, values)
         db.close()
-        Log.v("Inserted Jam",values.toString())
+        Log.v("Inserted Jam", values.toString())
     }
 
-    fun getAllProfile():List<pet_detail_profile>{
+    fun getAllProfile(): List<pet_detail_profile> {
         var petList = ArrayList<pet_detail_profile>()
         var db = this.readableDatabase
         var column = arrayOf(ID_DETAIL_PROFILE, PET_NAME, PET_TYPE, PET_AGE, PET_WEIGHT)
-        var cursor = db.query(DETAIL_PROFILE_TABLE,column,null,null,null,null,null)
+        var cursor = db.query(DETAIL_PROFILE_TABLE, column, null, null, null, null, null)
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             var id = cursor.getInt(0)
             var name = cursor.getString(1)
             var type = cursor.getString(2)
@@ -87,12 +87,13 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
         }
         return petList
     }
-    fun getPetById(id:Int):pet_detail_profile{
+
+    fun getPetById(id: Int): pet_detail_profile {
         val db = this.readableDatabase
         val selectQuery = "Select * from $DETAIL_PROFILE_TABLE where $ID_DETAIL_PROFILE = $id "
-        val cursor = db.rawQuery(selectQuery,null)
+        val cursor = db.rawQuery(selectQuery, null)
         val detailProfile = pet_detail_profile()
-        if (cursor.count>0){
+        if (cursor.count > 0) {
             cursor.moveToFirst()
             detailProfile.id_pet = cursor.getInt(cursor.getColumnIndex(ID_DETAIL_PROFILE))
             detailProfile.pet_name = cursor.getString(cursor.getColumnIndex(PET_NAME))
@@ -105,13 +106,13 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
         return detailProfile
     }
 
-    fun getReminder(id:Int?):pet_profile{
+    fun getReminder(id: Int?): pet_profile {
         val db = this.readableDatabase
         val selectQuery = "Select * from $PROFILE_TABLE where $FK_ID_DETAIL_PROFILE = $id"
-        val cursor = db.rawQuery(selectQuery,null)
+        val cursor = db.rawQuery(selectQuery, null)
         val profile = pet_profile()
 
-        if (cursor.count>0){
+        if (cursor.count > 0) {
             cursor.moveToFirst()
             profile.id_profile = cursor.getInt(cursor.getColumnIndex(ID_PROFILE))
             profile.id_detail_profile = cursor.getInt(cursor.getColumnIndex(ID_DETAIL_PROFILE))
@@ -125,12 +126,12 @@ class MepetDatabaseHelper(context: Context?): SQLiteOpenHelper(context, DB_NAME,
     }
 
 
-    companion object{
+    companion object {
         private val DB_NAME = "db_mepet";
         private val DB_VER = 1;
 
         private val DETAIL_PROFILE_TABLE = "detail_profile";
-        private val PROFILE_TABLE= "profile";
+        private val PROFILE_TABLE = "profile";
 
         //Tabel Detail Profile
         private val ID_DETAIL_PROFILE = "id_detail_profile";

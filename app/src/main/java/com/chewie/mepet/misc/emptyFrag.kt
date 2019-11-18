@@ -1,4 +1,4 @@
-package com.chewie.mepet.data
+package com.chewie.mepet.misc
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,19 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 
-class Refere : Fragment() {
+class emptyFrag : Fragment() {
     companion object {
-        fun newInstance(): Refere {
-            return Refere()
+        fun newInstance(): emptyFrag {
+            return emptyFrag()
         }
     }
+
+    //Ini cuma fragment kosong, buat transisi
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_references, container, false)
+        return inflater.inflate(R.layout.fragment_empty, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

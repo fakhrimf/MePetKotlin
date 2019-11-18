@@ -1,6 +1,5 @@
-package com.chewie.mepet.data
+package com.chewie.mepet
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.NavigationView
@@ -11,20 +10,22 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.transition.Explode
-import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
 import android.widget.Toast
-import com.chewie.mepet.R
-import com.chewie.mepet.data.listPetProfile.listProfileFragment
-import com.chewie.mepet.data.references.FragReferences
+import com.chewie.mepet.home.AddPetFragment
+import com.chewie.mepet.home.HomeFragment
+import com.chewie.mepet.misc.about.AboutFragment
+import com.chewie.mepet.profile.ProfileFragment
+import com.chewie.mepet.profile.listPetProfile.ListProfileFragment
+import com.chewie.mepet.references.ReferencesFragment
+import com.chewie.mepet.reminder.ReminderFragment
+import com.chewie.mepet.shop.ShopFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    private var sharPref: SharedPreferences?=null
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,19 +39,18 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         setContentView(R.layout.activity_home)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        sharPref = applicationContext.getSharedPreferences("pref",0)
         val fragmentIntent = intent?.extras?.getString("fragment")
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
 //                Toast.makeText(this, "Opened Reminder", Toast.LENGTH_SHORT).show()
                 val sf = supportFragmentManager.beginTransaction()
-                sf.replace(R.id.fragment, reminderFrag()).commit()
+                sf.replace(R.id.fragment, ReminderFragment()).commit()
                 sf.addToBackStack(null)
                 nav_view.setCheckedItem(R.id.nav_reminder)
             }
         } else {
             val sf = supportFragmentManager.beginTransaction()
-            sf.replace(R.id.fragment, homeFrag()).commit()
+            sf.replace(R.id.fragment, HomeFragment()).commit()
             sf.addToBackStack(null)
             nav_view.setCheckedItem(R.id.nav_home)
         }
@@ -74,7 +74,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val curr = supportFragmentManager.findFragmentById(R.id.fragment)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (curr is homeFrag || curr is shop || curr is listProfileFragment || curr is aboutFrag || curr is reminderFrag || curr is FragReferences) {
+        } else if (curr is HomeFragment || curr is ShopFragment || curr is ProfileFragment || curr is AboutFragment || curr is ReminderFragment) {
             if (doubleClick) {
                 this.finishAffinity()
             } else {
@@ -82,115 +82,52 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
             doubleClick = true
             Handler().postDelayed({ doubleClick = false }, 2000)
-        } else if (curr is addPet) {
-            toFragment(homeFrag(),"Home", R.id.nav_home)
+        } else if (curr is AddPetFragment) {
+            toFragment(HomeFragment(), "Home", R.id.nav_home, 0)
 //            fab1.show()
         } else {
             super.onBackPressed()
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.home, menu)
-        return true
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        val curr = supportFragmentManager.findFragmentById(R.id.fragment)
-        if (curr is homeFrag) {
-            menuInflater.inflate(R.menu.homewithedit, menu)
-        }
-//        Toast.makeText(this, "onPrepareOptionsMenu called.", Toast.LENGTH_SHORT).show()
-        return super.onPrepareOptionsMenu(menu)
-    }
-
-    private fun toFragment(fragment: Fragment, title:String, item:Int){
+    private fun toFragment(fragment: Fragment, title: String, item: Int, delay: Long) {
         val handler = Handler()
-        val delay: Long = 300
         val sf = supportFragmentManager.beginTransaction()
         handler.postDelayed({
             sf.setCustomAnimations(R.anim.enter, R.anim.exit)
                 .replace(R.id.fragment, fragment).commit()
             sf.addToBackStack(null)
         }, delay)
-        handler.postDelayed({
-            invalidateOptionsMenu()
-        }, delay + 50)
         tvMepet.text = title
         nav_view.setCheckedItem(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        val handler = Handler()
-        val delay: Long = 300
+        val delay: Long = 330
         when (item.itemId) {
             R.id.nav_profile -> toFragment(
-                listProfileFragment(),"Profile",
-                R.id.nav_profile
+                ListProfileFragment(),
+                "Profile",
+                R.id.nav_profile,
+                delay
             )
-            R.id.nav_home -> toFragment(
-                homeFrag(),"Home",
-                R.id.nav_home
-            )
+            R.id.nav_home -> toFragment(HomeFragment(), "Home", R.id.nav_home, delay)
             R.id.nav_references -> toFragment(
-                FragReferences(), "References",
-                R.id.nav_references
+                ReferencesFragment(),
+                "References",
+                R.id.nav_references,
+                delay
             )
-            R.id.nav_meshop -> toFragment(
-                shop(), "MeShop",
-                R.id.nav_meshop
-            )
+            R.id.nav_meshop -> toFragment(ShopFragment(), "MeShop", R.id.nav_meshop, delay)
             R.id.nav_reminder -> {
-                toFragment(reminderFrag(),"Reminders", R.id.nav_reminder)
-                Handler().postDelayed({
-                    invalidateOptionsMenu()
-                },50)
+                toFragment(ReminderFragment(), "Reminders", R.id.nav_reminder, delay)
             }
-            R.id.nav_aboutus -> toFragment(
-                aboutFrag(),"About Us",
-                R.id.nav_aboutus
-            )
+            R.id.nav_aboutus -> toFragment(AboutFragment(), "About Us", R.id.nav_aboutus, delay)
         }
-        handler.postDelayed({
-            invalidateOptionsMenu()
-        }, delay + 50)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    private fun newInstance(id:Int): addPet {
-        val args = Bundle()
-        args.putInt("id",id)
-        val addpet = addPet()
-        addpet.arguments = args
-        return addpet
-    }
-
-    private fun reminderInstance(id:Int): reminderFrag {
-        val args = Bundle()
-        args.putInt("id",id)
-        val reminderFrag = reminderFrag()
-        reminderFrag.arguments = args
-        return reminderFrag
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.editPetBtn -> {
-                val id = sharPref!!.getInt("id",0)
-                newInstance(id)
-//                Toast.makeText(this, "$id",Toast.LENGTH_SHORT).show()
-                toFragment(newInstance(id),"Edit Pet", R.id.nav_home)
-                Handler().postDelayed({
-                    invalidateOptionsMenu()
-                },50)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    //Fungsi Notifikasi ada di AlarmReceiver sama reminderFrag
 }

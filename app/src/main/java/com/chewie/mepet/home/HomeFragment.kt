@@ -1,28 +1,32 @@
-package com.chewie.mepet.data
+package com.chewie.mepet.home
 
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.reminder.ReminderFragment
+import com.chewie.mepet.shop.ShopFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class homeFrag : Fragment() {
-    private var sharPref:SharedPreferences?=null
-
+class HomeFragment : Fragment() {
     companion object {
-        fun newInstance(): homeFrag {
-            return homeFrag()
+        fun newInstance(): HomeFragment {
+            return HomeFragment()
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -72,9 +76,9 @@ class homeFrag : Fragment() {
             cekPagi.setImageResource(R.drawable.ic_check_black_24dp)
             ivFood.setImageResource(R.drawable.ic_sun)
             val db = MepetDatabaseHelper(context)
-
             val profile = db.getReminder(id)
 
+            //Todo: si Waktunya ga muncul di home, pls fix
             tvTime.text = profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
@@ -88,42 +92,49 @@ class homeFrag : Fragment() {
             }
         }
     }
-    private fun showData(){
+
+    private fun showData() {
         val dbManager = MepetDatabaseHelper(context)
         val detailProfile = dbManager.getPetById(id!!)
 
         tvNama.text = detailProfile.pet_name
         tvAge.text = detailProfile.pet_age.toString()
-        tvWeight.text = detailProfile.pet_weight.toString()+" Kg"
+        tvWeight.text = detailProfile.pet_weight.toString() + " Kg"
         tvJenis.text = detailProfile.pet_type
+        Log.v("Berat", detailProfile.pet_weight.toString())
     }
 
-    private fun toFragment(fragment: Fragment, title:String, item:Int){
+    //
+    private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
-        val delay: Long = 300
         val sf = fragmentManager?.beginTransaction()
-        handler.postDelayed({
-            sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
-                ?.replace(R.id.fragment, fragment)?.commit()
-            sf?.addToBackStack(null)
-        }, delay)
+        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
+            ?.replace(R.id.fragment, fragment)?.commit()
+        sf?.addToBackStack(null)
         handler.postDelayed({
             activity?.invalidateOptionsMenu()
-        }, delay + 50)
+        }, 50)
         activity?.tvMepet?.text = title
         activity?.nav_view?.setCheckedItem(item)
     }
 
-       private fun toAddPet(id: Int): addPet {
-        val args = Bundle()
-        args.putInt("id", id)
-        val addpet = addPet()
-        addpet.arguments = args
-        return addpet
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater!!.inflate(R.menu.homewithedit, menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.editPetBtn -> {
+                val vm = HomeVM()
+                toFragment(vm.newAddPetInstance(id!!), "Edit Pet", R.id.nav_home)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     var id:Int?=null
+    var sharPref:SharedPreferences?=null
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -132,21 +143,23 @@ class homeFrag : Fragment() {
 
         cekFoodAndReminder()
         showData()
+        val vm = HomeVM()
 
+        //Todo:Ganti ke data binding
         ivProfile.setOnClickListener {
-            toFragment(toAddPet(id!!), "Edit Pet", R.id.nav_home)
+            toFragment(vm.newAddPetInstance(id!!), "Edit Pet", R.id.nav_home)
         }
-        btnToShop.setOnClickListener{
-            toFragment(shop(), "MeShop", R.id.nav_meshop)
+        btnToShop.setOnClickListener {
+            toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
         }
         layoutFood.setOnClickListener {
-            toFragment(shop(), "MeShop", R.id.nav_meshop)
+            toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
         }
-        btnToReminder.setOnClickListener{
-            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
+        btnToReminder.setOnClickListener {
+            toFragment(ReminderFragment(), "Reminders", R.id.nav_reminder)
         }
         layoutNextReminder.setOnClickListener {
-            toFragment(reminderFrag(), "Reminders", R.id.nav_reminder)
+            toFragment(ReminderFragment(), "Reminders", R.id.nav_reminder)
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect
@@ -159,7 +172,7 @@ class homeFrag : Fragment() {
         }
         val fab: FloatingActionButton? = view?.findViewById(R.id.fab1)
         fab?.setOnClickListener {
-            toFragment(addPet(), "Add Pet", R.id.nav_home)
+            toFragment(AddPetFragment(), "Add Pet", R.id.nav_home)
         }
         fab?.show()
     }

@@ -1,4 +1,4 @@
-package com.chewie.mepet.data.listPetProfile.adapter
+package com.chewie.mepet.profile.listPetProfile.adapter
 
 import android.app.Activity
 import android.content.SharedPreferences
@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.chewie.mepet.model.pet_detail_profile
 
-class listProfileAdapter(private val petList: List<pet_detail_profile>):RecyclerView.Adapter<PetViewHolder>() {
+class ListProfileAdapter(private val petList: List<pet_detail_profile>):RecyclerView.Adapter<PetViewHolder>() {
 
     var sharPref:SharedPreferences?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return PetViewHolder(inflater, parent)
+        return PetViewHolder(inflater,parent)
     }
 
     override fun getItemCount(): Int = petList.size

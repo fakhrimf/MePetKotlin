@@ -1,4 +1,4 @@
-package com.chewie.mepet.data.references
+package com.chewie.mepet.references
 
 
 import android.os.Bundle
@@ -12,14 +12,14 @@ import com.chewie.mepet.R
 /**
  * A simple [Fragment] subclass.
  */
-class TipsFragment : Fragment() {
+class PetListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tips, container, false)
+        return inflater.inflate(R.layout.fragment_pet, container, false)
     }
 
 

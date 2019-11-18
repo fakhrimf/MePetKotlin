@@ -1,285 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--TODO : Ubah Fragment ini ke Constraint Layout, Codingnya udah dirapihin.-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--TODO : Masukin string ke string resources-->
+<!--TODO : Ubah TextSize dari dp ke sp-->
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f5f5f5"
-    android:orientation="vertical"
-    tools:context=".data.MainActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="#f5f5f5"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#F2994A">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/txt1"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="CHEWIE CORPS"
-                android:textAlignment="center"
-                android:textColor="#fff"
-                android:textSize="40dp"
-                android:textStyle="bold" />
+                android:layout_height="200dp"
+                android:background="#F2994A">
 
-            <TextView
-                android:id="@+id/txt2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="65dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="MePet"
-                android:textAlignment="center"
-                android:textColor="#fff"
-                android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/txt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="CHEWIE CORPS"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="65dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="MePet"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="325dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="110dp"
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/txt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="TEAMS"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/txt3"
+                            android:src="@drawable/fakhri" />
+
+                        <TextView
+                            android:id="@+id/txt4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/baloo_thambi"
+                            android:text="CEO"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/txt3"
+                            android:src="@drawable/gilang" />
+
+                        <TextView
+                            android:id="@+id/txt5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/baloo_thambi"
+                            android:text="BACK END"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/txt3"
+                            android:src="@drawable/sulthon" />
+
+                        <TextView
+                            android:id="@+id/txt6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/baloo_thambi"
+                            android:text="FRONT END"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/txt3"
+                            android:src="@drawable/rifky" />
+
+                        <TextView
+                            android:id="@+id/txt7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/baloo_thambi"
+                            android:text="FRONT END"
+                            android:textSize="12dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
         </RelativeLayout>
 
         <android.support.v7.widget.CardView
-            android:layout_width="325dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="110dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="10dp"
             app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/txt3"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="TEAMS"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:paddingBottom="25dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="4">
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_below="@id/txt3"
-                        android:src="@drawable/fakhri" />
-
-                    <TextView
-                        android:id="@+id/txt4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/baloo_thambi"
-                        android:text="CEO"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_below="@id/txt3"
-                        android:src="@drawable/gilang" />
-
-                    <TextView
-                        android:id="@+id/txt5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/baloo_thambi"
-                        android:text="BACK END"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_below="@id/txt3"
-                        android:src="@drawable/sulthon" />
-
-                    <TextView
-                        android:id="@+id/txt6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/baloo_thambi"
-                        android:text="FRONT END"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_below="@id/txt3"
-                        android:src="@drawable/rifky" />
-
-                    <TextView
-                        android:id="@+id/txt7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/baloo_thambi"
-                        android:text="FRONT END"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/visi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="VISI"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/isivisi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/visi"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="@string/visi"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/misi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/isivisi"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="170dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="MISI"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/isimisi1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/misi"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="210dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="@string/misi_1"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/isimisi2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/isimisi1"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="235dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="@string/misi_2"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/isimisi3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/isimisi2"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="285dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="@string/misi_3"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/isimisi4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/isimisi3"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="310dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="@string/misi_4"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
-    </RelativeLayout>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        app:cardUseCompatPadding="true"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="10dp">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="25dp"
-            android:layout_gravity="center">
-
-            <TextView
-                android:id="@+id/visi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="VISI"
-                android:textSize="25dp"
-                android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/isivisi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/visi"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="65dp"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="@string/visi"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/misi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/isivisi"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="170dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="MISI"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/isimisi1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/misi"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="210dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="@string/misi_1"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/isimisi2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/isimisi1"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="235dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="@string/misi_2"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/isimisi3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/isimisi2"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="285dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="@string/misi_3"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/isimisi4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/isimisi3"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="310dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="@string/misi_4"
-                android:textSize="15sp"/>
-
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-
-</LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
