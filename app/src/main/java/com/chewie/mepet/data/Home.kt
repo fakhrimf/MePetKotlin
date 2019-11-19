@@ -1,5 +1,6 @@
 package com.chewie.mepet.data
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.NavigationView
@@ -16,11 +17,14 @@ import android.view.Window
 import android.widget.Toast
 import com.chewie.mepet.R
 import com.chewie.mepet.data.listPetProfile.listProfileFragment
+import com.chewie.mepet.data.references.FragReferences
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private var sharPref: SharedPreferences?=null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +38,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         setContentView(R.layout.activity_home)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        sharPref = applicationContext.getSharedPreferences("pref",0)
         val fragmentIntent = intent?.extras?.getString("fragment")
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
@@ -130,7 +135,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 R.id.nav_home
             )
             R.id.nav_references -> toFragment(
-                Refere(), "References",
+                FragReferences(), "References",
                 R.id.nav_references
             )
             R.id.nav_meshop -> toFragment(
@@ -177,7 +182,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.editPetBtn -> {
-                val id = 1
+                val id = sharPref!!.getInt("id",0)
                 newInstance(id)
 //                Toast.makeText(this, "$id",Toast.LENGTH_SHORT).show()
                 toFragment(newInstance(id),"Edit Pet", R.id.nav_home)

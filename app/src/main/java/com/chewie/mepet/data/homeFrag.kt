@@ -1,5 +1,6 @@
 package com.chewie.mepet.data
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
@@ -16,6 +17,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class homeFrag : Fragment() {
+    private var sharPref:SharedPreferences?=null
+
     companion object {
         fun newInstance(): homeFrag {
             return homeFrag()
@@ -88,7 +91,8 @@ class homeFrag : Fragment() {
     }
     private fun showData(){
         val dbManager = MepetDatabaseHelper(context)
-        val id = 1
+        sharPref = activity!!.getSharedPreferences("pref",0)
+        val id = sharPref!!.getInt("id",0)
         val detailProfile = dbManager.getPetById(id)
 
         tvNama.text = detailProfile.pet_name
