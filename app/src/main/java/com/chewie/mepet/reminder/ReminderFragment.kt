@@ -11,12 +11,6 @@ import com.chewie.mepet.db.MepetDatabaseHelper
 import kotlinx.android.synthetic.main.fragment_reminder.*
 
 class ReminderFragment : Fragment() {
-    companion object {
-        fun newInstance(): ReminderFragment {
-            return ReminderFragment()
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

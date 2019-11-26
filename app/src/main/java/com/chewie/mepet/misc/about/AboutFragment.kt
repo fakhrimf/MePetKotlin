@@ -9,9 +9,6 @@ import com.chewie.mepet.R
 
 class AboutFragment : Fragment() {
     companion object {
-        fun newInstance(): AboutFragment {
-            return AboutFragment()
-        }
     }
 
     override fun onCreateView(
@@ -22,7 +19,4 @@ class AboutFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_about_us, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 }

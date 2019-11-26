@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Cleaned by Fakhri MF -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,10 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text=""
-        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="500dp"
-        android:layout_centerHorizontal="true"/>
+        android:text=""
+        android:textSize="50sp" />
 
 </RelativeLayout>

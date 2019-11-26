@@ -26,8 +26,8 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
     }
 
     fun insertPet(petDetailProfile: pet_detail_profile, petProfile: pet_profile): Boolean {
-        val db = this.writableDatabase;
-        val values = ContentValues();
+        val db = this.writableDatabase
+        val values = ContentValues()
         values.put(PET_NAME, petDetailProfile.pet_name)
         values.put(PET_TYPE, petDetailProfile.pet_type)
         values.put(PET_AGE, petDetailProfile.pet_age)
@@ -47,7 +47,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         values.put(JAM_SIANG, petProfile.jam_siang)
         values.put(JAM_MALAM, petProfile.jam_malam)
 
-        db.update(PROFILE_TABLE, values, "$ID_DETAIL_PROFILE=" + id, null)
+        db.update(PROFILE_TABLE, values, "$ID_DETAIL_PROFILE=$id", null)
         db.close()
     }
 
@@ -65,17 +65,17 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
     }
 
     fun getAllProfile(): List<pet_detail_profile> {
-        var petList = ArrayList<pet_detail_profile>()
-        var db = this.readableDatabase
-        var column = arrayOf(ID_DETAIL_PROFILE, PET_NAME, PET_TYPE, PET_AGE, PET_WEIGHT)
-        var cursor = db.query(DETAIL_PROFILE_TABLE, column, null, null, null, null, null)
+        val petList = ArrayList<pet_detail_profile>()
+        val db = this.readableDatabase
+        val column = arrayOf(ID_DETAIL_PROFILE, PET_NAME, PET_TYPE, PET_AGE, PET_WEIGHT)
+        val cursor = db.query(DETAIL_PROFILE_TABLE, column, null, null, null, null, null)
 
         while (cursor.moveToNext()) {
-            var id = cursor.getInt(0)
-            var name = cursor.getString(1)
-            var type = cursor.getString(2)
-            var age = cursor.getInt(3)
-            var weight = cursor.getFloat(4)
+            val id = cursor.getInt(0)
+            val name = cursor.getString(1)
+            val type = cursor.getString(2)
+            val age = cursor.getInt(3)
+            val weight = cursor.getFloat(4)
 
             val petProfile = pet_detail_profile()
             petProfile.id_pet = id
@@ -127,24 +127,24 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
 
 
     companion object {
-        private val DB_NAME = "db_mepet";
-        private val DB_VER = 1;
+        private val DB_NAME = "db_mepet"
+        private val DB_VER = 1
 
-        private val DETAIL_PROFILE_TABLE = "detail_profile";
-        private val PROFILE_TABLE = "profile";
+        private val DETAIL_PROFILE_TABLE = "detail_profile"
+        private val PROFILE_TABLE = "profile"
 
         //Tabel Detail Profile
-        private val ID_DETAIL_PROFILE = "id_detail_profile";
-        private val PET_NAME = "nama_hewan";
-        private val PET_TYPE = "jenis_hewan";
-        private val PET_AGE = "umur_hewan";
-        private val PET_WEIGHT = "berat_hewan";
+        private val ID_DETAIL_PROFILE = "id_detail_profile"
+        private val PET_NAME = "nama_hewan"
+        private val PET_TYPE = "jenis_hewan"
+        private val PET_AGE = "umur_hewan"
+        private val PET_WEIGHT = "berat_hewan"
 
         //Tabel Profile
-        private val ID_PROFILE = "id_profile";
-        private val FK_ID_DETAIL_PROFILE = "id_detail_profile";
-        private val JAM_PAGI = "jam_pagi";
-        private val JAM_SIANG = "jam_siang";
+        private val ID_PROFILE = "id_profile"
+        private val FK_ID_DETAIL_PROFILE = "id_detail_profile"
+        private val JAM_PAGI = "jam_pagi"
+        private val JAM_SIANG = "jam_siang"
         private val JAM_MALAM = "jam_malam"
 
     }

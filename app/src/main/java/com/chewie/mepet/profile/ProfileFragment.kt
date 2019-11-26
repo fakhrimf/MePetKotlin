@@ -9,9 +9,6 @@ import com.chewie.mepet.R
 
 class ProfileFragment : Fragment() {
     companion object {
-        fun newInstance(): ProfileFragment {
-            return ProfileFragment()
-        }
     }
 
     override fun onCreateView(
@@ -22,8 +19,4 @@ class ProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
 }

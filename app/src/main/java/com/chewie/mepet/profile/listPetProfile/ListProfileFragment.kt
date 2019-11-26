@@ -30,7 +30,7 @@ class ListProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val db = MepetDatabaseHelper(context)
-        var petList = db.getAllProfile()
+        val petList = db.getAllProfile()
 
         val petAdapter = ListProfileAdapter(petList)
 

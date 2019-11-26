@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Cleaned by Fakhri MF -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -37,7 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/quicksand"
-                        android:hint="Pet Name" />
+                        android:hint="@string/pet_name" />
                 </android.support.design.widget.TextInputLayout>
 
                 <Spinner
@@ -61,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/quicksand"
-                        android:hint="Age"
+                        android:hint="@string/age"
                         android:inputType="number" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -71,7 +72,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/quicksand"
-                    android:text="Weight (Kg)" />
+                    android:text="@string/weight_kg" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -95,7 +96,7 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/quicksand"
                             android:gravity="center"
-                            android:text="."
+                            android:text="@string/dot"
                             android:textSize="20sp" />
                     </LinearLayout>
 
@@ -114,10 +115,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
+                    android:foreground="?android:selectableItemBackground"
                     android:background="@drawable/buttonbg"
                     android:drawableStart="@drawable/ic_add_black_24dp"
                     android:paddingStart="5dp"
-                    android:text="Add"
+                    android:paddingEnd="5dp"
+                    android:text="@string/add"
                     android:textColor="#fff" />
             </LinearLayout>
         </ScrollView>

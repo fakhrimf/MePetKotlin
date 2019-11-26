@@ -19,9 +19,6 @@ import java.util.*
 
 class HomeFragment : Fragment() {
     companion object {
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,14 +37,14 @@ class HomeFragment : Fragment() {
     private fun cekFoodAndReminder() {
         val sdfJam = SimpleDateFormat("HH", Locale.US)
         val sdfMenit = SimpleDateFormat("mm", Locale.US)
-        var jamPagiDate: Date = sdfJam.parse("07")
-        var menitPagiDate: Date = sdfMenit.parse("00")
+        val jamPagiDate: Date = sdfJam.parse("07")
+        val menitPagiDate: Date = sdfMenit.parse("00")
 
-        var jamSiangDate: Date = sdfJam.parse("12")
-        var menitSiangDate: Date = sdfMenit.parse("00")
+        val jamSiangDate: Date = sdfJam.parse("12")
+        val menitSiangDate: Date = sdfMenit.parse("00")
 
-        var jamMalamDate: Date = sdfJam.parse("20")
-        var menitMalamDate: Date = sdfMenit.parse("00")
+        val jamMalamDate: Date = sdfJam.parse("20")
+        val menitMalamDate: Date = sdfMenit.parse("00")
 
 
         val jamPagi = SimpleDateFormat("HH", Locale.US).format(jamPagiDate).toInt()
