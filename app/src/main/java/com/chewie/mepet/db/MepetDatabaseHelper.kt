@@ -125,6 +125,5 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
             "Create table $DETAIL_PROFILE_TABLE ($ID_DETAIL_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $PET_NAME TEXT, $PET_TYPE TEXT,$PET_AGE Integer, $PET_WEIGHT REAL)"
         const val CREATE_TABLE_PROFILE =
             "Create table $PROFILE_TABLE ($ID_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $FK_ID_DETAIL_PROFILE Integer,$JAM_PAGI TEXT,$JAM_SIANG TEXT,$JAM_MALAM TEXT)"
-
     }
 }

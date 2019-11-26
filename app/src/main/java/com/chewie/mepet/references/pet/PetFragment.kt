@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.chewie.mepet.R
 
 class PetFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

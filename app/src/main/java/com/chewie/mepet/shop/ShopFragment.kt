@@ -12,7 +12,6 @@ import com.chewie.mepet.home.AddPetFragment
 import kotlinx.android.synthetic.main.fragment_shop.*
 
 class ShopFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -17,7 +17,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ReminderFragment : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
