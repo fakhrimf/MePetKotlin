@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.utils.SharedPreference
 import kotlinx.android.synthetic.main.fragment_reminder.*
 
 class ReminderFragment : Fragment() {
@@ -58,8 +59,8 @@ class ReminderFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val sharPref:SharedPreferences = context!!.getSharedPreferences("pref",0)
-        val id = sharPref!!.getInt("id",0)
+        val sharPref = SharedPreference(context)
+        val id = sharPref!!.getId()
 
         initBtn()
         showData(id)

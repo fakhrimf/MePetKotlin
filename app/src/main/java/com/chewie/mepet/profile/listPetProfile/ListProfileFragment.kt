@@ -32,7 +32,7 @@ class ListProfileFragment : Fragment() {
         val db = MepetDatabaseHelper(context)
         var petList = db.getAllProfile()
 
-        val petAdapter = ListProfileAdapter(petList)
+        val petAdapter = ListProfileAdapter(context!!,petList)
 
         listView.apply {
             layoutManager = LinearLayoutManager(context)

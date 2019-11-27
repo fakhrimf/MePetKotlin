@@ -11,6 +11,7 @@ import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.reminder.ReminderFragment
 import com.chewie.mepet.shop.ShopFragment
+import com.chewie.mepet.utils.SharedPreference
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -133,13 +134,13 @@ class HomeFragment : Fragment() {
     }
 
     var id:Int?=null
-    var sharPref:SharedPreferences?=null
+    var sharPref:SharedPreference?=null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        sharPref = context!!.getSharedPreferences("pref",0)
-        id = sharPref!!.getInt("id",0)
+        sharPref = SharedPreference(context)
+        id = sharPref!!.getId()
 
         cekFoodAndReminder()
         showData()
