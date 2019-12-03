@@ -22,4 +22,16 @@
     <string name="misi_2">2. Mencari berbagai informasi agar bisa  menghasilkan aplikasi yang baik</string>
     <string name="misi_3">3. Memperbarui fitur-fitur dalam aplikasi</string>
     <string name="misi_4">4. Membuat layout dengan desain yang  menarik bagi pengguna</string>
+    <string name="weight">Weight</string>
+    <string name="age">Age</string>
+    <string name="next_reminder">Next \nReminder</string>
+    <string name="reminder">Reminder</string>
+    <string name="food">Food</string>
+    <string name="pagi">Pagi</string>
+    <string name="siang">Siang</string>
+    <string name="check">check</string>
+    <string name="shop">Shop</string>
+    <string name="malam">Malam</string>
+    <string name="random_references_here">Random References here</string>
+    <string name="time">time</string>
 </resources>

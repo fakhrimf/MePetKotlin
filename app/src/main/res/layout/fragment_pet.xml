@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2"
-    tools:context=".view.pet">
+    tools:context=".references.pet.PetFragment">
 
     <TextView
         android:layout_width="match_parent"

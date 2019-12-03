@@ -1,4 +1,4 @@
-package com.chewie.mepet.view
+package com.chewie.mepet.misc.about
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 
-class profileFrag : Fragment() {
+class AboutFragment : Fragment() {
     companion object {
-        fun newInstance(): profileFrag {
-            return profileFrag()
+        fun newInstance(): AboutFragment {
+            return AboutFragment()
         }
     }
 
@@ -19,11 +19,10 @@ class profileFrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_about_us, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
     }
 }
