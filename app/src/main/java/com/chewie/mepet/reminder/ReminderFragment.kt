@@ -1,6 +1,5 @@
 package com.chewie.mepet.reminder
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -12,11 +11,6 @@ import com.chewie.mepet.utils.SharedPreference
 import kotlinx.android.synthetic.main.fragment_reminder.*
 
 class ReminderFragment : Fragment() {
-    companion object {
-        fun newInstance(): ReminderFragment {
-            return ReminderFragment()
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,14 +53,14 @@ class ReminderFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val sharPref = SharedPreference(context)
-        val id = sharPref!!.getId()
+        val sharPref = SharedPreference(requireContext())
+        val id = sharPref.getId()
 
         initBtn()
         showData(id)
     }
 
-    private fun showData(id:Int){
+    private fun showData(id: Int) {
         val db = MepetDatabaseHelper(context)
         val profile = db.getReminder(id)
 
@@ -74,13 +68,13 @@ class ReminderFragment : Fragment() {
         txtSiang.text = profile.jam_siang
         txtMalam.text = profile.jam_malam
 
-        if (txtPagi.text.equals("")){
+        if (txtPagi.text == "") {
             txtPagi.text = getString(R.string.addreminder)
         }
-        if (txtSiang.text.equals("")){
+        if (txtSiang.text == "") {
             txtSiang.text = getString(R.string.addreminder)
         }
-        if (txtMalam.text.equals("")){
+        if (txtMalam.text == "") {
             txtMalam.text = getString(R.string.addreminder)
         }
     }

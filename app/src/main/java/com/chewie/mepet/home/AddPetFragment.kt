@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
@@ -54,7 +55,7 @@ class AddPetFragment : Fragment() {
     private fun editSet(arguments: Bundle?) {
         val dbManager = MepetDatabaseHelper(context)
         val vm = AddPetVM(context)
-        val id = arguments?.getInt("id")
+        val id = arguments?.getInt(ARGUMENTS_ID_KEY)
         if (id != null) {
             val detailProfile = dbManager.getPetById(id)
             et_petname?.setText(detailProfile.pet_name)

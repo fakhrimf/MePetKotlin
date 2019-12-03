@@ -33,7 +33,7 @@ interface Reminder {
     fun insertReminder(reminder: ReminderEntity)
 
     @Query("Update t_reminder set jam_pagi = :jm_pagi,jam_siang=:jm_siang,jam_malam=:jm_malam where id_reminder = :id_reminder")
-    fun Update(jm_pagi: Time, jm_siang: Time, jm_malam: Time,id_reminder:Int)
+    fun update(jm_pagi: Time, jm_siang: Time, jm_malam: Time, id_reminder:Int)
 
 }
 
@@ -45,7 +45,7 @@ abstract class DetailProfile {
     abstract fun delete(detailProfile:DetailProfileEntity)
 
     @Query("Update t_detail_profile set nama_hewan = :nm_hewan,umur=:umur,berat_badan=:b_badan,jenis_hewan = :jen_hewan where id_detail_profile=:id_detail_profile ")
-    abstract fun Update(nm_hewan:String,umur:Int,b_badan:Float,jen_hewan:String,id_detail_profile:Int)
+    abstract fun update(nm_hewan:String, umur:Int, b_badan:Float, jen_hewan:String, id_detail_profile:Int)
 
     @Transaction
     @Query("Insert into t_detail_profile(nama_hewan,umur,berat_badan,jenis_hewan) values(:nm_hewan,:umur,:b_badan,:jenis_hewan)")

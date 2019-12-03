@@ -13,9 +13,6 @@ import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.profile.listPetProfile.adapter.ListProfileAdapter
 import kotlinx.android.synthetic.main.fragment_list_profile.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class ListProfileFragment : Fragment() {
 
     override fun onCreateView(
@@ -30,7 +27,7 @@ class ListProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val db = MepetDatabaseHelper(context)
-        var petList = db.getAllProfile()
+        val petList = db.getAllProfile()
 
         val petAdapter = ListProfileAdapter(context!!,petList)
 

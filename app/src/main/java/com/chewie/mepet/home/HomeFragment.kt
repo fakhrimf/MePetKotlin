@@ -1,6 +1,6 @@
 package com.chewie.mepet.home
 
-import android.content.SharedPreferences
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
@@ -19,11 +19,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
-    companion object {
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,14 +36,14 @@ class HomeFragment : Fragment() {
     private fun cekFoodAndReminder() {
         val sdfJam = SimpleDateFormat("HH", Locale.US)
         val sdfMenit = SimpleDateFormat("mm", Locale.US)
-        var jamPagiDate: Date = sdfJam.parse("07")
-        var menitPagiDate: Date = sdfMenit.parse("00")
+        val jamPagiDate: Date = sdfJam.parse("07")
+        val menitPagiDate: Date = sdfMenit.parse("00")
 
-        var jamSiangDate: Date = sdfJam.parse("12")
-        var menitSiangDate: Date = sdfMenit.parse("00")
+        val jamSiangDate: Date = sdfJam.parse("12")
+        val menitSiangDate: Date = sdfMenit.parse("00")
 
-        var jamMalamDate: Date = sdfJam.parse("20")
-        var menitMalamDate: Date = sdfMenit.parse("00")
+        val jamMalamDate: Date = sdfJam.parse("20")
+        val menitMalamDate: Date = sdfMenit.parse("00")
 
 
         val jamPagi = SimpleDateFormat("HH", Locale.US).format(jamPagiDate).toInt()
@@ -80,7 +75,8 @@ class HomeFragment : Fragment() {
             val profile = db.getReminder(id)
 
             //Todo: si Waktunya ga muncul di home, pls fix
-            tvTime.text = profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
+            tvTime.text =
+                profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
                 tvTime.text = profile.jam_malam
@@ -126,25 +122,26 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.editPetBtn -> {
-                val vm = HomeVM()
+                val vm =
+                    ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
                 toFragment(vm.newAddPetInstance(id!!), "Edit Pet", R.id.nav_home)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    var id:Int?=null
-    var sharPref:SharedPreference?=null
+    var id: Int? = null
+    private var sharPref: SharedPreference? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        sharPref = SharedPreference(context)
+        sharPref = SharedPreference(requireContext())
         id = sharPref!!.getId()
 
         cekFoodAndReminder()
         showData()
-        val vm = HomeVM()
+        val vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
 
         //Todo:Ganti ke data binding
         ivProfile.setOnClickListener {

@@ -11,21 +11,7 @@ import com.chewie.mepet.R
 import com.chewie.mepet.home.AddPetFragment
 import kotlinx.android.synthetic.main.fragment_shop.*
 
-
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [ShopFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [ShopFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ShopFragment : Fragment() {
-    companion object {
-        fun newInstance(): AddPetFragment {
-            return AddPetFragment()
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

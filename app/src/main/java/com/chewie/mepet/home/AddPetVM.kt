@@ -10,6 +10,7 @@ import com.chewie.mepet.model.pet_detail_profile
 import com.chewie.mepet.model.pet_profile
 
 //ViewModel for AddPetFragment
+// TODO: 03/12/2019 Create a proper viewmodel, a proper viewmodel shouldn't messing up with views
 class AddPetVM(
     private var context: Context?
 ) {
@@ -52,7 +53,7 @@ class AddPetVM(
         pet.pet_weight = petWeight
 
         petProfile.id_detail_profile = pet.id_pet
-        db.insertPet(pet, petProfile)
+        db.insertPet(pet)
         Toast.makeText(context, "Berhasil! ", Toast.LENGTH_LONG).show()
     }
 }
