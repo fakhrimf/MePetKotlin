@@ -36,4 +36,9 @@
     <string name="malam">Malam</string>
     <string name="random_references_here">Random References here</string>
     <string name="time">time</string>
+    <string name="edit_pet_data">Edit Pet Data</string>
+    <string name="home">Home</string>
+    <string name="update">Update</string>
+    <string name="warning_name">Nama Harus Diisi</string>
+    <string name="warning_age">Usia Harus Diisi</string>
 </resources>

@@ -74,9 +74,7 @@ class HomeFragment : Fragment() {
             val db = MepetDatabaseHelper(context)
             val profile = db.getReminder(id)
 
-            //Todo: si Waktunya ga muncul di home, pls fix
-            tvTime.text =
-                profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
+            tvTime.text = profile.jam_siang
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
                 tvTime.text = profile.jam_malam
@@ -96,7 +94,7 @@ class HomeFragment : Fragment() {
 
         tvNama.text = detailProfile.pet_name
         tvAge.text = detailProfile.pet_age.toString()
-        tvWeight.text = detailProfile.pet_weight.toString() + " Kg"
+        tvWeight.text = "${detailProfile.pet_weight} Kg"
         tvJenis.text = detailProfile.pet_type
         Log.v("Berat", detailProfile.pet_weight.toString())
     }
