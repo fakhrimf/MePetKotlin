@@ -68,13 +68,13 @@ class ReminderFragment : Fragment() {
         txtSiang.text = profile.jam_siang
         txtMalam.text = profile.jam_malam
 
-        if (txtPagi.text == "") {
+        if (txtPagi.text.isEmpty()) {
             txtPagi.text = getString(R.string.addreminder)
         }
-        if (txtSiang.text == "") {
+        if (txtSiang.text.isEmpty()) {
             txtSiang.text = getString(R.string.addreminder)
         }
-        if (txtMalam.text == "") {
+        if (txtMalam.text.isEmpty()) {
             txtMalam.text = getString(R.string.addreminder)
         }
     }
