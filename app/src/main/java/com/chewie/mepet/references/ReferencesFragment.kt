@@ -35,7 +35,7 @@ class ReferencesFragment : Fragment() {
         var adapter: MyAdapter? = null
         tabLayout?.let {
             adapter = MyAdapter(
-                fragmentManager,
+                childFragmentManager,
                 it.tabCount
             )
         }
