@@ -132,9 +132,8 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         sharPref = SharedPreference(requireContext())
-        id = sharPref!!.getId()
+        id = sharPref?.getId()
 
         cekFoodAndReminder()
         showData()

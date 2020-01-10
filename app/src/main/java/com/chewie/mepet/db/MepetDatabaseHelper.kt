@@ -30,7 +30,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         val mSuccess = db.insert(DETAIL_PROFILE_TABLE, null, values)
 
 
-        db.close()
+        //db.close()
         Log.v("InsertedID", "$mSuccess")
         return (Integer.parseInt("$mSuccess") != -1)
     }
@@ -43,7 +43,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         values.put(JAM_MALAM, petProfile.jam_malam)
 
         db.update(PROFILE_TABLE, values, "$ID_DETAIL_PROFILE=$id", null)
-        db.close()
+        //db.close()
     }
 
     fun insertReminder(petProfile: pet_profile) {
@@ -55,7 +55,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         values.put(JAM_MALAM, petProfile.jam_malam)
 
         db.insert(PROFILE_TABLE, null, values)
-        db.close()
+        //db.close()
         Log.v("Inserted Jam", values.toString())
     }
 
@@ -79,7 +79,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
             petProfile.pet_age = age
             petProfile.pet_weight = weight
             petList.add(petProfile)
-            cursor.close()
+            //cursor.close()
         }
         return petList
     }
@@ -97,7 +97,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
             detailProfile.pet_age = cursor.getInt(cursor.getColumnIndex(PET_AGE))
             detailProfile.pet_weight = cursor.getFloat(cursor.getColumnIndex(PET_WEIGHT))
         }
-        cursor.close()
+        //cursor.close()
 
         return detailProfile
     }
@@ -116,7 +116,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
             profile.jam_siang = cursor.getString(cursor.getColumnIndex(JAM_SIANG)) ?: "12:00"
             profile.jam_malam = cursor.getString(cursor.getColumnIndex(JAM_MALAM)) ?: "20:00"
         }
-        cursor.close()
+        //cursor.close()
         return profile
     }
 
