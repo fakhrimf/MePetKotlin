@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.model.pet_profile
+import com.chewie.mepet.model.PetProfile
 import com.chewie.mepet.utils.AlarmReceiver
 import com.chewie.mepet.utils.SharedPreference
 import kotlinx.android.synthetic.main.fragment_reminder.*
@@ -64,9 +64,9 @@ class ReminderFragment : Fragment() {
         val db = MepetDatabaseHelper(context)
         val profile = db.getReminder(id)
 
-        txtPagi.text = profile.jam_pagi
-        txtSiang.text = profile.jam_siang
-        txtMalam.text = profile.jam_malam
+        txtPagi.text = profile.jamPagi
+        txtSiang.text = profile.jamSiang
+        txtMalam.text = profile.jamMalam
 
         if (txtPagi.text == "") {
             txtPagi.text = getString(R.string.addreminder)
@@ -98,18 +98,18 @@ class ReminderFragment : Fragment() {
 
                     val db = MepetDatabaseHelper(context)
 
-                    val petProfile = pet_profile()
+                    val petProfile = PetProfile()
                     val profile = db.getReminder(id)
                     //Toast.makeText(context,id.toString(),Toast.LENGTH_SHORT).show()
-                    if (profile.jam_pagi == "" && profile.jam_siang == "" && profile.jam_malam == "") {
-                        petProfile.id_detail_profile = id
-                        petProfile.jam_pagi = txtPagi.text.toString()
+                    if (profile.jamPagi == "" && profile.jamSiang == "" && profile.jamMalam == "") {
+                        petProfile.idDetailProfile = id
+                        petProfile.jamPagi = txtPagi.text.toString()
                         db.insertReminder(petProfile)
                         sharPref.setJamPagi(txtPagi.text.toString())
                     } else {
-                        petProfile.jam_pagi = txtPagi.text.toString()
-                        petProfile.jam_siang = txtSiang.text.toString()
-                        petProfile.jam_malam = txtMalam.text.toString()
+                        petProfile.jamPagi = txtPagi.text.toString()
+                        petProfile.jamSiang = txtSiang.text.toString()
+                        petProfile.jamMalam = txtMalam.text.toString()
                         db.updateReminder(petProfile, id)
                         sharPref.setJamPagi(txtPagi.text.toString())
                     }
@@ -124,18 +124,18 @@ class ReminderFragment : Fragment() {
 
                     val db = MepetDatabaseHelper(context)
 
-                    val petProfile = pet_profile()
+                    val petProfile = PetProfile()
                     val profile = db.getReminder(id)
                     //Toast.makeText(context,id.toString(),Toast.LENGTH_SHORT).show()
-                    if (profile.jam_pagi == "" && profile.jam_siang == "" && profile.jam_malam == "") {
-                        petProfile.id_detail_profile = id
-                        petProfile.jam_siang = txtSiang.text.toString()
+                    if (profile.jamPagi == "" && profile.jamSiang == "" && profile.jamMalam == "") {
+                        petProfile.idDetailProfile = id
+                        petProfile.jamSiang = txtSiang.text.toString()
                         db.insertReminder(petProfile)
                         sharPref.setJamSiang(txtSiang.text.toString())
                     } else {
-                        petProfile.jam_pagi = txtPagi.text.toString()
-                        petProfile.jam_siang = txtSiang.text.toString()
-                        petProfile.jam_malam = txtMalam.text.toString()
+                        petProfile.jamPagi = txtPagi.text.toString()
+                        petProfile.jamSiang = txtSiang.text.toString()
+                        petProfile.jamMalam = txtMalam.text.toString()
                         db.updateReminder(petProfile, id)
                         sharPref.setJamSiang(txtSiang.text.toString())
                     }
@@ -150,18 +150,18 @@ class ReminderFragment : Fragment() {
                     txtMalam.text = SimpleDateFormat("HH:mm", Locale.US).format(calendar.time)
                     val db = MepetDatabaseHelper(context)
 
-                    val petProfile = pet_profile()
+                    val petProfile = PetProfile()
                     val profile = db.getReminder(id)
                     //Toast.makeText(context,id.toString(),Toast.LENGTH_SHORT).show()
-                    if (profile.jam_pagi == "" && profile.jam_siang == "" && profile.jam_malam == "") {
-                        petProfile.id_detail_profile = id
-                        petProfile.jam_malam = txtMalam.text.toString()
+                    if (profile.jamPagi == "" && profile.jamSiang == "" && profile.jamMalam == "") {
+                        petProfile.idDetailProfile = id
+                        petProfile.jamMalam = txtMalam.text.toString()
                         db.insertReminder(petProfile)
                         sharPref.setJamMalam(txtMalam.text.toString())
                     } else {
-                        petProfile.jam_pagi = txtPagi.text.toString()
-                        petProfile.jam_siang = txtSiang.text.toString()
-                        petProfile.jam_malam = txtMalam.text.toString()
+                        petProfile.jamPagi = txtPagi.text.toString()
+                        petProfile.jamSiang = txtSiang.text.toString()
+                        petProfile.jamMalam = txtMalam.text.toString()
                         db.updateReminder(petProfile, id)
                         sharPref.setJamMalam(txtMalam.text.toString())
                     }

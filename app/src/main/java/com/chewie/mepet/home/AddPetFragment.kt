@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class AddPetFragment : Fragment() {
-    private lateinit var vm : AddPetVM
+    private lateinit var vm: AddPetVM
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +27,8 @@ class AddPetFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(AddPetVM::class.java)
+        vm =
+            ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(AddPetVM::class.java)
         setNpValue()
         editSet(arguments)
         btnAddPet.setOnClickListener {
@@ -60,13 +61,15 @@ class AddPetFragment : Fragment() {
         val id = arguments?.getInt(ARGUMENTS_ID_KEY)
         if (id != null) {
             val detailProfile = dbManager.getPetById(id)
-            et_petname?.setText(detailProfile.pet_name)
-            et_age?.setText(detailProfile.pet_age.toString())
-            cbx_pettype?.setSelection(getCbxIndex(detailProfile.pet_type))
-            val beratFirst = detailProfile.pet_weight.toString().split(".")[0].toInt()
-            val beratKedua = detailProfile.pet_weight.toString().split(".")[1].toInt()
-            npBeratBadanUtama?.value = beratFirst
-            npBeratBadanSekunder?.value = beratKedua
+            detailProfile?.let {
+                et_petname?.setText(detailProfile.petName)
+                et_age?.setText(detailProfile.petAge.toString())
+                cbx_pettype?.setSelection(getCbxIndex(detailProfile.petType))
+                val beratFirst = detailProfile.petWeight.toString().split(".")[0].toInt()
+                val beratKedua = detailProfile.petWeight.toString().split(".")[1].toInt()
+                npBeratBadanUtama?.value = beratFirst
+                npBeratBadanSekunder?.value = beratKedua
+            }
             btnAddPet?.text = getString(R.string.update)
         }
     }

@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.chewie.mepet.R
-import com.chewie.mepet.model.pet_detail_profile
+import com.chewie.mepet.model.PetDetailProfile
 
 class PetViewHolder(inflater: LayoutInflater, parent:ViewGroup):RecyclerView.ViewHolder(inflater.inflate(R.layout.item_pet_profile,parent,false)){
     private var txtName: TextView? = null
     private var txtType:TextView?=null
 
     init {
-        txtName = itemView.findViewById(R.id.maintext)
-        txtType = itemView.findViewById(R.id.subtext)
+        txtName = itemView.findViewById(R.id.mainText)
+        txtType = itemView.findViewById(R.id.subText)
     }
 
-    fun bind(petProfile:pet_detail_profile){
-        txtName?.text = petProfile.pet_name
-        txtType?.text = petProfile.pet_type
+    fun bind(petProfile:PetDetailProfile){
+        txtName?.text = petProfile.petName
+        txtType?.text = petProfile.petType
     }
 }
