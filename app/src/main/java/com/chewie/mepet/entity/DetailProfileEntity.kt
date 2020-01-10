@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "t_detail_profile")
 data class DetailProfileEntity(
-    @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id_detail_profile")var id_detail_profile:Int,
+    @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "idDetailProfile")var id_detail_profile:Int,
     @ColumnInfo(name = "nama_hewan")var nama_hewan:String,
     @ColumnInfo(name = "umur")var umur:Int,
     @ColumnInfo(name = "berat_badan")var berat_badan:Float,

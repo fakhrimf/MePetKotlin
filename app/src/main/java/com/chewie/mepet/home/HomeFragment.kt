@@ -73,14 +73,14 @@ class HomeFragment : Fragment() {
             val db = MepetDatabaseHelper(context)
             val profile = db.getReminder(id)
 
-            tvTime.text = profile.jam_siang
+            tvTime.text = profile.jamSiang
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
-                tvTime.text = profile.jam_malam
+                tvTime.text = profile.jamMalam
                 ivFood.setImageResource(R.drawable.ic_night)
                 if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis) {
                     cekMalam.setImageResource(R.drawable.ic_check_black_24dp)
-                    tvTime.text = profile.jam_pagi
+                    tvTime.text = profile.jamPagi
                     ivFood.setImageResource(R.drawable.ic_morning)
                 }
             }
@@ -89,13 +89,15 @@ class HomeFragment : Fragment() {
 
     private fun showData() {
         val dbManager = MepetDatabaseHelper(context)
-        val detailProfile = dbManager.getPetById(id!!)
+        val detailProfile = id?.let { dbManager.getPetById(it) }
 
-        tvNama.text = detailProfile.pet_name
-        tvAge.text = detailProfile.pet_age.toString()
-        tvWeight.text = "${detailProfile.pet_weight} Kg"
-        tvJenis.text = detailProfile.pet_type
-        Log.v("Berat", detailProfile.pet_weight.toString())
+        detailProfile?.let {
+            tvNama.text = detailProfile.petName
+            tvAge.text = detailProfile.petAge.toString()
+            tvWeight.text = "${detailProfile.petWeight} Kg"
+            tvJenis.text = detailProfile.petType
+            Log.v("Berat", detailProfile.petWeight.toString())
+        }
     }
 
     //
@@ -127,7 +129,7 @@ class HomeFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    var id: Int? = null
+    var id: Int? = 0
     private var sharPref: SharedPreference? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -137,7 +139,8 @@ class HomeFragment : Fragment() {
 
         cekFoodAndReminder()
         showData()
-        val vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
+        val vm =
+            ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
 
         //Todo:Ganti ke data binding
         ivProfile.setOnClickListener {

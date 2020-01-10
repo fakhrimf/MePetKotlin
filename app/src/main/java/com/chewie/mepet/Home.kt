@@ -16,7 +16,6 @@ import android.widget.Toast
 import com.chewie.mepet.home.AddPetFragment
 import com.chewie.mepet.home.HomeFragment
 import com.chewie.mepet.misc.about.AboutFragment
-import com.chewie.mepet.profile.ProfileFragment
 import com.chewie.mepet.profile.listPetProfile.ListProfileFragment
 import com.chewie.mepet.references.ReferencesFragment
 import com.chewie.mepet.reminder.ReminderFragment
@@ -74,7 +73,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val curr = supportFragmentManager.findFragmentById(R.id.fragment)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (curr is HomeFragment || curr is ShopFragment || curr is ProfileFragment || curr is AboutFragment || curr is ReminderFragment) {
+        } else if (curr is HomeFragment || curr is ShopFragment || curr is ListProfileFragment || curr is AboutFragment || curr is ReminderFragment) {
             if (doubleClick) {
                 this.finishAffinity()
             } else {
