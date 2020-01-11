@@ -9,9 +9,6 @@ import com.chewie.mepet.R
 
 class emptyFrag : Fragment() {
     companion object {
-        fun newInstance(): emptyFrag {
-            return emptyFrag()
-        }
     }
 
     //Ini cuma fragment kosong, buat transisi
@@ -24,7 +21,4 @@ class emptyFrag : Fragment() {
         return inflater.inflate(R.layout.fragment_empty, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 }

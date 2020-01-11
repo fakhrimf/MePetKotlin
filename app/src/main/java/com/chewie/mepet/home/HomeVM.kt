@@ -1,22 +1,23 @@
 package com.chewie.mepet.home
 
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
 import android.os.Bundle
-import com.chewie.mepet.reminder.ReminderFragment
+import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
 
-class HomeVM () {
+class HomeVM(application: Application) : AndroidViewModel(application) {
     fun newAddPetInstance(id: Int): AddPetFragment {
         val args = Bundle()
-        args.putInt("id", id)
+        args.putInt(ARGUMENTS_ID_KEY, id)
         val addpet = AddPetFragment()
         addpet.arguments = args
         return addpet
     }
 
-    fun reminderFrag(id: Int): ReminderFragment {
-        val args = Bundle()
-        args.putInt("id",id)
-        val reminderFrag = ReminderFragment()
-        reminderFrag.arguments = args
-        return reminderFrag
+    override fun onCleared() {
+        super.onCleared()
+        val db = MepetDatabaseHelper(getApplication())
+        db.close()
     }
 }

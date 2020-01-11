@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Cleaned by Fakhri MF -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2994A"
-    tools:context=".data.MainActivity">
-
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/kiri"
@@ -14,6 +14,7 @@
         android:layout_height="100dp"
         android:layout_centerVertical="true"
         android:layout_marginEnd="20dp"
+        android:contentDescription="@string/cat_logo"
         android:src="@drawable/ic_kochengsinglewhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/kanan"
@@ -27,6 +28,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@+id/kiri"
+        android:contentDescription="@string/cat_logo"
         android:scaleX="-1"
         android:src="@drawable/ic_kochengsinglewhite"
         app:layout_constraintBottom_toBottomOf="parent"

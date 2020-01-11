@@ -12,7 +12,7 @@ import com.chewie.mepet.R
 
 class ReferencesFragment : Fragment() {
     private var tabLayout: TabLayout? = null
-    var viewPager: ViewPager? = null
+    private var viewPager: ViewPager? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,32 +26,37 @@ class ReferencesFragment : Fragment() {
         tabLayout = view?.findViewById(R.id.tabLayout)
         viewPager = view?.findViewById(R.id.viewPager)
 
+        tabLayout?.let {
+            it.addTab(it.newTab().setIcon(R.drawable.pawprint))
+            it.addTab(it.newTab().setIcon(R.drawable.icons_light))
+            it.tabGravity = TabLayout.GRAVITY_FILL
+        }
 
-        tabLayout!!.addTab(tabLayout!!.newTab().setIcon(R.drawable.pawprint))
-        tabLayout!!.addTab(tabLayout!!.newTab().setIcon(R.drawable.icons_light))
-        tabLayout!!.tabGravity = TabLayout.GRAVITY_FILL
+        var adapter: MyAdapter? = null
+        tabLayout?.let {
+            adapter = MyAdapter(
+                childFragmentManager,
+                it.tabCount
+            )
+        }
 
+        viewPager?.let {
+            it.adapter = adapter
 
-        val adapter = MyAdapter(
-            fragmentManager,
-            tabLayout!!.tabCount
-        )
-        viewPager!!.adapter = adapter
+            it.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+            tabLayout?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab) {
+                    it.currentItem = tab.position
+                }
 
-        viewPager!!.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+                override fun onTabUnselected(tab: TabLayout.Tab) {
 
-        tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                viewPager!!.currentItem = tab.position
-            }
+                }
 
-            override fun onTabUnselected(tab: TabLayout.Tab) {
+                override fun onTabReselected(tab: TabLayout.Tab) {
 
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-
-            }
-        })
+                }
+            })
+        }
     }
 }

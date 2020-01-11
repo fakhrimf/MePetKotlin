@@ -9,9 +9,6 @@ import android.view.ViewGroup
 
 import com.chewie.mepet.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class PetListFragment : Fragment() {
 
     override fun onCreateView(

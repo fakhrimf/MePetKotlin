@@ -1,5 +1,6 @@
 package com.chewie.mepet.home
 
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
@@ -8,7 +9,9 @@ import android.util.Log
 import android.view.*
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.reminder.ReminderFragment
 import com.chewie.mepet.shop.ShopFragment
+import com.chewie.mepet.utils.SharedPreference
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -16,12 +19,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
-    companion object {
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -38,14 +35,14 @@ class HomeFragment : Fragment() {
     private fun cekFoodAndReminder() {
         val sdfJam = SimpleDateFormat("HH", Locale.US)
         val sdfMenit = SimpleDateFormat("mm", Locale.US)
-        var jamPagiDate: Date = sdfJam.parse("07")
-        var menitPagiDate: Date = sdfMenit.parse("00")
+        val jamPagiDate: Date = sdfJam.parse("07")
+        val menitPagiDate: Date = sdfMenit.parse("00")
 
-        var jamSiangDate: Date = sdfJam.parse("12")
-        var menitSiangDate: Date = sdfMenit.parse("00")
+        val jamSiangDate: Date = sdfJam.parse("12")
+        val menitSiangDate: Date = sdfMenit.parse("00")
 
-        var jamMalamDate: Date = sdfJam.parse("20")
-        var menitMalamDate: Date = sdfMenit.parse("00")
+        val jamMalamDate: Date = sdfJam.parse("20")
+        val menitMalamDate: Date = sdfMenit.parse("00")
 
 
         val jamPagi = SimpleDateFormat("HH", Locale.US).format(jamPagiDate).toInt()
@@ -74,20 +71,16 @@ class HomeFragment : Fragment() {
             cekPagi.setImageResource(R.drawable.ic_check_black_24dp)
             ivFood.setImageResource(R.drawable.ic_sun)
             val db = MepetDatabaseHelper(context)
-            val id = 1
-
             val profile = db.getReminder(id)
 
-            //Todo: si Waktunya ga muncul di home, pls fix
-            tvTime.text =
-                profile.jam_siang //Next Reminder in db Todo: Implementasi Waktu dari database
+            tvTime.text = profile.jamSiang
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
-                tvTime.text = profile.jam_malam
+                tvTime.text = profile.jamMalam
                 ivFood.setImageResource(R.drawable.ic_night)
                 if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis) {
                     cekMalam.setImageResource(R.drawable.ic_check_black_24dp)
-                    tvTime.text = profile.jam_pagi
+                    tvTime.text = profile.jamPagi
                     ivFood.setImageResource(R.drawable.ic_morning)
                 }
             }
@@ -96,14 +89,15 @@ class HomeFragment : Fragment() {
 
     private fun showData() {
         val dbManager = MepetDatabaseHelper(context)
-        val id = 1
-        val detailProfile = dbManager.getPetById(id)
+        val detailProfile = id?.let { dbManager.getPetById(it) }
 
-        tvNama.text = detailProfile.pet_name
-        tvAge.text = detailProfile.pet_age.toString()
-        tvWeight.text = detailProfile.pet_weight.toString() + " Kg"
-        tvJenis.text = detailProfile.pet_type
-        Log.v("Berat", detailProfile.pet_weight.toString())
+        detailProfile?.let {
+            tvNama.text = detailProfile.petName
+            tvAge.text = detailProfile.petAge.toString()
+            tvWeight.text = "${detailProfile.petWeight} Kg"
+            tvJenis.text = detailProfile.petType
+            Log.v("Berat", detailProfile.petWeight.toString())
+        }
     }
 
     //
@@ -127,24 +121,30 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.editPetBtn -> {
-                val id = 1
-                val vm = HomeVM()
-                toFragment(vm.newAddPetInstance(id), "Edit Pet", R.id.nav_home)
+                val vm =
+                    ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
+                toFragment(vm.newAddPetInstance(id!!), "Edit Pet", R.id.nav_home)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    var id: Int? = 0
+    private var sharPref: SharedPreference? = null
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        sharPref = SharedPreference(requireContext())
+        id = sharPref?.getId()
+
         cekFoodAndReminder()
         showData()
-        val id = 1
-        val vm = HomeVM()
+        val vm =
+            ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
 
         //Todo:Ganti ke data binding
         ivProfile.setOnClickListener {
-            toFragment(vm.newAddPetInstance(id), "Edit Pet", R.id.nav_home)
+            toFragment(vm.newAddPetInstance(id!!), "Edit Pet", R.id.nav_home)
         }
         btnToShop.setOnClickListener {
             toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
@@ -153,10 +153,10 @@ class HomeFragment : Fragment() {
             toFragment(ShopFragment(), "MeShop", R.id.nav_meshop)
         }
         btnToReminder.setOnClickListener {
-            toFragment(vm.reminderFrag(id), "Reminders", R.id.nav_reminder)
+            toFragment(ReminderFragment(), "Reminders", R.id.nav_reminder)
         }
         layoutNextReminder.setOnClickListener {
-            toFragment(vm.reminderFrag(id), "Reminders", R.id.nav_reminder)
+            toFragment(ReminderFragment(), "Reminders", R.id.nav_reminder)
         }
         cardNextReminder.setOnClickListener {
             //For Ripple Effect

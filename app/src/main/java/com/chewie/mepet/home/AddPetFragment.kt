@@ -1,5 +1,6 @@
 package com.chewie.mepet.home
 
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -7,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class AddPetFragment : Fragment() {
+    private lateinit var vm: AddPetVM
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,18 +27,20 @@ class AddPetFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val vm = AddPetVM(context)
-        vm.setNpValue(npBeratBadanUtama, npBeratBadanSekunder)
+        vm =
+            ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(AddPetVM::class.java)
+        setNpValue()
         editSet(arguments)
         btnAddPet.setOnClickListener {
-            if (tvMepet?.text == "Edit Pet") {
+            if (tvMepet?.text == getString(R.string.edit_pet_data)) {
 //                UpdatePet()
+                println("")
             } else {
-                if (vm.checkEmpty(et_petname, et_age)) {
+                if (checkEmpty()) {
                     val firstWeight = npBeratBadanUtama?.value.toString()
                     val secondWeight = npBeratBadanSekunder?.value.toString()
                     vm.insertData(et_petname?.text.toString(), cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
-                    toFragment(HomeFragment(), "Home", R.id.nav_home)
+                    toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
                 }
             }
         }
@@ -53,19 +58,49 @@ class AddPetFragment : Fragment() {
 
     private fun editSet(arguments: Bundle?) {
         val dbManager = MepetDatabaseHelper(context)
-        val vm = AddPetVM(context)
-        val id = arguments?.getInt("id")
+        val id = arguments?.getInt(ARGUMENTS_ID_KEY)
         if (id != null) {
             val detailProfile = dbManager.getPetById(id)
-            et_petname?.setText(detailProfile.pet_name)
-            et_age?.setText(detailProfile.pet_age.toString())
-            cbx_pettype?.setSelection(vm.getCbxIndex(cbx_pettype, detailProfile.pet_type))
-            val beratFirst = detailProfile.pet_weight.toString().split(".")[0].toInt()
-            val beratKedua = detailProfile.pet_weight.toString().split(".")[1].toInt()
-            npBeratBadanUtama?.value = beratFirst
-            npBeratBadanSekunder?.value = beratKedua
-            btnAddPet?.text = "Update"
+            detailProfile?.let {
+                et_petname?.setText(detailProfile.petName)
+                et_age?.setText(detailProfile.petAge.toString())
+                cbx_pettype?.setSelection(getCbxIndex(detailProfile.petType))
+                val beratFirst = detailProfile.petWeight.toString().split(".")[0].toInt()
+                val beratKedua = detailProfile.petWeight.toString().split(".")[1].toInt()
+                npBeratBadanUtama?.value = beratFirst
+                npBeratBadanSekunder?.value = beratKedua
+            }
+            btnAddPet?.text = getString(R.string.update)
         }
+    }
+
+
+    private fun setNpValue() {
+        npBeratBadanUtama.minValue = 1
+        npBeratBadanUtama.maxValue = 18
+        npBeratBadanSekunder.minValue = 0
+        npBeratBadanSekunder.maxValue = 9
+    }
+
+    private fun getCbxIndex(type: String): Int {
+        for (i in 0 until cbx_pettype.count) {
+            if (cbx_pettype.getItemAtPosition(i) == type) {
+                return i
+            }
+        }
+        return 0
+    }
+
+    private fun checkEmpty(): Boolean {
+        if (et_petname.text?.isEmpty() == true) {
+            et_petname.error = getString(R.string.warning_name)
+        }
+        if (et_age.text?.isEmpty() == true) {
+            et_age.error = getString(R.string.warning_age)
+        } else {
+            return true
+        }
+        return false
     }
 }
 

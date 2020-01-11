@@ -9,9 +9,6 @@ import android.view.ViewGroup
 
 import com.chewie.mepet.R
 
-/**
- * A simple [Fragment] subclass.
- */
 class TipsFragment : Fragment() {
 
     override fun onCreateView(

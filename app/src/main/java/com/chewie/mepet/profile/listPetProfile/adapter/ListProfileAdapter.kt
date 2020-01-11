@@ -3,20 +3,35 @@ package com.chewie.mepet.profile.listPetProfile.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.chewie.mepet.model.pet_detail_profile
+import com.chewie.mepet.BR
+import com.chewie.mepet.databinding.ItemPetProfileBinding
+import com.chewie.mepet.model.PetDetailProfile
+import com.chewie.mepet.profile.ProfileClickListener
 
-class ListProfileAdapter(private val petList: List<pet_detail_profile>):RecyclerView.Adapter<PetViewHolder>() {
+class ListProfileAdapter(private val petList: List<PetDetailProfile>, private val listener: ProfileClickListener) :
+    RecyclerView.Adapter<ListProfileAdapter.PetViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return PetViewHolder(inflater,parent)
+        val binding = ItemPetProfileBinding.inflate(inflater, parent, false)
+        return PetViewHolder(binding.apply {
+            listener = this@ListProfileAdapter.listener
+        })
     }
 
     override fun getItemCount(): Int = petList.size
 
     override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
-        val pet:pet_detail_profile = petList[position]
-        holder.bind(pet)
+        holder.bind(petList[position])
+    }
+
+    inner class PetViewHolder(private val binding: ItemPetProfileBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: PetDetailProfile) {
+            binding.setVariable(BR.model, item)
+            binding.executePendingBindings()
+        }
     }
 
 

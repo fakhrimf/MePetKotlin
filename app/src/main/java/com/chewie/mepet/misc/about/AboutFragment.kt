@@ -8,11 +8,6 @@ import android.view.ViewGroup
 import com.chewie.mepet.R
 
 class AboutFragment : Fragment() {
-    companion object {
-        fun newInstance(): AboutFragment {
-            return AboutFragment()
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,9 +15,5 @@ class AboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_about_us, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
     }
 }

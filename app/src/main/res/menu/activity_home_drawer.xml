@@ -7,27 +7,27 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="Profile" />
+            android:title="@string/profile" />
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
-            android:title="Home" />
+            android:title="@string/home" />
         <item
             android:id="@+id/nav_references"
             android:icon="@drawable/ic_references"
-            android:title="References" />
+            android:title="@string/references" />
         <item
             android:id="@+id/nav_reminder"
             android:icon="@drawable/ic_time"
-            android:title="Reminder" />
+            android:title="@string/reminder" />
         <item
             android:id="@+id/nav_meshop"
             android:icon="@drawable/ic_meshop"
-            android:title="MeShop" />
+            android:title="@string/meshop" />
         <item
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/ic_info"
-            android:title="About us" />
+            android:title="@string/about_us" />
         <!--<item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
