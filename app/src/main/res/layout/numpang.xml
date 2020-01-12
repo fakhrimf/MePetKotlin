@@ -1,370 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="@+id/cardView"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraint1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_250sdp"
+        android:layout_height="@dimen/_130sdp"
         android:background="@drawable/banner"
-        android:elevation="@dimen/_48sdp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivProfile"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_85sdp"
-            android:layout_marginTop="@dimen/_17sdp"
-            android:src="@drawable/smudge"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="@string/add_pet"
+            android:textColor="#fff"
+            android:textSize="@dimen/_30ssp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvNama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:fontFamily="@font/baloo_thambi"
-            android:textColor="#fff"
-            android:textSize="@dimen/_22ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivProfile"
-            tools:text="Smudge" />
-
-        <TextView
-            android:id="@+id/tvJenis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand"
-            android:textColor="#fff"
-            android:textSize="@dimen/_17ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNama"
-            tools:text="Angora" />
-
-        <GridLayout
-            android:layout_width="@dimen/_170sdp"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvJenis">
-
-            <TextView
-                android:layout_marginStart="@dimen/_20sdp"
-                android:id="@+id/tvWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/baloo_thambi"
-                android:textColor="#fff"
-                android:textSize="@dimen/_22ssp"
-                tools:text="3 Kg" />
-
-            <TextView
-                android:id="@+id/tvAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_40sdp"
-                android:fontFamily="@font/baloo_thambi"
-                android:textColor="#fff"
-                android:textSize="@dimen/_22ssp"
-                tools:text="2" />
-            <TextView
-                android:id="@+id/tvWeightLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="@string/weight"
-                android:layout_marginStart="@dimen/_22sdp"
-                android:textColor="#fff"
-                android:textSize="@dimen/_12ssp" />
-
-            <TextView
-                android:id="@+id/tvAgeLabel"
-                android:layout_marginStart="@dimen/_42sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="@string/age"
-                android:textColor="#fff"
-                android:textSize="@dimen/_12ssp"/>
-
-
-        </GridLayout>
 
 
     </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardNextReminder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="?android:selectableItemBackground"
-        android:elevation="12dp"
-        app:cardCornerRadius="10dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintTop_toBottomOf="@+id/constraint1">
-
-        <LinearLayout
-            android:id="@+id/layoutNextReminder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/quicksand"
-                android:text="@string/next_reminder"
-                android:textColor="#000"
-                android:textSize="12sp" />
-
-            <ImageView
-                android:id="@+id/ivFood"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
-                android:contentDescription="@string/time"
-                android:src="@drawable/ic_morning" />
-
-            <TextView
-                android:id="@+id/tvTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="5"
-                android:fontFamily="@font/quicksand"
-                android:gravity="start"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:textColor="#000"
-                android:textSize="25sp"
-                tools:text="12:00" />
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/btnToReminder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
-                    android:fontFamily="@font/quicksand"
-                    android:text="@string/reminder"
-                    android:textAllCaps="false"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardFood"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="?android:selectableItemBackground"
-        android:elevation="12dp"
-        app:cardCornerRadius="10dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintTop_toBottomOf="@+id/cardNextReminder">
-
-        <LinearLayout
-            android:id="@+id/layoutFood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="55dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/quicksand"
-                android:gravity="center_vertical"
-                android:text="@string/food"
-                android:textColor="#000"
-                android:textSize="12sp" />
-
-            <GridLayout
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:rowCount="3">
-
-                <LinearLayout
-
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="66dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/quicksand"
-                        android:gravity="center"
-                        android:text="@string/pagi"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="66dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/quicksand"
-                        android:gravity="center"
-                        android:text="@string/siang"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="66dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand"
-                        android:gravity="center"
-                        android:text="@string/malam"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="3">
-
-                    <View
-                        android:layout_width="200dp"
-                        android:layout_height="7dp"
-                        android:background="@drawable/rectanglemalam" />
-
-                    <View
-                        android:layout_width="70dp"
-                        android:layout_height="7dp"
-                        android:background="@drawable/rectanglepagi" />
-
-                    <View
-                        android:layout_width="66dp"
-                        android:layout_height="7dp"
-                        android:layout_marginStart="66dp"
-                        android:background="@drawable/rectanglesiang" />
-
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="3">
-
-                    <ImageView
-                        android:id="@+id/cekPagi"
-                        android:layout_width="66dp"
-                        android:layout_height="25dp"
-                        android:contentDescription="@string/check"
-                        tools:src="@drawable/ic_check_black_24dp" />
-
-                    <ImageView
-                        android:id="@+id/cekSiang"
-                        android:layout_width="66dp"
-                        android:layout_height="25dp"
-                        android:contentDescription="@string/check" />
-
-                    <ImageView
-                        android:id="@+id/cekMalam"
-                        android:layout_width="66dp"
-                        android:layout_height="25dp"
-                        android:contentDescription="@string/check" />
-
-                </LinearLayout>
-            </GridLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <Button
-                    android:id="@+id/btnToShop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:background="?android:selectableItemBackground"
-                    android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
-                    android:fontFamily="@font/quicksand"
-                    android:text="@string/shop"
-                    android:textAllCaps="false"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:elevation="12dp"
-        app:cardCornerRadius="10dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintTop_toBottomOf="@id/cardFood">
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/randomRef"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/quicksand"
-                android:text="@string/random_references_here"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab1"
+        android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:elevation="@dimen/_100sdp"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="@dimen/_85sdp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="@dimen/_85sdp"
+            android:layout_height="@dimen/_85sdp"
+            android:layout_margin="@dimen/_7sdp"
+            android:src="@drawable/smudge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintAnimationEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/et_petname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:hint="@string/pet_name" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/cbx_pettype"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:entries="@array/catTypes"
+            android:fontFamily="@font/quicksand"
+            android:spinnerMode="dropdown" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            app:hintAnimationEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/et_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:hint="@string/age"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksand"
+            android:text="@string/weight_kg" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <NumberPicker
+                android:id="@+id/npBeratBadanUtama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/quicksand" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/quicksand"
+                    android:gravity="center"
+                    android:text="@string/dot"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <NumberPicker
+                android:id="@+id/npBeratBadanSekunder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/quicksand" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAddPet"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buttonbg"
+            android:drawableStart="@drawable/ic_add_black_24dp"
+            android:foreground="?android:selectableItemBackground"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="@string/add"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
