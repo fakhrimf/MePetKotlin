@@ -2,7 +2,6 @@ package com.chewie.mepet.db
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
@@ -11,7 +10,6 @@ import com.chewie.mepet.model.PetProfile
 import com.chewie.mepet.utils.*
 
 class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME, null, DB_VER) {
-    //var fk_id_dp:String=""
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_DP)
         db?.execSQL(CREATE_TABLE_PROFILE)
@@ -73,12 +71,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
             val age = cursor.getInt(3)
             val weight = cursor.getFloat(4)
 
-            val idPet = id
-            val petName = name
-            val petType = type
-            val petAge = age
-            val petWeight = weight
-            val petProfile = PetDetailProfile(idPet, petName, petType, petAge, petWeight)
+            val petProfile = PetDetailProfile(id, name, type, age, weight)
             petList.add(petProfile)
             //cursor.close()
         }
@@ -97,7 +90,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
             val petType = cursor.getString(cursor.getColumnIndex(PET_TYPE))
             val petAge = cursor.getInt(cursor.getColumnIndex(PET_AGE))
             val petWeight = cursor.getFloat(cursor.getColumnIndex(PET_WEIGHT))
-            Log.d("FIND THIS!","IDPET: $idPet, ID: $id, NAME:$petName")
+            Log.d("FIND THIS!", "IDPET: $idPet, ID: $id, NAME:$petName")
             detailProfile = PetDetailProfile(idPet, petName, petType, petAge, petWeight)
         }
 
@@ -122,16 +115,8 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         return profile
     }
 
-    fun getProfileAsCursor() : Cursor{
-        val db = this.readableDatabase
-        val selectQuery = "Select * from $DETAIL_PROFILE_TABLE"
-        return db.rawQuery(selectQuery, null)
-    }
-
     companion object {
-        const val CREATE_TABLE_DP =
-            "Create table $DETAIL_PROFILE_TABLE ($ID_DETAIL_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $PET_NAME TEXT, $PET_TYPE TEXT,$PET_AGE Integer, $PET_WEIGHT REAL)"
-        const val CREATE_TABLE_PROFILE =
-            "Create table $PROFILE_TABLE ($ID_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $FK_ID_DETAIL_PROFILE Integer,$JAM_PAGI TEXT,$JAM_SIANG TEXT,$JAM_MALAM TEXT)"
+        const val CREATE_TABLE_DP = "Create table $DETAIL_PROFILE_TABLE ($ID_DETAIL_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $PET_NAME TEXT, $PET_TYPE TEXT,$PET_AGE Integer, $PET_WEIGHT REAL)"
+        const val CREATE_TABLE_PROFILE = "Create table $PROFILE_TABLE ($ID_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $FK_ID_DETAIL_PROFILE Integer,$JAM_PAGI TEXT,$JAM_SIANG TEXT,$JAM_MALAM TEXT)"
     }
 }

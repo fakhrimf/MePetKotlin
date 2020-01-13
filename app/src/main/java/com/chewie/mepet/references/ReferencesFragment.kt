@@ -9,10 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
+import kotlinx.android.synthetic.main.fragment_frag_references.*
 
 class ReferencesFragment : Fragment() {
-    private var tabLayout: TabLayout? = null
-    private var viewPager: ViewPager? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,8 +22,6 @@ class ReferencesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        tabLayout = view?.findViewById(R.id.tabLayout)
-        viewPager = view?.findViewById(R.id.viewPager)
 
         tabLayout?.let {
             it.addTab(it.newTab().setIcon(R.drawable.pawprint))
