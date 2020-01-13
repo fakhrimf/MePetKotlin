@@ -4,10 +4,8 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.animation.AnimationUtils
-import com.chewie.mepet.Home
-import com.chewie.mepet.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,16 +25,12 @@ class MainActivity : AppCompatActivity() {
         window.navigationBarColor = resources.getColor(R.color.colorPrimary, theme)
 
         mWaitHandler.postDelayed({
-            try {
-                intent = Intent(applicationContext, Home::class.java)
-                startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
-            } catch (ignored: Exception) {
-                ignored.printStackTrace()
-            }
+            intent = Intent(applicationContext, Home::class.java)
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
         }, 2600)  // Delay dalam millisekon
         mWaitHandler.postDelayed({
             finish()
-        },4000)
+        }, 4000)
     }
 
     public override fun onDestroy() {

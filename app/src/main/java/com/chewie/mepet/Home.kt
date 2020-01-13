@@ -2,13 +2,13 @@ package com.chewie.mepet
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import com.google.android.material.navigation.NavigationView
+import androidx.fragment.app.Fragment
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import android.transition.Explode
 import android.view.MenuItem
 import android.view.Window
@@ -16,7 +16,6 @@ import android.widget.Toast
 import com.chewie.mepet.home.AddPetFragment
 import com.chewie.mepet.home.HomeFragment
 import com.chewie.mepet.misc.about.AboutFragment
-import com.chewie.mepet.profile.ProfileFragment
 import com.chewie.mepet.profile.listPetProfile.ListProfileFragment
 import com.chewie.mepet.references.ReferencesFragment
 import com.chewie.mepet.reminder.ReminderFragment
@@ -26,8 +25,6 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         with(window) {
             requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
@@ -42,7 +39,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val fragmentIntent = intent?.extras?.getString("fragment")
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
-//                Toast.makeText(this, "Opened Reminder", Toast.LENGTH_SHORT).show()
                 val sf = supportFragmentManager.beginTransaction()
                 sf.replace(R.id.fragment, ReminderFragment()).commit()
                 sf.addToBackStack(null)
@@ -74,17 +70,16 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val curr = supportFragmentManager.findFragmentById(R.id.fragment)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (curr is HomeFragment || curr is ShopFragment || curr is ProfileFragment || curr is AboutFragment || curr is ReminderFragment) {
+        } else if (curr is HomeFragment || curr is ShopFragment || curr is ListProfileFragment || curr is AboutFragment || curr is ReminderFragment) {
             if (doubleClick) {
                 this.finishAffinity()
             } else {
-                Toast.makeText(this, "Tap twice to exit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.tap_to_exit), Toast.LENGTH_SHORT).show()
             }
             doubleClick = true
             Handler().postDelayed({ doubleClick = false }, 2000)
         } else if (curr is AddPetFragment) {
-            toFragment(HomeFragment(), "Home", R.id.nav_home, 0)
-//            fab1.show()
+            toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home, 0)
         } else {
             super.onBackPressed()
         }
@@ -93,11 +88,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     private fun toFragment(fragment: Fragment, title: String, item: Int, delay: Long) {
         val handler = Handler()
         val sf = supportFragmentManager.beginTransaction()
-        handler.postDelayed({
-            sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                .replace(R.id.fragment, fragment).commit()
-            sf.addToBackStack(null)
-        }, delay)
+        handler.postDelayed(
+            {
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, fragment).commit()
+                sf.addToBackStack(null)
+            }, delay)
         tvMepet.text = title
         nav_view.setCheckedItem(item)
     }
@@ -106,37 +101,16 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         // Handle navigation view item clicks here.
         val delay: Long = 330
         when (item.itemId) {
-            R.id.nav_profile -> toFragment(
-                ListProfileFragment(),
-                "Profile",
-                R.id.nav_profile,
-                delay
-            )
-            R.id.nav_home -> toFragment(HomeFragment(), "Home", R.id.nav_home, delay)
-            R.id.nav_references -> toFragment(
-                ReferencesFragment(),
-                "References",
-                R.id.nav_references,
-                delay
-            )
-            R.id.nav_meshop -> toFragment(ShopFragment(), "MeShop", R.id.nav_meshop, delay)
-            R.id.nav_reminder -> {
-                val id = 1
-                reminderInstance(id)
-                toFragment(reminderInstance(id), "Reminders", R.id.nav_reminder, delay)
-            }
-            R.id.nav_aboutus -> toFragment(AboutFragment(), "About Us", R.id.nav_aboutus, delay)
+            R.id.nav_profile -> toFragment(ListProfileFragment(), getString(R.string.profile), R.id.nav_profile, delay)
+            R.id.nav_home -> toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home, delay)
+            R.id.nav_references -> toFragment(ReferencesFragment(), getString(R.string.references), R.id.nav_references, delay)
+            R.id.nav_meshop -> toFragment(ShopFragment(), getString(R.string.meshop), R.id.nav_meshop, delay)
+            R.id.nav_reminder -> toFragment(ReminderFragment(), getString(R.string.reminders), R.id.nav_reminder, delay)
+            R.id.nav_aboutus -> toFragment(AboutFragment(), getString(R.string.about_us), R.id.nav_aboutus, delay)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    private fun reminderInstance(id: Int): ReminderFragment {
-        val args = Bundle()
-        args.putInt("id", id)
-        val reminderFrag = ReminderFragment()
-        reminderFrag.arguments = args
-        return reminderFrag
-    }
 }
