@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Cleaned by Fakhri MF -->
+<?xml version="1.0" encoding="utf-8"?><!-- Cleaned by Fakhri MF -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,42 +7,25 @@
     android:background="#f2f2f2"
     tools:context=".reminder.ReminderFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/background_picture"
-        android:padding="125dp"
-        android:src="@drawable/ic_kochengsinglewhite" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/quicksand"
-        android:text="@string/reminders"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="@dimen/_25sdp"
         android:fontFamily="@font/quicksand"
         android:paddingBottom="5dp"
         android:text="@string/pagi"
-        android:textSize="20sp"
+        android:textSize="@dimen/_13ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ivPagi"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ivPagi"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_80sdp"
         android:contentDescription="@string/pagi"
         android:src="@drawable/ic_morning"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,107 +33,133 @@
 
     <TextView
         android:id="@+id/txtPagi"
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_80sdp"
         android:autoSizeTextType="uniform"
         android:background="?android:selectableItemBackground"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="@dimen/_10sdp"
         android:text="@string/reminder_pagi_example"
         android:textColor="#000"
-        android:textSize="50sp"
+        android:textSize="@dimen/_43ssp"
         app:layout_constraintStart_toEndOf="@+id/ivPagi"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivEditPagi"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_80sdp"
         android:background="?android:selectableItemBackground"
         android:contentDescription="@string/edit_reminder_pagi"
         android:cropToPadding="true"
-        android:padding="37dp"
+        android:padding="@dimen/_30sdp"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtPagi"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/txtSiang"
+        app:layout_constraintTop_toBottomOf="@+id/txtPagi">
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:alpha="0.4"
+            android:background="@color/colorAccent" />
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="@dimen/_25sdp"
         android:fontFamily="@font/quicksand"
-        android:paddingBottom="5dp"
+        android:paddingBottom="@dimen/_3sdp"
         android:text="@string/siang"
-        android:textSize="20sp"
+        android:textSize="@dimen/_13ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ivSiang"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ivSiang"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_57sdp"
         android:contentDescription="@string/siang"
-        android:padding="10dp"
+        android:padding="@dimen/_8sdp"
         android:src="@drawable/ic_sun"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPagi" />
 
     <TextView
         android:id="@+id/txtSiang"
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_57sdp"
         android:autoSizeTextType="uniform"
         android:background="?android:selectableItemBackground"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="@dimen/_10sdp"
         android:text="@string/reminder_siang_example"
         android:textColor="#000"
-        android:textSize="50sp"
+        android:textSize="@dimen/_43ssp"
         app:layout_constraintStart_toEndOf="@+id/ivSiang"
         app:layout_constraintTop_toBottomOf="@+id/txtPagi" />
 
     <ImageView
         android:id="@+id/ivEditSiang"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_57sdp"
         android:background="?android:selectableItemBackground"
         android:contentDescription="@string/edit_reminder_siang"
         android:cropToPadding="true"
-        android:padding="37dp"
+        android:padding="@dimen/_30sdp"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtSiang"
         app:layout_constraintTop_toBottomOf="@+id/ivEditPagi" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/txtMalam"
+        app:layout_constraintTop_toBottomOf="@+id/txtSiang">
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:alpha="0.4"
+            android:background="@color/colorAccent" />
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="@dimen/_25sdp"
         android:fontFamily="@font/quicksand"
-        android:paddingBottom="5dp"
+        android:paddingBottom="@dimen/_3sdp"
         android:text="@string/malam"
-        android:textSize="20sp"
+        android:textSize="@dimen/_13ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ivMalam"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ivMalam"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_57sdp"
         android:contentDescription="@string/malam"
         android:src="@drawable/ic_night"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,32 +167,45 @@
 
     <TextView
         android:id="@+id/txtMalam"
-        android:layout_width="180dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_57sdp"
         android:autoSizeTextType="uniform"
         android:background="?android:selectableItemBackground"
         android:fontFamily="@font/quicksand"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="@dimen/_10sdp"
         android:text="@string/reminder_malam_example"
         android:textColor="#000"
-        android:textSize="50sp"
+        android:textSize="@dimen/_43sdp"
         app:layout_constraintStart_toEndOf="@+id/ivMalam"
         app:layout_constraintTop_toBottomOf="@+id/txtSiang" />
 
     <ImageView
         android:id="@+id/ivEditMalam"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_57sdp"
         android:background="?android:selectableItemBackground"
         android:contentDescription="@string/edit_reminder_malam"
         android:cropToPadding="true"
-        android:padding="37dp"
+        android:padding="@dimen/_30sdp"
         android:src="@drawable/ic_edit_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtMalam"
         app:layout_constraintTop_toBottomOf="@+id/ivEditSiang" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMalam">
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:alpha="0.4"
+            android:background="@color/colorAccent" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
