@@ -14,8 +14,6 @@ import java.util.*
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
-//        println("notification "+mNotificationManager))
-//        val notification = intent?.getParcelableExtra("notification") as Notification
         val mNotificationManager: NotificationManager =
             context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
