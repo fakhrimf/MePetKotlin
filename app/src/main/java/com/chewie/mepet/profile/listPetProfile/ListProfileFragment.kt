@@ -37,8 +37,7 @@ class ListProfileFragment : Fragment(), ProfileClickListener {
 
         // TODO: 13/01/2020 Ganti ke recyclerview
         listView.apply {
-            layoutManager =
-                androidx.recyclerview.widget.LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context)
             adapter = petAdapter
         }
     }

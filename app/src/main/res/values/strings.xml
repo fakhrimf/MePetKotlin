@@ -3,36 +3,16 @@
     <string name="title_activity_home">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="profile">Profile</string>
-    <string name="references">References</string>
-    <string name="about_us">About Us</string>
-
     <string name="addreminder">Add Your Reminder</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="visi">Menjadikan aplikasi mepet sebagai aplikasi yang dapat membantu orang-orang untuk memelihara hewannya dengan fitur-fitur yang telah disediakan</string>
-    <string name="misi">1. Peliharaan menjadi lebih terawat\n2. Mencari berbagai informasi agar bisa  menghasilkan aplikasi yang baik\n3. Memperbarui fitur-fitur dalam aplikasi\n4. Membuat layout dengan desain yang  menarik bagi pengguna</string>
-    <string name="weight">Weight</string>
-    <string name="next_reminder">Next \nReminder</string>
-    <string name="reminder">Reminder</string>
-    <string name="food">Food</string>
-    <string name="pagi">Pagi</string>
-    <string name="siang">Siang</string>
-    <string name="check">check</string>
-    <string name="shop">Shop</string>
-    <string name="malam">Malam</string>
     <string name="random_references_here">Random References here</string>
     <string name="time">time</string>
     <string name="edit_pet_data">Edit Pet Data</string>
@@ -44,31 +24,55 @@
     <string name="cat_info">Cat Info</string>
     <string name="cat_display_picture">cat display picture</string>
     <string name="cat_logo">cat logo</string>
-    <string name="company_name">CHEWIE CORPS</string>
-    <string name="team">team</string>
-    <string name="visititle">visi</string>
-    <string name="ceo">Fakhri MF\nCEO</string>
-    <string name="gilang">Gilang S\nBack End</string>
-    <string name="sulthon">Sulthon AN\nFront End</string>
-    <string name="rifky">Rifky ZB\nFront End</string>
-    <string name="misititle">misi</string>
-    <string name="pet_name">Pet Name</string>
-    <string name="age">Age</string>
-    <string name="weight_kg">Weight (Kg)</string>
-    <string name="add">Add</string>
-    <string name="dot">.</string>
     <string name="background_picture">background cat picture</string>
-    <string name="reminders">Reminders</string>
     <string name="reminder_pagi_example">07:00</string>
     <string name="reminder_siang_example">12:00</string>
     <string name="reminder_malam_example">20:00</string>
     <string name="edit_reminder_pagi">edit reminder pagi</string>
     <string name="edit_reminder_siang">edit reminder siang</string>
     <string name="edit_reminder_malam">edit reminder malam</string>
-    <string name="meshop">MeShop</string>
     <string name="tokopedia">Tokopedia</string>
     <string name="bukalapak">Bukalapak</string>
     <string name="shopee">Shopee</string>
+    <string name="berhasil">Berhasil!</string>
+
+    <!--UI-->
+    <string name="profile">Profile</string>
+    <string name="references">References</string>
     <string name="by_chewie">By Chewie.</string>
-    <string name="jamPagiDefault">07:00</string>
+    <string name="add_pet">Add Pet</string>
+    <string name="meshop">MeShop</string>
+    <string name="reminders">Reminders</string>
+    <string name="reminder">Reminder</string>
+    <string name="edit_pet">Edit Pet</string>
+    <string name="pet_name">Pet Name</string>
+    <string name="age">Age</string>
+    <string name="weight_kg">Weight (Kg)</string>
+    <string name="add">Add</string>
+    <string name="dot">.</string>
+    <string name="berat">%1$s Kg</string>
+    <string name="next_reminder">Next \nReminder</string>
+    <string name="food">Food</string>
+    <string name="pagi">Pagi</string>
+    <string name="siang">Siang</string>
+    <string name="malam">Malam</string>
+    <string name="weight">Weight</string>
+    <string name="check">check</string>
+    <string name="shop">Shop</string>
+
+    <!--About Us-->
+    <string name="about_us">About Us</string>
+    <string name="ceo">Fakhri MF\nCEO</string>
+    <string name="gilang">Gilang S\nBack End</string>
+    <string name="sulthon">Sulthon AN\nFront End</string>
+    <string name="rifky">Rifky ZB\nFront End</string>
+    <string name="visi">Menjadikan aplikasi mepet sebagai aplikasi yang dapat membantu orang-orang untuk memelihara hewannya dengan fitur-fitur yang telah disediakan</string>
+    <string name="misi">1. Peliharaan menjadi lebih terawat\n2. Mencari berbagai informasi agar bisa  menghasilkan aplikasi yang baik\n3. Memperbarui fitur-fitur dalam aplikasi\n4. Membuat layout dengan desain yang  menarik bagi pengguna</string>
+    <string name="company_name">CHEWIE CORPS</string>
+    <string name="team">team</string>
+    <string name="visititle">visi</string>
+    <string name="misititle">misi</string>
+
+    <!--Misc-->
+    <string name="tap_to_exit">Tap twice to exit</string>
 </resources>

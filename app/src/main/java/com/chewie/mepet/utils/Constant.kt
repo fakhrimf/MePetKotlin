@@ -32,3 +32,12 @@ const val JAM_MALAM = "jamMalam"
 
 //FIREBASE NAME
 const val REF_NAME = "pkk-mepet"
+//Reminder
+const val VALUE_PAGI = "pagi"
+const val VALUE_SIANG = "siang"
+const val VALUE_MALAM = "malam"
+
+//Shop
+const val LINK_TOKOPEDIA = "https://tokopedia.com"
+const val LINK_BUKALAPAK = "https://bukalapak.com"
+const val LINK_SHOPEE = "https://shopee.com"

@@ -1,35 +1,25 @@
 package com.chewie.mepet.references
 
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import com.google.android.material.tabs.TabLayout
-import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.chewie.mepet.R
-import com.chewie.mepet.home.HomeVM
+import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.fragment_frag_references.*
 
 class ReferencesFragment : Fragment() {
-    private var tabLayout: TabLayout? = null
-    private var viewPager: ViewPager? = null
-    private val vm: ReferencesVM by lazy {
-        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(ReferencesVM::class.java)
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_frag_references, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        tabLayout = view?.findViewById(R.id.tabLayout)
-        viewPager = view?.findViewById(R.id.viewPager)
 
         tabLayout?.let {
             it.addTab(it.newTab().setIcon(R.drawable.pawprint))
