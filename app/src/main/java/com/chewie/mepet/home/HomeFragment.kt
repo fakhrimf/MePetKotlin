@@ -68,14 +68,17 @@ class HomeFragment : Fragment() {
             val db = MepetDatabaseHelper(context)
             val profile = db.getReminder(petId)
 
-            tvTime.text = profile.jamSiang
+            if (profile.jamSiang.isEmpty()) tvTime.text = getString(R.string.add)
+            else tvTime.text = profile.jamSiang
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
-                tvTime.text = profile.jamMalam
+                if (profile.jamMalam.isEmpty()) tvTime.text = getString(R.string.add)
+                else tvTime.text = profile.jamMalam
                 ivFood.setImageResource(R.drawable.ic_night)
                 if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis) {
                     cekMalam.setImageResource(R.drawable.ic_check_black_24dp)
-                    tvTime.text = profile.jamPagi
+                    if (profile.jamPagi.isEmpty()) tvTime.text = getString(R.string.add)
+                    else tvTime.text = profile.jamPagi
                     ivFood.setImageResource(R.drawable.ic_morning)
                 }
             }
@@ -89,7 +92,7 @@ class HomeFragment : Fragment() {
         detailProfile?.let {
             tvNama.text = it.petName
             tvAge.text = it.petAge.toString()
-            tvWeight.text = getString(R.string.berat, it.petAge.toString())
+            tvWeight.text = getString(R.string.berat, it.petWeight.toString())
             tvJenis.text = it.petType
         }
     }
