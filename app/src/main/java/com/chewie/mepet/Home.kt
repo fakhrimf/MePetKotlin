@@ -25,8 +25,6 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         with(window) {
             requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
@@ -41,7 +39,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val fragmentIntent = intent?.extras?.getString("fragment")
         if (fragmentIntent != null) {
             if (fragmentIntent == "reminder") {
-//                Toast.makeText(this, "Opened Reminder", Toast.LENGTH_SHORT).show()
                 val sf = supportFragmentManager.beginTransaction()
                 sf.replace(R.id.fragment, ReminderFragment()).commit()
                 sf.addToBackStack(null)
@@ -77,13 +74,12 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             if (doubleClick) {
                 this.finishAffinity()
             } else {
-                Toast.makeText(this, "Tap twice to exit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.tap_to_exit), Toast.LENGTH_SHORT).show()
             }
             doubleClick = true
             Handler().postDelayed({ doubleClick = false }, 2000)
         } else if (curr is AddPetFragment) {
-            toFragment(HomeFragment(), "Home", R.id.nav_home, 0)
-//            fab1.show()
+            toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home, 0)
         } else {
             super.onBackPressed()
         }
@@ -92,11 +88,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     private fun toFragment(fragment: Fragment, title: String, item: Int, delay: Long) {
         val handler = Handler()
         val sf = supportFragmentManager.beginTransaction()
-        handler.postDelayed({
-            sf.setCustomAnimations(R.anim.enter, R.anim.exit)
-                .replace(R.id.fragment, fragment).commit()
-            sf.addToBackStack(null)
-        }, delay)
+        handler.postDelayed(
+            {
+                sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, fragment).commit()
+                sf.addToBackStack(null)
+            }, delay)
         tvMepet.text = title
         nav_view.setCheckedItem(item)
     }
@@ -105,24 +101,12 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         // Handle navigation view item clicks here.
         val delay: Long = 330
         when (item.itemId) {
-            R.id.nav_profile -> toFragment(
-                ListProfileFragment(),
-                "Profile",
-                R.id.nav_profile,
-                delay
-            )
-            R.id.nav_home -> toFragment(HomeFragment(), "Home", R.id.nav_home, delay)
-            R.id.nav_references -> toFragment(
-                ReferencesFragment(),
-                "References",
-                R.id.nav_references,
-                delay
-            )
-            R.id.nav_meshop -> toFragment(ShopFragment(), "MeShop", R.id.nav_meshop, delay)
-            R.id.nav_reminder -> {
-                toFragment(ReminderFragment(), "Reminders", R.id.nav_reminder, delay)
-            }
-            R.id.nav_aboutus -> toFragment(AboutFragment(), "About Us", R.id.nav_aboutus, delay)
+            R.id.nav_profile -> toFragment(ListProfileFragment(), getString(R.string.profile), R.id.nav_profile, delay)
+            R.id.nav_home -> toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home, delay)
+            R.id.nav_references -> toFragment(ReferencesFragment(), getString(R.string.references), R.id.nav_references, delay)
+            R.id.nav_meshop -> toFragment(ShopFragment(), getString(R.string.meshop), R.id.nav_meshop, delay)
+            R.id.nav_reminder -> toFragment(ReminderFragment(), getString(R.string.reminders), R.id.nav_reminder, delay)
+            R.id.nav_aboutus -> toFragment(AboutFragment(), getString(R.string.about_us), R.id.nav_aboutus, delay)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)

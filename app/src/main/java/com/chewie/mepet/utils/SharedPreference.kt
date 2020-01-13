@@ -4,7 +4,6 @@ import android.content.Context
 
 class SharedPreference(private var context: Context) {
 
-
     fun setId(id: Int) {
         val sharedPreferences = context.getSharedPreferences(ID_PROFILE, 0)
         val edit = sharedPreferences.edit()

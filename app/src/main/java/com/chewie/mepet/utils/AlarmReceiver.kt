@@ -14,8 +14,6 @@ import java.util.*
 class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
-//        println("notification "+mNotificationManager))
-//        val notification = intent?.getParcelableExtra("notification") as Notification
         val mNotificationManager: NotificationManager =
             context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -39,30 +37,22 @@ class AlarmReceiver : BroadcastReceiver() {
 
     private fun getNotificationBuilder(context: Context): Notification {
         val intentReminder = Intent(context, Home::class.java)
-//        val intentShop = Intent(context, Home::class.java)
         intentReminder.putExtra(FRAGMENT_INTENT_KEY, "reminder")
         val pendingIntentReminder =
             PendingIntent.getActivity(context, 0, intentReminder, Intent.FILL_IN_ACTION)
-//        val pendingIntentShop =
-//            PendingIntent.getActivity(context, 0, intentShop, Intent.FILL_IN_ACTION)
-//        val icon = BitmapFactory.decodeResource(context?.resources,R.drawable.ic_food)
         val time = SimpleDateFormat("HH:mm", Locale.US).format(Date())
         val notifyBuilder =
             NotificationCompat.Builder(context, PCID)
                 .setContentTitle("Feed your Pet!")
                 .setContentText("Hey it's $time, time to feed your Pet")
                 .setSmallIcon(R.drawable.ic_kochengoneblack)
-//                .setLargeIcon(icon)
-                .setContentIntent(pendingIntentReminder) //Unused due to error in emptyFrag fragment
-//                .addAction(R.drawable.ic_meshop, "Shop", pendingIntentShop)
+                .setContentIntent(pendingIntentReminder)
                 .setAutoCancel(true)
         return notifyBuilder.build()
     }
 
     fun scheduleNotifPagi(context: Context) {
         val intentReminder = Intent(context, AlarmReceiver::class.java)
-//        intentReminder.putExtra("notification", notif)
-//        intentReminder.putExtra("reminder", "reminder")
         val pendingIntent = PendingIntent.getBroadcast(
             context,
             0,
@@ -96,8 +86,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
     fun scheduleNotifSiang(context: Context) {
         val intentReminder = Intent(context, AlarmReceiver::class.java)
-//        intentReminder.putExtra("notification", notif)
-//        intentReminder.putExtra("reminder", "reminder")
         val pendingIntent = PendingIntent.getBroadcast(
             context,
             1,
@@ -130,8 +118,6 @@ class AlarmReceiver : BroadcastReceiver() {
 
     fun scheduleNotifMalam(context: Context) {
         val intentReminder = Intent(context, AlarmReceiver::class.java)
-//        intentReminder.putExtra("notification", notif)
-//        intentReminder.putExtra("reminder", "reminder")
         val pendingIntent = PendingIntent.getBroadcast(
             context,
             2,

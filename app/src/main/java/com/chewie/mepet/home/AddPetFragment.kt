@@ -15,41 +15,31 @@ import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class AddPetFragment : Fragment() {
-    private lateinit var vm: AddPetVM
+    private val vm by lazy {
+        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(AddPetVM::class.java)
+    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_add_pet, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        vm =
-            ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(AddPetVM::class.java)
         setNpValue()
         editSet(arguments)
         btnAddPet.setOnClickListener {
-            if (tvMepet?.text == getString(R.string.edit_pet_data)) {
-//                UpdatePet()
-                println("")
-            } else {
-                if (checkEmpty()) {
-                    val firstWeight = npBeratBadanUtama?.value.toString()
-                    val secondWeight = npBeratBadanSekunder?.value.toString()
-                    vm.insertData(et_petname?.text.toString(), cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
-                    toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
-                }
+            if (checkEmpty() && tvMepet?.text != getString(R.string.edit_pet_data)) {
+                val firstWeight = npBeratBadanUtama?.value.toString()
+                val secondWeight = npBeratBadanSekunder?.value.toString()
+                vm.insertData(et_petname?.text.toString(), cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
+                toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
             }
         }
     }
 
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val sf = fragmentManager?.beginTransaction()
-        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, fragment)
-            ?.commit()
+        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, fragment)?.commit()
         sf?.addToBackStack(null)
         fab1?.hide()
         activity?.tvMepet?.text = title
@@ -62,18 +52,17 @@ class AddPetFragment : Fragment() {
         if (id != null) {
             val detailProfile = dbManager.getPetById(id)
             detailProfile?.let {
-                et_petname?.setText(detailProfile.petName)
-                et_age?.setText(detailProfile.petAge.toString())
-                cbx_pettype?.setSelection(getCbxIndex(detailProfile.petType))
-                val beratFirst = detailProfile.petWeight.toString().split(".")[0].toInt()
-                val beratKedua = detailProfile.petWeight.toString().split(".")[1].toInt()
+                et_petname?.setText(it.petName)
+                et_age?.setText(it.petAge.toString())
+                cbx_pettype?.setSelection(getCbxIndex(it.petType))
+                val beratFirst = it.petWeight.toString().split(".")[0].toInt()
+                val beratKedua = it.petWeight.toString().split(".")[1].toInt()
                 npBeratBadanUtama?.value = beratFirst
                 npBeratBadanSekunder?.value = beratKedua
             }
             btnAddPet?.text = getString(R.string.update)
         }
     }
-
 
     private fun setNpValue() {
         npBeratBadanUtama.minValue = 1

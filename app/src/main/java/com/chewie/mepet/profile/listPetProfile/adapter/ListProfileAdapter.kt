@@ -11,7 +11,6 @@ import com.chewie.mepet.profile.ProfileClickListener
 class ListProfileAdapter(private val petList: List<PetDetailProfile>, private val listener: ProfileClickListener) :
     RecyclerView.Adapter<ListProfileAdapter.PetViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemPetProfileBinding.inflate(inflater, parent, false)

@@ -25,16 +25,12 @@ class MainActivity : AppCompatActivity() {
         window.navigationBarColor = resources.getColor(R.color.colorPrimary, theme)
 
         mWaitHandler.postDelayed({
-            try {
-                intent = Intent(applicationContext, Home::class.java)
-                startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
-            } catch (ignored: Exception) {
-                ignored.printStackTrace()
-            }
+            intent = Intent(applicationContext, Home::class.java)
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
         }, 2600)  // Delay dalam millisekon
         mWaitHandler.postDelayed({
             finish()
-        },4000)
+        }, 4000)
     }
 
     public override fun onDestroy() {
