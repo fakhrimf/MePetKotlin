@@ -122,7 +122,7 @@ class HomeFragment : Fragment() {
         when (item?.itemId) {
             R.id.editPetBtn -> {
                 val vm =
-                    ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
+                    ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(HomeVM::class.java)
                 toFragment(vm.newAddPetInstance(id!!), "Edit Pet", R.id.nav_home)
             }
         }

@@ -73,12 +73,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
             val age = cursor.getInt(3)
             val weight = cursor.getFloat(4)
 
-            val idPet = id
-            val petName = name
-            val petType = type
-            val petAge = age
-            val petWeight = weight
-            val petProfile = PetDetailProfile(idPet, petName, petType, petAge, petWeight)
+            val petProfile = PetDetailProfile(id,name,type,age,weight)
             petList.add(petProfile)
             //cursor.close()
         }

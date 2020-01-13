@@ -69,7 +69,9 @@ class ReminderFragment : Fragment() {
         txtMalam.text = profile.jamMalam
 
         if (txtPagi.text == "") {
-            txtPagi.text = getString(R.string.addreminder)
+            profile.jamPagi = getString(R.string.jamPagiDefault)
+            db.insertReminder(profile)
+            txtPagi.text = getString(R.string.jamPagiDefault)
         }
         if (txtSiang.text == "") {
             txtSiang.text = getString(R.string.addreminder)

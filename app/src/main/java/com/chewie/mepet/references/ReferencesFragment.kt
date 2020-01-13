@@ -1,6 +1,7 @@
 package com.chewie.mepet.references
 
 
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -9,10 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.chewie.mepet.R
+import com.chewie.mepet.home.HomeVM
 
 class ReferencesFragment : Fragment() {
     private var tabLayout: TabLayout? = null
     private var viewPager: ViewPager? = null
+    private val vm: ReferencesVM by lazy {
+        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(ReferencesVM::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,9 +37,9 @@ class ReferencesFragment : Fragment() {
             it.tabGravity = TabLayout.GRAVITY_FILL
         }
 
-        var adapter: MyAdapter? = null
+        var adapter: ReferencesSectionPagerAdapter? = null
         tabLayout?.let {
-            adapter = MyAdapter(
+            adapter = ReferencesSectionPagerAdapter(
                 childFragmentManager,
                 it.tabCount
             )

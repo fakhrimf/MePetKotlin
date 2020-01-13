@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "450373916187",
+    "firebase_url": "https://pkk-mepet.firebaseio.com",
+    "project_id": "pkk-mepet",
+    "storage_bucket": "pkk-mepet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450373916187:android:b6bf44fde79f843472cabe",
+        "android_client_info": {
+          "package_name": "com.chewie.mepet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450373916187-mrfn1c8l7kgaru74jkka4d0sdj8653lg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chewie.mepet",
+            "certificate_hash": "a44a9c42b8e58e13eb8990b562dda907d224363d"
+          }
+        },
+        {
+          "client_id": "450373916187-1oe870j9lf84l7na6t79oleqms3l9asr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chewie.mepet",
+            "certificate_hash": "ec1edc8a57873d96568a53f978eed0722e238bc6"
+          }
+        },
+        {
+          "client_id": "450373916187-krjagcfpk5bc1d2fmtqgtcv9u0s85jp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Ku0dfLy1GeFq8HtR4lWiyDNyZvzI0Vk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450373916187-krjagcfpk5bc1d2fmtqgtcv9u0s85jp0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

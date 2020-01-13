@@ -29,3 +29,6 @@ const val FK_ID_DETAIL_PROFILE = "idDetailProfile"
 const val JAM_PAGI = "jamPagi"
 const val JAM_SIANG = "jamSiang"
 const val JAM_MALAM = "jamMalam"
+
+//FIREBASE NAME
+const val REF_NAME = "pkk-mepet"

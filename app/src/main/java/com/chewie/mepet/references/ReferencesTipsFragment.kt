@@ -9,7 +9,7 @@ import android.view.ViewGroup
 
 import com.chewie.mepet.R
 
-class TipsFragment : Fragment() {
+class ReferencesTipsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
