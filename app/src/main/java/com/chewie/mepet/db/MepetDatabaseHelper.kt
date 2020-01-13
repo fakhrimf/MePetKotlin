@@ -107,11 +107,11 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
 
         if (cursor.count > 0) {
             cursor.moveToFirst()
-            profile.idProfile = cursor.getInt(cursor.getColumnIndex(ID_PROFILE))
-            profile.idDetailProfile = cursor.getInt(cursor.getColumnIndex(ID_DETAIL_PROFILE))
-            profile.jamPagi = cursor.getString(cursor.getColumnIndex(JAM_PAGI)) ?: "07:00"
-            profile.jamSiang = cursor.getString(cursor.getColumnIndex(JAM_SIANG)) ?: "12:00"
-            profile.jamMalam = cursor.getString(cursor.getColumnIndex(JAM_MALAM)) ?: "20:00"
+            profile.idProfile = cursor.getInt(cursor.getColumnIndexOrThrow(ID_PROFILE))
+            profile.idDetailProfile = cursor.getInt(cursor.getColumnIndexOrThrow(ID_DETAIL_PROFILE))
+            profile.jamPagi = cursor.getString(cursor.getColumnIndexOrThrow(JAM_PAGI)) ?: "07:00"
+            profile.jamSiang = cursor.getString(cursor.getColumnIndexOrThrow(JAM_SIANG)) ?: "12:00"
+            profile.jamMalam = cursor.getString(cursor.getColumnIndexOrThrow(JAM_MALAM)) ?: "20:00"
         }
         //cursor.close()
         return profile

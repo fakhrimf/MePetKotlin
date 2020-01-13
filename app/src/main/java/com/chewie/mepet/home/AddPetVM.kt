@@ -1,7 +1,7 @@
 package com.chewie.mepet.home
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import androidx.lifecycle.AndroidViewModel
 import android.content.Context
 import android.widget.Toast
 import com.chewie.mepet.R

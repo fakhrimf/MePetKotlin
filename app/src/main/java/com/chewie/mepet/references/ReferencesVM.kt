@@ -1,7 +1,7 @@
 package com.chewie.mepet.references
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import androidx.lifecycle.AndroidViewModel
 import android.util.Log
 import com.chewie.mepet.utils.REF_NAME
 import com.google.firebase.database.*

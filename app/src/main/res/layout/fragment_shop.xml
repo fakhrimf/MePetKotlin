@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#f2f2f2"
@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/toped"
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -56,9 +56,9 @@
                 android:contentDescription="@string/tokopedia"
                 android:padding="48dp"
                 android:src="@drawable/toped" />
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/bukalapak"
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -78,9 +78,9 @@
                 android:contentDescription="@string/bukalapak"
                 android:padding="43dp"
                 android:src="@drawable/bp" />
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/shopee"
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -100,6 +100,6 @@
                 android:contentDescription="@string/shopee"
                 android:padding="40dp"
                 android:src="@drawable/sopi" />
-        </android.support.v7.widget.CardView>
-    </android.support.constraint.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

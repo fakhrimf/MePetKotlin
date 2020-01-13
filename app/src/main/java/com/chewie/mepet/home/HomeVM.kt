@@ -1,7 +1,7 @@
 package com.chewie.mepet.home
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import androidx.lifecycle.AndroidViewModel
 import android.os.Bundle
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.utils.ARGUMENTS_ID_KEY

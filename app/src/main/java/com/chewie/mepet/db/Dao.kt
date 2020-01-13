@@ -1,6 +1,6 @@
 package com.chewie.mepet.db
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import com.chewie.mepet.entity.DetailProfileEntity
 import com.chewie.mepet.entity.HomeEntity
 import com.chewie.mepet.entity.ProfileEntity
