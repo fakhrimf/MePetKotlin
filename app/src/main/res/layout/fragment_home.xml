@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="@dimen/_5sdp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
                 android:paddingStart="@dimen/_25sdp"
                 android:paddingEnd="@dimen/_25sdp"
                 android:textColor="#000"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_15ssp"
                 tools:text="12:00" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -203,10 +203,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:padding="10dp">
+            android:padding="@dimen/_8sdp">
 
             <TextView
-                android:layout_width="@dimen/_43sdp"
+                android:layout_width="@dimen/_35sdp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:autoSizeTextType="uniform"
@@ -225,7 +225,7 @@
 
                 <LinearLayout
 
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/_160sdp"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -277,13 +277,13 @@
                     <View
                         android:layout_width="@dimen/_56sdp"
                         android:layout_height="@dimen/_6sdp"
-                        android:layout_marginStart="66dp"
+                        android:layout_marginStart="@dimen/_57sdp"
                         android:background="@drawable/rectanglesiang" />
 
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/_178sdp"
                     android:layout_height="wrap_content"
                     android:layout_columnSpan="3">
 
@@ -334,10 +334,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:elevation="12dp"
-        app:cardCornerRadius="10dp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:elevation="@dimen/_9sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
         app:cardUseCompatPadding="true"
         app:layout_constraintTop_toBottomOf="@id/cardFood">
 
@@ -346,7 +346,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:padding="10dp">
+            android:padding="@dimen/_8sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
