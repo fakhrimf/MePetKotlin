@@ -70,7 +70,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         val curr = supportFragmentManager.findFragmentById(R.id.fragment)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else if (curr is HomeFragment || curr is ShopFragment || curr is ListProfileFragment || curr is AboutFragment || curr is ReminderFragment) {
+        } else if (curr is HomeFragment || curr is ShopFragment || curr is ListProfileFragment || curr is AboutFragment || curr is ReminderFragment || curr is ReferencesFragment) {
             if (doubleClick) {
                 this.finishAffinity()
             } else {

@@ -41,3 +41,8 @@ const val VALUE_MALAM = "malam"
 const val LINK_TOKOPEDIA = "https://tokopedia.com"
 const val LINK_BUKALAPAK = "https://bukalapak.com"
 const val LINK_SHOPEE = "https://shopee.com"
+
+//References Adapter
+enum class Adapter {
+    REFERENCES_PET,REFERENCES_TIPS
+}
