@@ -5,233 +5,232 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintTop_toBottomOf="@+id/cardView">
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#f2f2f2"
-    tools:context=".reminder.ReminderFragment">
-    <!--    TODO : tolong bind ke propict dari kochenknya yaw :3-->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraint1"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_75sdp"
-        android:background="@drawable/banner"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:elevation="@dimen/_100sdp"
-        app:cardBackgroundColor="@color/colorAccent"
-        app:cardCornerRadius="@dimen/_85sdp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="#f2f2f2"
+        tools:context=".reminder.ReminderFragment">
+        <!--    TODO : tolong bind ke propict dari kochenknya yaw :3-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_75sdp"
+            android:background="@drawable/banner"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivProfile"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_85sdp"
-            android:layout_margin="@dimen/_7sdp"
-            android:src="@drawable/smudge"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:elevation="@dimen/_100sdp"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardCornerRadius="@dimen/_85sdp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-    </android.support.v7.widget.CardView>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="@dimen/_85sdp"
+                android:layout_margin="@dimen/_7sdp"
+                android:src="@drawable/smudge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.cardview.widget.CardView>
 
 
-    <TextView
-        android:id="@+id/tvPagi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:fontFamily="@font/quicksand"
-        android:paddingBottom="5dp"
-        android:text="@string/pagi"
-        android:textSize="@dimen/_13ssp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        <TextView
+            android:id="@+id/tvPagi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:fontFamily="@font/quicksand"
+            android:paddingBottom="5dp"
+            android:text="@string/pagi"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <ImageView
-        android:id="@+id/ivPagi"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:contentDescription="@string/pagi"
-        android:src="@drawable/ic_morning"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPagi" />
+        <ImageView
+            android:id="@+id/ivPagi"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:contentDescription="@string/pagi"
+            android:src="@drawable/ic_morning"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPagi" />
 
-    <TextView
-        android:id="@+id/txtPagi"
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginTop="@dimen/_22sdp"
-        android:autoSizeTextType="uniform"
-        android:background="?android:selectableItemBackground"
-        android:fontFamily="@font/quicksand"
-        android:gravity="center"
-        android:padding="@dimen/_10sdp"
-        android:text="@string/reminder_pagi_example"
-        android:textColor="#000"
-        android:textSize="@dimen/_43ssp"
-        app:layout_constraintStart_toEndOf="@+id/ivPagi"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        <TextView
+            android:id="@+id/txtPagi"
+            android:layout_width="@dimen/_135sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:autoSizeTextType="uniform"
+            android:background="?android:selectableItemBackground"
+            android:fontFamily="@font/quicksand"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/reminder_pagi_example"
+            android:textColor="#000"
+            android:textSize="@dimen/_43ssp"
+            app:layout_constraintStart_toEndOf="@+id/ivPagi"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <ImageView
-        android:id="@+id/ivEditPagi"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginTop="@dimen/_22sdp"
-        android:background="?android:selectableItemBackground"
-        android:contentDescription="@string/edit_reminder_pagi"
-        android:cropToPadding="true"
-        android:padding="@dimen/_30sdp"
-        android:src="@drawable/ic_edit_black_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtPagi"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        <ImageView
+            android:id="@+id/ivEditPagi"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:background="?android:selectableItemBackground"
+            android:contentDescription="@string/edit_reminder_pagi"
+            android:cropToPadding="true"
+            android:padding="@dimen/_30sdp"
+            android:src="@drawable/ic_edit_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtPagi"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/txtSiang"
-        app:layout_constraintTop_toBottomOf="@+id/txtPagi">
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height=".1dp"
-            android:alpha="0.4"
-            android:background="#000" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/txtSiang"
+            app:layout_constraintTop_toBottomOf="@+id/txtPagi">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:fontFamily="@font/quicksand"
-        android:paddingBottom="@dimen/_3sdp"
-        android:text="@string/siang"
-        android:textSize="@dimen/_13ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ivSiang"
-        app:layout_constraintStart_toStartOf="parent" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".1dp"
+                android:alpha="0.4"
+                android:background="#000" />
+        </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivSiang"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_57sdp"
-        android:contentDescription="@string/siang"
-        android:padding="@dimen/_8sdp"
-        android:src="@drawable/ic_sun"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPagi" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:fontFamily="@font/quicksand"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/siang"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ivSiang"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/txtSiang"
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginTop="@dimen/_57sdp"
-        android:autoSizeTextType="uniform"
-        android:background="?android:selectableItemBackground"
-        android:fontFamily="@font/quicksand"
-        android:gravity="center"
-        android:padding="@dimen/_10sdp"
-        android:text="@string/reminder_siang_example"
-        android:textColor="#000"
-        android:textSize="@dimen/_43ssp"
-        app:layout_constraintStart_toEndOf="@+id/ivSiang"
-        app:layout_constraintTop_toBottomOf="@+id/txtPagi" />
+        <ImageView
+            android:id="@+id/ivSiang"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_57sdp"
+            android:contentDescription="@string/siang"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_sun"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivPagi" />
 
-    <ImageView
-        android:id="@+id/ivEditSiang"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginTop="@dimen/_57sdp"
-        android:background="?android:selectableItemBackground"
-        android:contentDescription="@string/edit_reminder_siang"
-        android:cropToPadding="true"
-        android:padding="@dimen/_30sdp"
-        android:src="@drawable/ic_edit_black_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtSiang"
-        app:layout_constraintTop_toBottomOf="@+id/ivEditPagi" />
+        <TextView
+            android:id="@+id/txtSiang"
+            android:layout_width="@dimen/_135sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_57sdp"
+            android:autoSizeTextType="uniform"
+            android:background="?android:selectableItemBackground"
+            android:fontFamily="@font/quicksand"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/reminder_siang_example"
+            android:textColor="#000"
+            android:textSize="@dimen/_43ssp"
+            app:layout_constraintStart_toEndOf="@+id/ivSiang"
+            app:layout_constraintTop_toBottomOf="@+id/txtPagi" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/txtMalam"
-        app:layout_constraintTop_toBottomOf="@+id/txtSiang">
+        <ImageView
+            android:id="@+id/ivEditSiang"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_57sdp"
+            android:background="?android:selectableItemBackground"
+            android:contentDescription="@string/edit_reminder_siang"
+            android:cropToPadding="true"
+            android:padding="@dimen/_30sdp"
+            android:src="@drawable/ic_edit_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtSiang"
+            app:layout_constraintTop_toBottomOf="@+id/ivEditPagi" />
 
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height=".1dp"
-            android:alpha="0.4"
-            android:background="#000" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/txtMalam"
+            app:layout_constraintTop_toBottomOf="@+id/txtSiang">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".1dp"
+                android:alpha="0.4"
+                android:background="#000" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:fontFamily="@font/quicksand"
-        android:paddingBottom="@dimen/_3sdp"
-        android:text="@string/malam"
-        android:textSize="@dimen/_13ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ivMalam"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:fontFamily="@font/quicksand"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/malam"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/ivMalam"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivMalam"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_57sdp"
-        android:contentDescription="@string/malam"
-        android:src="@drawable/ic_night"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivSiang" />
+        <ImageView
+            android:id="@+id/ivMalam"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_57sdp"
+            android:contentDescription="@string/malam"
+            android:src="@drawable/ic_night"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivSiang" />
 
-    <TextView
-        android:id="@+id/txtMalam"
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginTop="@dimen/_57sdp"
-        android:autoSizeTextType="uniform"
-        android:background="?android:selectableItemBackground"
-        android:fontFamily="@font/quicksand"
-        android:gravity="center"
-        android:padding="@dimen/_10sdp"
-        android:text="@string/reminder_malam_example"
-        android:textColor="#000"
-        android:textSize="@dimen/_43sdp"
-        app:layout_constraintStart_toEndOf="@+id/ivMalam"
-        app:layout_constraintTop_toBottomOf="@+id/txtSiang" />
+        <TextView
+            android:id="@+id/txtMalam"
+            android:layout_width="@dimen/_135sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_57sdp"
+            android:autoSizeTextType="uniform"
+            android:background="?android:selectableItemBackground"
+            android:fontFamily="@font/quicksand"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/reminder_malam_example"
+            android:textColor="#000"
+            android:textSize="@dimen/_43sdp"
+            app:layout_constraintStart_toEndOf="@+id/ivMalam"
+            app:layout_constraintTop_toBottomOf="@+id/txtSiang" />
 
-    <ImageView
-        android:id="@+id/ivEditMalam"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_marginTop="@dimen/_57sdp"
-        android:background="?android:selectableItemBackground"
-        android:contentDescription="@string/edit_reminder_malam"
-        android:cropToPadding="true"
-        android:padding="@dimen/_30sdp"
-        android:src="@drawable/ic_edit_black_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtMalam"
-        app:layout_constraintTop_toBottomOf="@+id/ivEditSiang" />
+        <ImageView
+            android:id="@+id/ivEditMalam"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_57sdp"
+            android:background="?android:selectableItemBackground"
+            android:contentDescription="@string/edit_reminder_malam"
+            android:cropToPadding="true"
+            android:padding="@dimen/_30sdp"
+            android:src="@drawable/ic_edit_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtMalam"
+            app:layout_constraintTop_toBottomOf="@+id/ivEditSiang" />
 
-
-</android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
