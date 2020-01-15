@@ -3,6 +3,7 @@ package com.chewie.mepet.home
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
@@ -95,13 +96,17 @@ class HomeFragment : Fragment() {
             tvWeight.text = getString(R.string.berat, it.petWeight.toString())
             tvJenis.text = it.petType
         }
+
+        if (tvNama.text.isEmpty() && tvJenis.text.isEmpty()) {
+            toFragment(AddPetFragment(), getString(R.string.add_pet), R.id.nav_home)
+            Toast.makeText(requireContext(), getString(R.string.add_pet_details), Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
         val sf = fragmentManager?.beginTransaction()
-        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
-                ?.replace(R.id.fragment, fragment)?.commit()
+        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, fragment)?.commit()
         sf?.addToBackStack(null)
         handler.postDelayed({
             activity?.invalidateOptionsMenu()
