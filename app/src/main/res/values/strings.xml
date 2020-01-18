@@ -76,4 +76,6 @@
     <!--Misc-->
     <string name="tap_to_exit">Tap twice to exit</string>
     <string name="add_pet_details">Add your pet details</string>
+    <string name="cara_merawat_kucing">Cara merawat kucing</string>
+    <string name="teks_rawat">Ya dirawat lah jangan didiemin masaaa :(</string>
 </resources>

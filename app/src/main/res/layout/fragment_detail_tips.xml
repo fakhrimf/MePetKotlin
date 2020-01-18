@@ -26,7 +26,7 @@
         android:layout_marginTop="@dimen/_178sdp"
         android:layout_marginLeft="@dimen/_9sdp"
         android:fontFamily="@font/baloo_thambi"
-        android:text="Tips"
+        android:text="@string/cara_merawat_kucing"
         android:textColor="#fff"
         android:textSize="@dimen/_19ssp"
         android:textStyle="bold"
@@ -49,8 +49,8 @@
             android:id="@+id/image_pets"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/smudge"
-            android:scaleType="centerCrop"/>
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_menu_manage"/>
 
     </androidx.cardview.widget.CardView>
 
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_thambi"
-        android:text="Birtisih short hair adalah kucing yang dapat melakukan "
+        android:text="@string/teks_rawat"
         android:textSize="@dimen/_13ssp"
         android:layout_margin="@dimen/_19sdp"
         android:layout_marginTop="@dimen/_90sdp"
