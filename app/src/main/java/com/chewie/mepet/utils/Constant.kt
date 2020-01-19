@@ -31,7 +31,9 @@ const val JAM_SIANG = "jamSiang"
 const val JAM_MALAM = "jamMalam"
 
 //FIREBASE NAME
-const val REF_NAME = "pkk-mepet"
+const val REF_NAME_TIPS = "tips"
+const val REF_NAME_PET = "pet"
+
 //Reminder
 const val VALUE_PAGI = "pagi"
 const val VALUE_SIANG = "siang"

@@ -25,7 +25,7 @@ class ReferencesPetFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        vm.getAllData()
+        vm.getAllDataPet()
     }
 
 }

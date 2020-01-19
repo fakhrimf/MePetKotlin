@@ -3,47 +3,35 @@ package com.chewie.mepet.references
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import android.util.Log
-import com.chewie.mepet.utils.REF_NAME
+import com.chewie.mepet.model.PetReferencesModel
 import com.google.firebase.database.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ReferencesVM(application: Application) : AndroidViewModel(application) {
-    fun getAllData(){
-        val database = FirebaseDatabase.getInstance()
-        val ref = database.getReference(REF_NAME)
+    fun getAllDataPet() {
+        val database = FirebaseDatabase.getInstance().reference
 
-        ref.addChildEventListener(object : ChildEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-
-            }
-
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-        })
-
-        ref.addValueEventListener(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Log.d("FIREBASE_UTILS","onCancelled")
-            }
-
+        database.child("pet").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                Log.d("FIREBASE_UTILS","onDataChanged")
+                val dataPetReferences: ArrayList<PetReferencesModel> = ArrayList()
+
+                if (dataPetReferences.size > 0)
+                    dataPetReferences.clear()
+
+                for (i in p0.children) {
+                    val petReferencesModel: PetReferencesModel? = i.getValue(PetReferencesModel::class.java)
+                    Log.d("ADUH_SORRY","${i.key}")
+                    petReferencesModel?.let {
+                        it.idPetReferences = i.key
+                        dataPetReferences.add(it) }
+                }
 
             }
 
+            override fun onCancelled(p0: DatabaseError) {
+                throw Throwable("$p0")
+            }
         })
     }
 }

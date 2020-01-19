@@ -5,9 +5,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PetDetailProfile (
-    var idPet:Int?,
-    var petName: String,
-    var petType:String,
-    var petAge:Int,
-    var petWeight: Float
+    val idPet:Int?,
+    val petName: String,
+    val petType:String,
+    val petAge:Int,
+    val petWeight: Float
 ):Parcelable
