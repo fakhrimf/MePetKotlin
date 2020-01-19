@@ -27,7 +27,6 @@ class ListProfileFragment : Fragment(), ProfileClickListener {
         return inflater.inflate(R.layout.fragment_list_profile, container, false)
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val db = MepetDatabaseHelper(context)
@@ -59,9 +58,7 @@ class ListProfileFragment : Fragment(), ProfileClickListener {
         val sharPref = SharedPreference(requireContext())
         val db = MepetDatabaseHelper(context)
         val profile = db.getReminder(pet.idPet)
-
         val alarmReceiver = AlarmReceiver()
-
         sharPref.setId(pet.idPet ?: 0)
 
         if (profile.jamPagi.contains(":")) {

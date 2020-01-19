@@ -3,6 +3,7 @@ package com.chewie.mepet.home
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
@@ -68,14 +69,17 @@ class HomeFragment : Fragment() {
             val db = MepetDatabaseHelper(context)
             val profile = db.getReminder(petId)
 
-            tvTime.text = profile.jamSiang
+            if (profile.jamSiang.isEmpty()) tvTime.text = getString(R.string.add)
+            else tvTime.text = profile.jamSiang
             if (Calendar.getInstance().timeInMillis >= calSiang.timeInMillis) {
                 cekSiang.setImageResource(R.drawable.ic_check_black_24dp)
-                tvTime.text = profile.jamMalam
+                if (profile.jamMalam.isEmpty()) tvTime.text = getString(R.string.add)
+                else tvTime.text = profile.jamMalam
                 ivFood.setImageResource(R.drawable.ic_night)
                 if (Calendar.getInstance().timeInMillis >= calMalam.timeInMillis) {
                     cekMalam.setImageResource(R.drawable.ic_check_black_24dp)
-                    tvTime.text = profile.jamPagi
+                    if (profile.jamPagi.isEmpty()) tvTime.text = getString(R.string.add)
+                    else tvTime.text = profile.jamPagi
                     ivFood.setImageResource(R.drawable.ic_morning)
                 }
             }
@@ -89,16 +93,20 @@ class HomeFragment : Fragment() {
         detailProfile?.let {
             tvNama.text = it.petName
             tvAge.text = it.petAge.toString()
-            tvWeight.text = getString(R.string.berat, it.petAge.toString())
+            tvWeight.text = getString(R.string.berat, it.petWeight.toString())
             tvJenis.text = it.petType
+        }
+
+        if (tvNama.text.isEmpty() && tvJenis.text.isEmpty()) {
+            toFragment(AddPetFragment(), getString(R.string.add_pet), R.id.nav_home)
+            Toast.makeText(requireContext(), getString(R.string.add_pet_details), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
         val sf = fragmentManager?.beginTransaction()
-        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
-                ?.replace(R.id.fragment, fragment)?.commit()
+        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, fragment)?.commit()
         sf?.addToBackStack(null)
         handler.postDelayed({
             activity?.invalidateOptionsMenu()

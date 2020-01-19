@@ -7,10 +7,9 @@
     tools:context=".references.ReferencesTipsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listViewTips"
+        android:id="@+id/rvTipsReferences"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_pet_tips"/>
 
 </FrameLayout>
