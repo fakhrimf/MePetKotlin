@@ -39,10 +39,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/toped"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_132sdp"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_height="@dimen/_128sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:elevation="@dimen/_11sdp"
-            app:cardCornerRadius="@dimen/_2sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,17 +54,17 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/tokopedia"
-                android:padding="@dimen/_29sdp"
+                android:padding="@dimen/_25sdp"
                 android:src="@drawable/toped" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/bukalapak"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_132sdp"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_height="@dimen/_128sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:elevation="@dimen/_11sdp"
-            app:cardCornerRadius="@dimen/_2sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,17 +76,17 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/bukalapak"
-                android:padding="@dimen/_29sdp"
+                android:padding="@dimen/_25sdp"
                 android:src="@drawable/bp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/shopee"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_132sdp"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_height="@dimen/_128sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:elevation="@dimen/_11sdp"
-            app:cardCornerRadius="@dimen/_2sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/shopee"
-                android:padding="@dimen/_29sdp"
+                android:padding="@dimen/_25sdp"
                 android:src="@drawable/sopi" />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
