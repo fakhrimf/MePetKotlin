@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,9 +14,7 @@
             type="com.chewie.mepet.references.ReferencesPetUserClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_125sdp">
 
@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_20sdp"
             app:cardBackgroundColor="#BF353535"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="@dimen/_3sdp"
             app:cardElevation="0dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
-                android:padding="20dp">
+                android:padding="@dimen/_3sdp">
 
                 <TextView
                     android:id="@+id/title_pets"
@@ -56,7 +56,7 @@
                     android:text="@{model.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="#fff"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/_16ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"

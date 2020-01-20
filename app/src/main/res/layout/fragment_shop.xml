@@ -13,9 +13,9 @@
         tools:context=".shop.ShopFragment">
 
         <ImageView
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="@dimen/_29sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:contentDescription="@string/menu_home"
             android:src="@drawable/ic_home"
             app:layout_constraintBottom_toBottomOf="@+id/hometext"
@@ -30,7 +30,7 @@
             android:fontFamily="@font/baloo_thambi"
             android:text="@string/meshop"
             android:textColor="#000"
-            android:textSize="40sp"
+            android:textSize="@dimen/_29ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,10 +39,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/toped"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:elevation="20dp"
-            app:cardCornerRadius="7dp"
+            android:layout_height="@dimen/_128sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:elevation="@dimen/_11sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,17 +54,17 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/tokopedia"
-                android:padding="48dp"
+                android:padding="@dimen/_25sdp"
                 android:src="@drawable/toped" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/bukalapak"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:elevation="20dp"
-            app:cardCornerRadius="7dp"
+            android:layout_height="@dimen/_128sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:elevation="@dimen/_11sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,17 +76,17 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/bukalapak"
-                android:padding="43dp"
+                android:padding="@dimen/_25sdp"
                 android:src="@drawable/bp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/shopee"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_margin="10dp"
-            android:elevation="20dp"
-            app:cardCornerRadius="7dp"
+            android:layout_height="@dimen/_128sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:elevation="@dimen/_11sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
                 android:layout_height="match_parent"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/shopee"
-                android:padding="40dp"
+                android:padding="@dimen/_25sdp"
                 android:src="@drawable/sopi" />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
