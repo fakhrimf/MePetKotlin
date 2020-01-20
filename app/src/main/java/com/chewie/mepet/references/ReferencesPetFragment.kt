@@ -23,12 +23,6 @@ class ReferencesPetFragment : Fragment(), ReferencesPetUserClickListener {
         ).get(ReferencesVM::class.java)
     }
 
-    private val adapter by lazy {
-        ReferencesPetAdapter(vm.getAllDataPet(), this)
-    }
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,27 +34,26 @@ class ReferencesPetFragment : Fragment(), ReferencesPetUserClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         setRecycler()
     }
 
     private fun setRecycler() {
-        vm.getLiveDataPet().observe(viewLifecycleOwner,Observer<ArrayList<ReferencesPetModel>> { t ->
-            Log.d("SIZE","${t.size}")
-            if (t!=null){
+        vm.getAllDataPet()
+        rvPetReferences.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            vm.petLiveData.value?.let {
+                adapter = ReferencesPetAdapter(it, this@ReferencesPetFragment)
+            }
+        }
+        vm.petLiveData.observe(viewLifecycleOwner, Observer<ArrayList<ReferencesPetModel>> {
                 rvPetReferences.apply {
                     layoutManager = LinearLayoutManager(requireContext())
-                    adapter = ReferencesPetAdapter(t,this@ReferencesPetFragment)
-                }
+                    adapter = ReferencesPetAdapter(it, this@ReferencesPetFragment)
             }
         })
 
     }
-
-    private fun observer(){
-
-    }
-
-
 
     override fun onClick(model: ReferencesPetModel) {
         Toast.makeText(requireContext(), model.title, Toast.LENGTH_LONG).show()

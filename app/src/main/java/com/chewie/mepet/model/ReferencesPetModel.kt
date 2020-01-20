@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 data class ReferencesPetModel(
     var id:String?="",
     val image:String ="",
+    val backdrop:String="",
     val title:String="",
     val jenis:String="",
     val content:String=""
