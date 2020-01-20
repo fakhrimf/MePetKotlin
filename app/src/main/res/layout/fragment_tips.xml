@@ -6,10 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".references.ReferencesTipsFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTipsReferences"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/tipsSwipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_pet_tips"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTipsReferences"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_pet_tips"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>

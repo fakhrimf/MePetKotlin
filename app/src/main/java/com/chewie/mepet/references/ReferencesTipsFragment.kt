@@ -25,11 +25,14 @@ class ReferencesTipsFragment : Fragment(), ReferencesTipsUserClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         setRecycler()
+        tipsSwipeRefresh.setOnRefreshListener {
+            setRecycler()
+        }
     }
 
     private fun setRecycler() {
+        tipsSwipeRefresh.isRefreshing = true
         vm.getAllDataTips()
         rvTipsReferences.apply {
             vm.tipsLiveData.value?.let {
@@ -42,6 +45,7 @@ class ReferencesTipsFragment : Fragment(), ReferencesTipsUserClickListener {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = ReferencesTipsAdapter(it,this@ReferencesTipsFragment)
             }
+            tipsSwipeRefresh.isRefreshing = false
         })
     }
 

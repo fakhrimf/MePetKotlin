@@ -34,11 +34,14 @@ class ReferencesPetFragment : Fragment(), ReferencesPetUserClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         setRecycler()
+        petSwipeRefresh.setOnRefreshListener {
+            setRecycler()
+        }
     }
 
     private fun setRecycler() {
+        petSwipeRefresh.isRefreshing = true
         vm.getAllDataPet()
         rvPetReferences.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -51,6 +54,7 @@ class ReferencesPetFragment : Fragment(), ReferencesPetUserClickListener {
                     layoutManager = LinearLayoutManager(requireContext())
                     adapter = ReferencesPetAdapter(it, this@ReferencesPetFragment)
             }
+            petSwipeRefresh.isRefreshing = false
         })
 
     }
