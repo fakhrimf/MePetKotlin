@@ -35,15 +35,16 @@
             android:id="@+id/title_tips"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:ellipsize="end"
             android:text="@{model.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_14ssp"
+            android:maxWidth="@dimen/_180sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon_tips"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Cara Merawat Kucing" />
+            tools:text="Cara Merawat Kucing Apolo di dalam rumah" />
 
         <ImageView
             android:id="@+id/icon_next_tips"
@@ -67,6 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?android:selectableItemBackground"
-            android:onClick="@{()->listener.onClick(model)}" />
+            android:onClick="@{()->listener.onClick(model)}"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
