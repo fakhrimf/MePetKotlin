@@ -1,8 +1,8 @@
-package com.chewie.mepet.references
+package com.chewie.mepet.references.pet_references
 
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chewie.mepet.R
 import com.chewie.mepet.model.ReferencesPetModel
+import com.chewie.mepet.references.ReferencesPetAdapter
+import com.chewie.mepet.references.ReferencesVM
+import com.chewie.mepet.utils.PET_INTENT_KEY
 import kotlinx.android.synthetic.main.fragment_pet.*
 
-class ReferencesPetFragment : Fragment(), ReferencesPetUserClickListener {
+class ReferencesPetFragment : Fragment(),
+    ReferencesPetUserClickListener {
     private val vm: ReferencesVM by lazy {
         ViewModelProvider(
             this,
@@ -46,13 +50,17 @@ class ReferencesPetFragment : Fragment(), ReferencesPetUserClickListener {
         rvPetReferences.apply {
             layoutManager = LinearLayoutManager(requireContext())
             vm.petLiveData.value?.let {
-                adapter = ReferencesPetAdapter(it, this@ReferencesPetFragment)
+                adapter =
+                    ReferencesPetAdapter(it, this@ReferencesPetFragment)
             }
         }
         vm.petLiveData.observe(viewLifecycleOwner, Observer<ArrayList<ReferencesPetModel>> {
                 rvPetReferences.apply {
                     layoutManager = LinearLayoutManager(requireContext())
-                    adapter = ReferencesPetAdapter(it, this@ReferencesPetFragment)
+                    adapter = ReferencesPetAdapter(
+                        it,
+                        this@ReferencesPetFragment
+                    )
             }
             petSwipeRefresh.isRefreshing = false
         })
@@ -60,7 +68,9 @@ class ReferencesPetFragment : Fragment(), ReferencesPetUserClickListener {
     }
 
     override fun onClick(model: ReferencesPetModel) {
-        Toast.makeText(requireContext(), model.title, Toast.LENGTH_LONG).show()
+        val intent = Intent(requireContext(),ReferencesPetDetailActivity::class.java)
+        intent.putExtra(PET_INTENT_KEY,model)
+        startActivity(intent)
     }
 
 

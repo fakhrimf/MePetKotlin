@@ -2,8 +2,12 @@ package com.chewie.mepet.utils
 
 import android.app.*
 import android.content.BroadcastReceiver
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.media.AudioAttributes
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.chewie.mepet.Home
@@ -23,6 +27,13 @@ class AlarmReceiver : BroadcastReceiver() {
                 NotificationManager.IMPORTANCE_HIGH
             )
             nChannel.enableLights(true)
+
+            val AudioAttributes = AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT)
+                .build();
+
+            nChannel.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION),AudioAttributes)
             nChannel.lightColor = context.getColor(R.color.colorPrimary)
             nChannel.enableVibration(true)
             val long = longArrayOf(0, 10, 5, 15)
@@ -48,6 +59,9 @@ class AlarmReceiver : BroadcastReceiver() {
                 .setSmallIcon(R.drawable.ic_kochengoneblack)
                 .setContentIntent(pendingIntentReminder)
                 .setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
         return notifyBuilder.build()
     }
 

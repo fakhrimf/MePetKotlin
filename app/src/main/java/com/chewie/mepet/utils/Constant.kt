@@ -18,6 +18,9 @@ const val DB_VER = 1
 const val DETAIL_PROFILE_TABLE = "detail_profile"
 const val PROFILE_TABLE = "profile"
 
+const val PET_INTENT_KEY = "pet_data"
+const val TIPS_INTENT_KEY = "tips_data"
+
 //Tabel Detail Profile
 const val ID_DETAIL_PROFILE = "idDetailProfile"
 const val PET_NAME = "nama_hewan"

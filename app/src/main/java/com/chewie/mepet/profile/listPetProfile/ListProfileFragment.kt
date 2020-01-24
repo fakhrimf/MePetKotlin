@@ -34,7 +34,6 @@ class ListProfileFragment : Fragment(), ProfileClickListener {
 
         val petAdapter = ListProfileAdapter(petList, this)
 
-        // TODO: 13/01/2020 Ganti ke recyclerview
         listView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = petAdapter

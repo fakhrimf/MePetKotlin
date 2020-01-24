@@ -11,12 +11,13 @@
 
         <variable
             name="listener"
-            type="com.chewie.mepet.references.ReferencesPetUserClickListener" />
+            type="com.chewie.mepet.references.pet_references.ReferencesPetUserClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_125sdp">
+        android:layout_height="@dimen/_125sdp"
+        tools:context=".references.pet_references.ReferencesPetDetailActivity">
 
         <ImageView
             android:layout_width="match_parent"

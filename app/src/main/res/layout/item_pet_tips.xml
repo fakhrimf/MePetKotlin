@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.chewie.mepet.references.ReferencesTipsUserClickListener" />
+            type="com.chewie.mepet.references.tips_references.ReferencesTipsUserClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
