@@ -1,4 +1,4 @@
-package com.chewie.mepet.references
+package com.chewie.mepet.references.pet_references
 
 import com.chewie.mepet.model.ReferencesPetModel
 

@@ -1,4 +1,4 @@
-package com.chewie.mepet.references
+package com.chewie.mepet.references.tips_references
 
 import com.chewie.mepet.model.ReferencesTipsModel
 

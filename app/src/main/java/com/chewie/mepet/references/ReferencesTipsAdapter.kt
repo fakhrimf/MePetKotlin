@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chewie.mepet.BR
 import com.chewie.mepet.databinding.ItemPetTipsBinding
 import com.chewie.mepet.model.ReferencesTipsModel
+import com.chewie.mepet.references.tips_references.ReferencesTipsUserClickListener
 
 class ReferencesTipsAdapter(private val referencesTipsList: ArrayList<ReferencesTipsModel>, private val listener: ReferencesTipsUserClickListener) : RecyclerView.Adapter<ReferencesTipsAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

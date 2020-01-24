@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.chewie.mepet.references.ReferencesTipsUserClickListener" />
+            type="com.chewie.mepet.references.tips_references.ReferencesTipsUserClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon_tips"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Cara Merawat Kucing Apolo di dalam rumah" />
+            tools:text="Cara Merawat Kucing Apolo di rumah dengan benar" />
 
         <ImageView
             android:id="@+id/icon_next_tips"
@@ -68,8 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?android:selectableItemBackground"
-            android:onClick="@{()->listener.onClick(model)}"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:onClick="@{()->listener.onClick(model)}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
