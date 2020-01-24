@@ -1,82 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="model"
+            type="com.chewie.mepet.model.ReferencesPetModel" />
+    </data>
 
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_226sdp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/smudge"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:layout_height="match_parent"
+        tools:context = ".references.petreferences.ReferencesPetDetailFragment">
 
-
-    <TextView
-        android:id="@+id/title_cat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_178sdp"
-        android:layout_marginLeft="@dimen/_9sdp"
-        android:fontFamily="@font/baloo_thambi"
-        tools:text="British Short Hair"
-        android:textColor="#fff"
-        android:textSize="@dimen/_19ssp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/title_cat_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_200sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:fontFamily="@font/baloo_thambi"
-        tools:text="Kocheng"
-        android:textColor="#fff"
-        android:textSize="@dimen/_14ssp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/image_pet"
-        android:layout_width="@dimen/_99sdp"
-        android:layout_height="@dimen/_139sdp"
-        app:cardCornerRadius="@dimen/_11sdp"
-        android:layout_marginTop="@dimen/_129sdp"
-        android:layout_marginRight="@dimen/_14sdp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image_pets"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_226sdp"
+            android:scaleType="centerCrop"
             android:src="@drawable/smudge"
-            android:scaleType="centerCrop"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/detail_pet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/baloo_thambi"
-        tools:text="Birtisih short hair adalah kucing yang dapat melakukan "
-        android:textSize="@dimen/_13ssp"
-        android:layout_margin="@dimen/_19sdp"
-        android:layout_marginTop="@dimen/_90sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_pet"/>
+        <TextView
+            android:id="@+id/title_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_9sdp"
+            android:layout_marginTop="@dimen/_178sdp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="@{model.title}"
+            tools:text="British Shorthair"
+            android:textColor="#fff"
+            android:textSize="@dimen/_19ssp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/title_cat_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_200sdp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="Kocheng"
+            android:textColor="#fff"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_pet"
+            android:layout_width="@dimen/_99sdp"
+            android:layout_height="@dimen/_139sdp"
+            android:layout_marginTop="@dimen/_129sdp"
+            android:layout_marginRight="@dimen/_14sdp"
+            app:cardCornerRadius="@dimen/_11sdp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_pets"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/smudge" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/detail_pet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:fontFamily="@font/baloo_thambi"
+            android:text="@{model.content}"
+            tools:text="Birtisih short hair adalah kucing yang dapat melakukan "
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_pet" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

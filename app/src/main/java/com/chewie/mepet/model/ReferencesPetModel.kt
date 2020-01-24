@@ -5,8 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ReferencesPetModel(
-    val id:Int,
-    val image:String,
-    val title:String,
-    val content:String
+    var id:String?="",
+    val image:String ="",
+    val backdrop:String="",
+    val title:String="",
+    val jenis:String="",
+    val content:String=""
 ) : Parcelable

@@ -3,65 +3,76 @@ package com.chewie.mepet.references
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.chewie.mepet.model.ReferencesPetModel
 import com.chewie.mepet.model.ReferencesTipsModel
-import com.chewie.mepet.utils.REF_NAME
+import com.chewie.mepet.utils.REF_NAME_TIPS
 import com.google.firebase.database.*
+import kotlin.collections.ArrayList
 
 class ReferencesVM(application: Application) : AndroidViewModel(application) {
-    fun getAllData(){
-        val database = FirebaseDatabase.getInstance()
-        val ref = database.getReference(REF_NAME)
+    val petLiveData: MutableLiveData<ArrayList<ReferencesPetModel>> by lazy {
+        MutableLiveData<ArrayList<ReferencesPetModel>>()
+    }
 
-        ref.addChildEventListener(object : ChildEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+    val tipsLiveData:MutableLiveData<ArrayList<ReferencesTipsModel>> by lazy{
+        MutableLiveData<ArrayList<ReferencesTipsModel>>()
+    }
 
-            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+    fun getAllDataPet() {
+        val database = FirebaseDatabase.getInstance().reference
+        val dataPetReferences = ArrayList<ReferencesPetModel>()
 
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-
-            }
-
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onChildRemoved(p0: DataSnapshot) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-        })
-
-        ref.addValueEventListener(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Log.d("FIREBASE_UTILS","onCancelled")
-            }
-
+        database.child("pet").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                Log.d("FIREBASE_UTILS","onDataChanged")
+
+                if (dataPetReferences.size > 0)
+                    dataPetReferences.clear()
+
+                for (i in p0.children) {
+                    val petReferencesModel: ReferencesPetModel? = i.getValue(ReferencesPetModel::class.java)
+                    Log.d("ADUH_SORRY","${i.key}")
+                    petReferencesModel?.let {
+                        it.id = i.key
+                        dataPetReferences.add(it) }
+                }
+
+                petLiveData.value = dataPetReferences
 
             }
 
+            override fun onCancelled(p0: DatabaseError) {
+                throw Throwable("$p0")
+            }
         })
     }
 
-    fun referencesPetData() : ArrayList<ReferencesPetModel> {
-        val list = ArrayList<ReferencesPetModel>()
-        for(i in 0 until 10) {
-            list.add(ReferencesPetModel(i,"","Test $i",""))
-        }
-        return list
+    fun getAllDataTips(){
+        val database = FirebaseDatabase.getInstance().reference
+        val dataTipsReferences = ArrayList<ReferencesTipsModel>()
+
+        database.child(REF_NAME_TIPS).addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                if (dataTipsReferences.size>0)
+                    dataTipsReferences.clear()
+
+                for (i in p0.children){
+                    val referencesTipsModel:ReferencesTipsModel? = i.getValue(ReferencesTipsModel::class.java)
+
+                    referencesTipsModel?.let {
+                        it.id = i.key
+                        dataTipsReferences.add(it)
+                    }
+                }
+                tipsLiveData.value = dataTipsReferences
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                throw Throwable("$p0")
+            }
+        })
     }
 
-    fun referencesTipsData() : ArrayList<ReferencesTipsModel> {
-        val list = ArrayList<ReferencesTipsModel>()
-        for(i in 0 until 10) {
-            list.add(ReferencesTipsModel(i,"","Test $i",""))
-        }
-        return list
-    }
 }
+
+
