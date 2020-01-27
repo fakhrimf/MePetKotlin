@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_22sdp"
         android:layout_marginTop="@dimen/_190sdp"
-        android:layout_marginEnd="@dimen/_110sdp"
         android:fontFamily="@font/baloo_thambi"
         android:text="@string/meshop"
         android:textColor="#fff"
