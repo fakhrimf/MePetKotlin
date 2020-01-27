@@ -1,14 +1,18 @@
 package com.chewie.mepet.home
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
+import com.chewie.mepet.utils.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
@@ -34,6 +38,45 @@ class AddPetFragment : Fragment() {
                 vm.insertData(et_petname?.text.toString(), cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
                 toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
             }
+        }
+        ivProfileAdd.setOnClickListener(
+            View.OnClickListener {
+                pickImageFromGalerry()
+            }
+        )
+        edit_btn.setOnClickListener(
+            View.OnClickListener {
+                pickImageFromGalerry()
+            }
+        )
+    }
+    private fun pickImageFromGalerry() {
+    //intent to pick image
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode){
+            PERMISSION_CODE -> {
+                if(grantResults.isNotEmpty() && grantResults [0] == PackageManager.PERMISSION_GRANTED){
+                    pickImageFromGalerry()
+                }
+                else{
+                    Toast.makeText(context, "Gallerry access denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            ivProfileAdd.setImageURI(data?.data)
         }
     }
 
