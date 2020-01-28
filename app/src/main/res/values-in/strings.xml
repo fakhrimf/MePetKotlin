@@ -79,4 +79,8 @@
     <string name="add_pet_details">Tambahkan detail hewan peliharaan Anda</string>
     <string name="cara_merawat_kucing">Cara merawat kucing</string>
     <string name="teks_rawat">merawat hewan peliharaan dengan benar</string>
+    <string name="ob_3">Dapatkan makanan terbaik untuk peliharaanmu dari toko official kami</string>
+    <string name="ob_2_tittle">Lebih Dekat</string>
+    <string name="ob_2_content">Tetap terkontak dengan peliharaan anda, dan jadikan mereka peliharaan paling bahagia</string>
+    <string name="ob_1_content">membantumu untuk menjaga peliharaanmu leih baikdari yang lainnya</string>
 </resources>
