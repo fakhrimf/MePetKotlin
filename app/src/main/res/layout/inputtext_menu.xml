@@ -13,7 +13,7 @@
             android:id="@+id/categoryEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cat Type"
+            android:hint="@string/other_cat"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
