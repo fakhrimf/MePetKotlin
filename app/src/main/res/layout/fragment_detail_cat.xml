@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="model"
             type="com.chewie.mepet.model.ReferencesPetModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context = ".references.petreferences.ReferencesPetDetailFragment">
+        tools:context=".references.petreferences.ReferencesPetDetailFragment">
 
 
         <ImageView
@@ -33,12 +36,12 @@
             android:layout_marginTop="@dimen/_178sdp"
             android:fontFamily="@font/baloo_thambi"
             android:text="@{model.title}"
-            tools:text="British Shorthair"
             android:textColor="#fff"
             android:textSize="@dimen/_19ssp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="British Shorthair" />
 
         <TextView
             android:id="@+id/title_cat_sub"
@@ -74,19 +77,25 @@
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/detail_pet"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_19sdp"
-            android:layout_marginTop="@dimen/_90sdp"
-            android:fontFamily="@font/baloo_thambi"
-            android:text="@{model.content}"
-            tools:text="Birtisih short hair adalah kucing yang dapat melakukan "
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_pet" />
+            app:layout_constraintTop_toBottomOf="@+id/image_pet">
 
+            <TextView
+                android:id="@+id/detail_pet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_19sdp"
+                android:layout_marginTop="@dimen/_90sdp"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="@{model.content}"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_pet"
+                tools:text="Birtisih short hair adalah kucing yang dapat melakukan " />
+
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
