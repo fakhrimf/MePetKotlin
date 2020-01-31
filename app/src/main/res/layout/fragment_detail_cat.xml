@@ -15,7 +15,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/cardview_light_background"
         tools:context=".references.petreferences.ReferencesPetDetailFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
 
 
         <ImageView
@@ -77,10 +92,8 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/image_pet">
+
+
 
             <TextView
                 android:id="@+id/detail_pet"
@@ -91,11 +104,12 @@
                 android:fontFamily="@font/baloo_thambi"
                 android:text="@{model.content}"
                 android:textSize="@dimen/_13ssp"
+                tools:text="Birtisih short hair adalah kucing yang dapat melakukan "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_pet"
-                tools:text="Birtisih short hair adalah kucing yang dapat melakukan " />
+                app:layout_constraintTop_toBottomOf="@+id/image_pet"/>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
