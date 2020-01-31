@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.fragment_frag_references.*
 
 class ReferencesFragment : Fragment() {
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_frag_references, container, false)
     }
@@ -54,4 +54,5 @@ class ReferencesFragment : Fragment() {
             })
         }
     }
+
 }
