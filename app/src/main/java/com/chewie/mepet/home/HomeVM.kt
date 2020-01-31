@@ -7,6 +7,7 @@ import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
 
 class HomeVM(application: Application) : AndroidViewModel(application) {
+    var isLoaded = false
     fun newAddPetInstance(id: Int): AddPetFragment {
         val args = Bundle()
         args.putInt(ARGUMENTS_ID_KEY, id)

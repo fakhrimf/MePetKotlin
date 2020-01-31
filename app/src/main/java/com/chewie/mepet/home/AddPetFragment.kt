@@ -147,10 +147,6 @@ class AddPetFragment : Fragment() {
             }
 
             if (isValid) {
-                // do something
-            }
-
-            if (isValid) {
                 dialog.dismiss()
             }
         }
@@ -161,6 +157,8 @@ class AddPetFragment : Fragment() {
         builder.show();
 
     }
+
+//    sulthon <3 nuy
 
     fun DialogOther() {
         cbx_pettype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
