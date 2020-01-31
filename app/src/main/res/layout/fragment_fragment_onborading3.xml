@@ -43,20 +43,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/judul" />
 
-    <TextView
-        android:id="@+id/nextIntroDua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        android:drawableEnd="@drawable/ic_keyboard_arrow_right_white_24dp"
-        android:text="@string/next"
-        android:textColor="#fff"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="MissingConstraints" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

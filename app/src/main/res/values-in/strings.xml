@@ -73,6 +73,7 @@
     <string name="team">tim</string>
     <string name="visititle">visi</string>
     <string name="misititle">misi</string>
+    <string name="intro">intro</string>
 
     <!--Misc-->
     <string name="tap_to_exit">Ketuk dua kali untuk keluar</string>
