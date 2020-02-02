@@ -23,6 +23,7 @@ const val TIPS_INTENT_KEY = "tips_data"
 
 //Tabel Detail Profile
 const val ID_DETAIL_PROFILE = "idDetailProfile"
+const val PET_IMAGE = "gambar_hewan"
 const val PET_NAME = "nama_hewan"
 const val PET_TYPE = "jenis_hewan"
 const val PET_AGE = "umur_hewan"

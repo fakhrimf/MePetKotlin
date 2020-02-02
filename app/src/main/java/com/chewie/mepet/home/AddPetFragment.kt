@@ -3,8 +3,12 @@ package com.chewie.mepet.home
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,8 +23,10 @@ import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class AddPetFragment : Fragment() {
+    lateinit var encodedImage:String
+
     private val vm by lazy {
-        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(AddPetVM::class.java)
+        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(AddPetVM::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,11 +37,13 @@ class AddPetFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
         editSet(arguments)
+
+        encodedImage = ""
         btnAddPet.setOnClickListener {
             if (checkEmpty() && tvMepet?.text != getString(R.string.edit_pet_data)) {
                 val firstWeight = npBeratBadanUtama?.value.toString()
                 val secondWeight = npBeratBadanSekunder?.value.toString()
-                vm.insertData(et_petname?.text.toString(), cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
+                vm.insertData(et_petname?.text.toString(), encodedImage,cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
                 toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
             }
         }
@@ -77,6 +85,19 @@ class AddPetFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
             ivProfileAdd.setImageURI(data?.data)
+
+            val pickedImage: Uri? = data?.data
+            val filePath = arrayOf(MediaStore.Images.Media.DATA)
+            val cursor:Cursor? = context?.contentResolver?.query(pickedImage,filePath,null,null,null)
+            cursor?.moveToFirst()
+            val imagePath = cursor?.getString(cursor.getColumnIndex(filePath[0]))
+            cursor?.close()
+
+            val bitmap = BitmapFactory.decodeFile(imagePath)
+            val resizedBitmap = BitmapUtility.getResizedImage(bitmap,500)
+
+            encodedImage = BitmapUtility.getEncodedImage(resizedBitmap)
+
         }
     }
 

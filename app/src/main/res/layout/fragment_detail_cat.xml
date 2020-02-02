@@ -19,6 +19,8 @@
 
 
         <ImageView
+            android:id="@+id/image_pets_big"
+            setImageFromUri="@{model.imageUri}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_226sdp"
             android:scaleType="centerCrop"
@@ -73,13 +75,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/smudge" />
+                tools:src="@drawable/smudge"/>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_pet">
 
             <TextView
@@ -91,11 +94,7 @@
                 android:fontFamily="@font/baloo_thambi"
                 android:text="@{model.content}"
                 android:textSize="@dimen/_13ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_pet"
                 tools:text="Birtisih short hair adalah kucing yang dapat melakukan " />
-
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

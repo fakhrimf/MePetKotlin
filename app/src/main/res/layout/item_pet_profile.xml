@@ -50,7 +50,7 @@
                         android:layout_height="@dimen/_80sdp"
                         android:contentDescription="@string/cat_display_picture"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_cat"
+                        setImageFromModel="@{model.petImage}"
                         tools:src="@drawable/smudge" />
                 </androidx.cardview.widget.CardView>
 

@@ -10,6 +10,7 @@ import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.reminder.ReminderFragment
 import com.chewie.mepet.shop.ShopFragment
+import com.chewie.mepet.utils.BitmapUtility
 import com.chewie.mepet.utils.SharedPreference
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_home.*
@@ -91,6 +92,11 @@ class HomeFragment : Fragment() {
         val detailProfile = dbManager.getPetById(petId)
 
         detailProfile?.let {
+            if (!it.petImage.isNullOrBlank()){
+                ivProfile.setImageBitmap(BitmapUtility.getDecodedImage("${it.petImage}"))
+            }else{
+                ivProfile.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_cat))
+            }
             tvNama.text = it.petName
             tvAge.text = it.petAge.toString()
             tvWeight.text = getString(R.string.berat, it.petWeight.toString())
@@ -142,7 +148,7 @@ class HomeFragment : Fragment() {
 
         cekFoodAndReminder()
         showData()
-        val vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
+        val vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(HomeVM::class.java)
 
         //Todo:Ganti ke data binding
         ivProfile.setOnClickListener {

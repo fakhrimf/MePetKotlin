@@ -20,6 +20,7 @@
         tools:context=".references.pet_references.ReferencesPetDetailActivity">
 
         <ImageView
+            setImageFromUri="@{model.imageUri}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_125sdp"
             android:alpha="0.75"
