@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class AddPetFragment : Fragment() {
-    lateinit var encodedImage:String
+    private lateinit var encodedImage:String
 
     private val vm by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(AddPetVM::class.java)
@@ -47,16 +47,12 @@ class AddPetFragment : Fragment() {
                 toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
             }
         }
-        ivProfileAdd.setOnClickListener(
-            View.OnClickListener {
-                pickImageFromGalerry()
-            }
-        )
-        edit_btn.setOnClickListener(
-            View.OnClickListener {
-                pickImageFromGalerry()
-            }
-        )
+        ivProfileAdd.setOnClickListener {
+            pickImageFromGalerry()
+        }
+        edit_btn.setOnClickListener {
+            pickImageFromGalerry()
+        }
     }
     private fun pickImageFromGalerry() {
     //intent to pick image
@@ -88,7 +84,9 @@ class AddPetFragment : Fragment() {
 
             val pickedImage: Uri? = data?.data
             val filePath = arrayOf(MediaStore.Images.Media.DATA)
-            val cursor:Cursor? = context?.contentResolver?.query(pickedImage,filePath,null,null,null)
+            val cursor:Cursor? = pickedImage?.let {
+                requireContext().contentResolver?.query(it,filePath,null,null,null)
+            }
             cursor?.moveToFirst()
             val imagePath = cursor?.getString(cursor.getColumnIndex(filePath[0]))
             cursor?.close()
