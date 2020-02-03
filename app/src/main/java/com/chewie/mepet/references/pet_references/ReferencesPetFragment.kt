@@ -3,10 +3,9 @@ package com.chewie.mepet.references.pet_references
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,6 +32,7 @@ class ReferencesPetFragment : Fragment(),
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_pet, container, false)
     }
 
@@ -42,6 +42,7 @@ class ReferencesPetFragment : Fragment(),
         petSwipeRefresh.setOnRefreshListener {
             setRecycler()
         }
+        setHasOptionsMenu(true)
     }
 
     private fun setRecycler() {
@@ -55,12 +56,12 @@ class ReferencesPetFragment : Fragment(),
             }
         }
         vm.petLiveData.observe(viewLifecycleOwner, Observer<ArrayList<ReferencesPetModel>> {
-                rvPetReferences.apply {
-                    layoutManager = LinearLayoutManager(requireContext())
-                    adapter = ReferencesPetAdapter(
-                        it,
-                        this@ReferencesPetFragment
-                    )
+            rvPetReferences.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = ReferencesPetAdapter(
+                    it,
+                    this@ReferencesPetFragment
+                )
             }
             petSwipeRefresh.isRefreshing = false
         })
@@ -68,10 +69,26 @@ class ReferencesPetFragment : Fragment(),
     }
 
     override fun onClick(model: ReferencesPetModel) {
-        val intent = Intent(requireContext(),ReferencesPetDetailActivity::class.java)
-        intent.putExtra(PET_INTENT_KEY,model)
+        val intent = Intent(requireContext(), ReferencesPetDetailActivity::class.java)
+        intent.putExtra(PET_INTENT_KEY, model)
         startActivity(intent)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.referenceswithsearch, menu)
+        val menuItem = menu.findItem(R.id.search_view)
+        val searchView = menuItem.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.d("####", "$query")
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
 }

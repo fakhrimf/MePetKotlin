@@ -13,7 +13,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.utils.*
@@ -36,6 +39,7 @@ class AddPetFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
+        DialogOther()
         editSet(arguments)
 
         encodedImage = ""
@@ -140,6 +144,55 @@ class AddPetFragment : Fragment() {
             }
         }
         return 0
+    }
+
+    fun showDialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Other Category")
+
+        val view = layoutInflater.inflate(R.layout.inputtext_menu, null)
+
+        val categoryEditText = view.findViewById(R.id.categoryEditText) as EditText
+
+        builder.setView(view);
+
+        // set up the ok button
+        builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
+            val newCategory = categoryEditText.text
+            var isValid = true
+            if (newCategory.isBlank()) {
+                categoryEditText.error = ("Tolong diisi")
+                isValid = false
+            }
+
+            if (isValid) {
+                dialog.dismiss()
+            }
+        }
+
+        builder.setNegativeButton(android.R.string.cancel) { dialog, p1 ->
+            dialog.cancel()
+        }
+        builder.show();
+
+    }
+
+//    sulthon <3 nuy
+
+    fun DialogOther() {
+        cbx_pettype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val selected = p0?.getItemAtPosition(p2).toString()
+                if ( selected == "Other"){
+                    showDialog()
+                }
+            }
+
+        }
+
     }
 
     private fun checkEmpty(): Boolean {

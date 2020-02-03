@@ -1,13 +1,14 @@
 package com.chewie.mepet.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.intro.IntroActivity
 import com.chewie.mepet.reminder.ReminderFragment
 import com.chewie.mepet.shop.ShopFragment
 import com.chewie.mepet.utils.BitmapUtility
@@ -20,6 +21,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
+
+    private val vm by lazy {
+        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(HomeVM::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -103,17 +109,17 @@ class HomeFragment : Fragment() {
             tvJenis.text = it.petType
         }
 
-        if (tvNama.text.isEmpty() && tvJenis.text.isEmpty()) {
-            toFragment(AddPetFragment(), getString(R.string.add_pet), R.id.nav_home)
-            Toast.makeText(requireContext(), getString(R.string.add_pet_details), Toast.LENGTH_LONG).show()
+        if (vm.isLoaded) {
+            vm.isLoaded = false
+            startActivity(Intent(context, IntroActivity::class.java))
         }
     }
 
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
-        val sf = fragmentManager?.beginTransaction()
-        sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, fragment)?.commit()
-        sf?.addToBackStack(null)
+        val sf = parentFragmentManager.beginTransaction()
+        sf.setCustomAnimations(R.anim.enter, R.anim.exit).replace(R.id.fragment, fragment).commit()
+        sf.addToBackStack(null)
         handler.postDelayed({
             activity?.invalidateOptionsMenu()
         }, 50)
@@ -128,10 +134,7 @@ class HomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.editPetBtn -> {
-                val vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(activity!!.application)).get(HomeVM::class.java)
-                toFragment(vm.newAddPetInstance(petId), getString(R.string.edit_pet), R.id.nav_home)
-            }
+            R.id.editPetBtn -> toFragment(vm.newAddPetInstance(petId), getString(R.string.edit_pet), R.id.nav_home)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -148,7 +151,6 @@ class HomeFragment : Fragment() {
 
         cekFoodAndReminder()
         showData()
-        val vm = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(HomeVM::class.java)
 
         //Todo:Ganti ke data binding
         ivProfile.setOnClickListener {

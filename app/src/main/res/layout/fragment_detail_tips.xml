@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="model"
             type="com.chewie.mepet.model.ReferencesTipsModel" />
@@ -12,70 +13,66 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/cardview_light_background"
         tools:context=".references.tips_references.ReferencesTipsDetailFragment">
 
-
-        <ImageView
-            android:id="@+id/img_detail_tips"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_226sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/smudge"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/title_tips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_9sdp"
-            android:layout_marginTop="@dimen/_160sdp"
-            android:fontFamily="@font/baloo_thambi"
-            android:maxWidth="@dimen/_180sdp"
-            android:text="@{model.title}"
-            tools:text="@string/cara_merawat_kucing"
-            android:textColor="#fff"
-            android:textSize="@dimen/_19ssp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <androidx.cardview.widget.CardView
-        android:id="@+id/image_tips"
-        android:layout_width="@dimen/_99sdp"
-        android:layout_height="@dimen/_139sdp"
-        android:layout_marginTop="@dimen/_129sdp"
-        android:layout_marginRight="@dimen/_14sdp"
-        app:cardCornerRadius="@dimen/_11sdp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/image_pets"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/_10sdp"
-            android:src="@drawable/ic_menu_manage" />
-
-    </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/detail_pet"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_19sdp"
-            android:layout_marginTop="@dimen/_90sdp"
-            android:fontFamily="@font/baloo_thambi"
-            android:text="@{model.content}"
-            tools:text="@string/teks_rawat"
-            android:textSize="@dimen/_13ssp"
+            android:fillViewport="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_tips" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_detail_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_226sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/smudge"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/title_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_170sdp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:maxWidth="@dimen/_190sdp"
+                    android:text="@{model.title}"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/_19ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/cara_merawat_kucing" />
+
+
+                <TextView
+                    android:id="@+id/detail_pet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_90sdp"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:text="@{model.content}"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_detail_tips"
+                    tools:text="@string/teks_rawat" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

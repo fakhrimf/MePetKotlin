@@ -14,7 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".references.tips_references.ReferencesTipsDetailActivity"/>
+        <activity
+            android:name=".intro.IntroActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".references.tips_references.ReferencesTipsDetailActivity" />
         <activity android:name=".references.pet_references.ReferencesPetDetailActivity" />
         <activity
             android:name=".Home"
