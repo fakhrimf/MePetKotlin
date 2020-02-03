@@ -18,8 +18,12 @@ const val DB_VER = 1
 const val DETAIL_PROFILE_TABLE = "detail_profile"
 const val PROFILE_TABLE = "profile"
 
+const val PET_INTENT_KEY = "pet_data"
+const val TIPS_INTENT_KEY = "tips_data"
+
 //Tabel Detail Profile
 const val ID_DETAIL_PROFILE = "idDetailProfile"
+const val PET_IMAGE = "gambar_hewan"
 const val PET_NAME = "nama_hewan"
 const val PET_TYPE = "jenis_hewan"
 const val PET_AGE = "umur_hewan"
@@ -43,6 +47,9 @@ const val VALUE_MALAM = "malam"
 const val LINK_TOKOPEDIA = "https://tokopedia.com"
 const val LINK_BUKALAPAK = "https://bukalapak.com"
 const val LINK_SHOPEE = "https://shopee.com"
+
+const val  IMAGE_PICK_CODE = 42069
+const val PERMISSION_CODE = 696969
 
 //References Adapter
 enum class Adapter {

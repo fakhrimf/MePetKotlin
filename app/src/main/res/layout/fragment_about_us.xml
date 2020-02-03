@@ -16,9 +16,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/topLayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/_210sdp"
             android:background="@color/colorPrimary"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
             <TextView
                 android:id="@+id/tvCompanyTitle"
@@ -28,7 +30,8 @@
                 android:text="@string/company_name"
                 android:textAlignment="center"
                 android:textColor="#fff"
-                android:textSize="40sp"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:textSize="@dimen/_29ssp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +43,7 @@
                 android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="#fff"
-                android:textSize="20sp"
+                android:textSize="@dimen/_16ssp"
                 app:layout_constraintTop_toBottomOf="@+id/tvCompanyTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -48,10 +51,10 @@
             android:id="@+id/teamContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:elevation="12dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
+            android:layout_marginTop="@dimen/_79sdp"
+            android:elevation="@dimen/_6sdp"
+            app:cardCornerRadius="@dimen/_7sdp"
+            app:cardElevation="@dimen/_6sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,40 +63,42 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="20dp">
+                android:padding="@dimen/_8sdp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivCEO"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
                     android:src="@drawable/fakhri"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvCEOName"
-                    android:layout_width="75dp"
+                    android:layout_width="@dimen/_52sdp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/baloo_thambi"
                     android:gravity="center"
+                    android:textSize="@dimen/_10ssp"
                     android:text="@string/ceo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ivCEO" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivBackendGilang"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:src="@drawable/gilang"
                     app:layout_constraintStart_toEndOf="@+id/ivCEO"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvBackendGilang"
-                    android:layout_width="75dp"
+                    android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:fontFamily="@font/baloo_thambi"
                     android:gravity="center"
                     android:text="@string/gilang"
@@ -102,18 +107,19 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivFrontEndSulthon"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
                     android:src="@drawable/sulthon"
                     app:layout_constraintStart_toEndOf="@id/ivBackendGilang"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvFrontEndSulthon"
-                    android:layout_width="75dp"
+                    android:layout_width="@dimen/_59sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:fontFamily="@font/baloo_thambi"
                     android:gravity="center"
                     android:text="@string/sulthon"
@@ -122,18 +128,19 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivFrontEndRifky"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
                     android:src="@drawable/rifky"
                     app:layout_constraintStart_toEndOf="@+id/ivFrontEndSulthon"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvFrontEndRifky"
-                    android:layout_width="75dp"
+                    android:layout_width="@dimen/_52sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:fontFamily="@font/baloo_thambi"
                     android:gravity="center"
                     android:text="@string/rifky"
@@ -146,27 +153,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_5sdp"
             app:cardUseCompatPadding="true"
+            android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintTop_toBottomOf="@+id/teamContainer">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingBottom="25dp">
+                android:paddingBottom="@dimen/_20sdp">
 
                 <TextView
                     android:id="@+id/visi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_margin="20dp"
+                    android:layout_margin="@dimen/_15sdp"
                     android:fontFamily="@font/baloo_thambi"
                     android:text="@string/visititle"
                     android:textAllCaps="true"
-                    android:textSize="25sp"
+                    android:textSize="@dimen/_19ssp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -177,11 +185,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/visi"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
                     android:fontFamily="@font/baloo_thambi"
                     android:text="@string/visi"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/_11ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/visi" />
@@ -192,11 +200,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/isivisi"
                     android:layout_alignParentTop="true"
-                    android:layout_margin="20dp"
+                    android:layout_margin="@dimen/_15sdp"
                     android:fontFamily="@font/baloo_thambi"
                     android:text="@string/misititle"
                     android:textAllCaps="true"
-                    android:textSize="25sp"
+                    android:textSize="@dimen/_19ssp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/isivisi" />
@@ -207,11 +215,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/misi"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
                     android:fontFamily="@font/baloo_thambi"
                     android:text="@string/misi"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/_11ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/misi" />

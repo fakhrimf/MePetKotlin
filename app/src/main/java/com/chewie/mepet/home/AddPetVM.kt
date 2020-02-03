@@ -15,9 +15,9 @@ class AddPetVM(application: Application) : AndroidViewModel(application) {
         getApplication() as Context
     }
 
-    fun insertData(petName: String, petType: String, petAge: Int, petWeight: Float) {
+    fun insertData(petName: String,petImage:String?,petType: String, petAge: Int, petWeight: Float) {
         val db = MepetDatabaseHelper(getApplication())
-        val pet = PetDetailProfile(null,petName, petType, petAge, petWeight)
+        val pet = PetDetailProfile(null,petImage,petName, petType, petAge, petWeight)
         db.insertPet(pet)
         Toast.makeText(context, context.getString(R.string.berhasil), Toast.LENGTH_LONG).show()
 
