@@ -2,18 +2,16 @@ package com.chewie.mepet.references.tips_references
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.BR
 import com.chewie.mepet.R
 import com.chewie.mepet.databinding.FragmentDetailTipsBinding
 import com.chewie.mepet.references.ReferencesVM
 import com.chewie.mepet.utils.TIPS_INTENT_KEY
-import kotlinx.android.synthetic.main.content_home.*
 
 /**
  * A simple [Fragment] subclass.
@@ -40,6 +38,7 @@ class ReferencesTipsDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        @Suppress("DEPRECATION")
         fragmentManager?.popBackStack()
     }
 }

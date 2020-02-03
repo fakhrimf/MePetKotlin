@@ -6,10 +6,8 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +15,14 @@ import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.utils.*
+import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
+import com.chewie.mepet.utils.BitmapUtility
+import com.chewie.mepet.utils.IMAGE_PICK_CODE
+import com.chewie.mepet.utils.PERMISSION_CODE
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
@@ -39,7 +42,7 @@ class AddPetFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setNpValue()
-        DialogOther()
+        dialogOther()
         editSet(arguments)
 
         encodedImage = ""
@@ -104,7 +107,7 @@ class AddPetFragment : Fragment() {
     }
 
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
-        val sf = fragmentManager?.beginTransaction()
+        @Suppress("DEPRECATION") val sf = fragmentManager?.beginTransaction()
         sf?.setCustomAnimations(R.anim.enter, R.anim.exit)?.replace(R.id.fragment, fragment)?.commit()
         sf?.addToBackStack(null)
         fab1?.hide()
@@ -157,7 +160,7 @@ class AddPetFragment : Fragment() {
         builder.setView(view);
 
         // set up the ok button
-        builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
+        builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
             val newCategory = categoryEditText.text
             var isValid = true
             if (newCategory.isBlank()) {
@@ -170,7 +173,7 @@ class AddPetFragment : Fragment() {
             }
         }
 
-        builder.setNegativeButton(android.R.string.cancel) { dialog, p1 ->
+        builder.setNegativeButton(android.R.string.cancel) { dialog, _ ->
             dialog.cancel()
         }
         builder.show();
@@ -179,7 +182,7 @@ class AddPetFragment : Fragment() {
 
 //    sulthon <3 nuy
 
-    fun DialogOther() {
+    private fun dialogOther() {
         cbx_pettype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }

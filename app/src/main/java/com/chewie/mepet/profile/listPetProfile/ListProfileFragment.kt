@@ -3,11 +3,11 @@ package com.chewie.mepet.profile.listPetProfile
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.home.HomeFragment
@@ -42,7 +42,7 @@ class ListProfileFragment : Fragment(), ProfileClickListener {
 
     private fun toFragment(fragment: Fragment, title: String, item: Int) {
         val handler = Handler()
-        val sf = fragmentManager?.beginTransaction()
+        @Suppress("DEPRECATION") val sf = fragmentManager?.beginTransaction()
         sf?.setCustomAnimations(R.anim.enter, R.anim.exit)
                 ?.replace(R.id.fragment, fragment)?.commit()
         sf?.addToBackStack(null)

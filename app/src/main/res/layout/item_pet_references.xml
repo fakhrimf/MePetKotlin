@@ -19,16 +19,6 @@
         android:layout_height="wrap_content"
         tools:context=".references.pet_references.ReferencesPetDetailActivity">
 
-        <ImageView
-            setImageFromUri="@{model.imageUri}"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_125sdp"
-            android:alpha="0.75"
-            android:scaleType="centerCrop"
-            android:src="@drawable/smudge"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

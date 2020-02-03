@@ -1,8 +1,10 @@
 package com.chewie.mepet.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +14,7 @@ import com.chewie.mepet.intro.IntroActivity
 import com.chewie.mepet.reminder.ReminderFragment
 import com.chewie.mepet.shop.ShopFragment
 import com.chewie.mepet.utils.BitmapUtility
+import com.chewie.mepet.utils.FIRST_RUN_KEY
 import com.chewie.mepet.utils.SharedPreference
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_home.*
@@ -98,9 +101,9 @@ class HomeFragment : Fragment() {
         val detailProfile = dbManager.getPetById(petId)
 
         detailProfile?.let {
-            if (!it.petImage.isNullOrBlank()){
+            if (!it.petImage.isNullOrBlank()) {
                 ivProfile.setImageBitmap(BitmapUtility.getDecodedImage("${it.petImage}"))
-            }else{
+            } else {
                 ivProfile.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_cat))
             }
             tvNama.text = it.petName
@@ -109,9 +112,26 @@ class HomeFragment : Fragment() {
             tvJenis.text = it.petType
         }
 
-        if (vm.isLoaded) {
-            vm.isLoaded = false
+        val sharPref = activity?.getSharedPreferences(FIRST_RUN_KEY, Context.MODE_PRIVATE)
+
+        // TODO: Gilang rapihin ya uwu
+        Log.d("####", "showData: ${sharPref?.getBoolean(FIRST_RUN_KEY, true)}")
+        if (sharPref?.getBoolean(FIRST_RUN_KEY, true) == true && tvNama.text.isBlank()) {
+            sharPref.edit()?.apply {
+                putBoolean(FIRST_RUN_KEY, false)
+                apply()
+            }
             startActivity(Intent(context, IntroActivity::class.java))
+        } else if (tvNama.text.isBlank()) {
+            toFragment(AddPetFragment(), getString(R.string.add_pet), R.id.nav_home)
+            Handler().postDelayed({
+                if (detailProfile == null) {
+                    sharPref?.edit()?.apply {
+                        putBoolean(FIRST_RUN_KEY, true)
+                        apply()
+                    }
+                }
+            }, 500)
         }
     }
 

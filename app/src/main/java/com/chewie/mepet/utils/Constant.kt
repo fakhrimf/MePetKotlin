@@ -48,8 +48,11 @@ const val LINK_TOKOPEDIA = "https://tokopedia.com"
 const val LINK_BUKALAPAK = "https://bukalapak.com"
 const val LINK_SHOPEE = "https://shopee.com"
 
-const val  IMAGE_PICK_CODE = 42069
+const val IMAGE_PICK_CODE = 42069
 const val PERMISSION_CODE = 696969
+
+//Intro
+const val FIRST_RUN_KEY = "first_run_key"
 
 //References Adapter
 enum class Adapter {

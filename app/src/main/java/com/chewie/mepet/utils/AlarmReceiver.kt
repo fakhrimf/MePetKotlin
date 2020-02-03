@@ -130,6 +130,7 @@ class AlarmReceiver : BroadcastReceiver() {
         if (jamMalam.contains(":")) {
             val jam = jamMalam.split(":")[0]
             val menit = jamMalam.split(":")[1]
+            
 
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val cal = Calendar.getInstance()
