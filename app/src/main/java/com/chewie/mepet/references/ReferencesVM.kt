@@ -38,7 +38,6 @@ class ReferencesVM(application: Application) : AndroidViewModel(application) {
                 }
 
                 petLiveData.value = dataPetReferences
-
             }
 
             override fun onCancelled(p0: DatabaseError) {
