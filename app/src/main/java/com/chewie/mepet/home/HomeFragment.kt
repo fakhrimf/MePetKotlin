@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
@@ -113,25 +113,12 @@ class HomeFragment : Fragment() {
         }
 
         val sharPref = activity?.getSharedPreferences(FIRST_RUN_KEY, Context.MODE_PRIVATE)
-
         // TODO: Gilang rapihin ya uwu
-        Log.d("####", "showData: ${sharPref?.getBoolean(FIRST_RUN_KEY, true)}")
         if (sharPref?.getBoolean(FIRST_RUN_KEY, true) == true && tvNama.text.isBlank()) {
-            sharPref.edit()?.apply {
-                putBoolean(FIRST_RUN_KEY, false)
-                apply()
-            }
             startActivity(Intent(context, IntroActivity::class.java))
         } else if (tvNama.text.isBlank()) {
+            Toast.makeText(context, "Please add a pet data first", Toast.LENGTH_LONG).show()
             toFragment(AddPetFragment(), getString(R.string.add_pet), R.id.nav_home)
-            Handler().postDelayed({
-                if (detailProfile == null) {
-                    sharPref?.edit()?.apply {
-                        putBoolean(FIRST_RUN_KEY, true)
-                        apply()
-                    }
-                }
-            }, 500)
         }
     }
 

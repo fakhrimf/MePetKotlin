@@ -19,17 +19,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
-import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
-import com.chewie.mepet.utils.BitmapUtility
-import com.chewie.mepet.utils.IMAGE_PICK_CODE
-import com.chewie.mepet.utils.PERMISSION_CODE
+import com.chewie.mepet.utils.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class AddPetFragment : Fragment() {
-    private lateinit var encodedImage:String
+    private lateinit var encodedImage: String
 
     private val vm by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(AddPetVM::class.java)
@@ -50,7 +47,7 @@ class AddPetFragment : Fragment() {
             if (checkEmpty() && tvMepet?.text != getString(R.string.edit_pet_data)) {
                 val firstWeight = npBeratBadanUtama?.value.toString()
                 val secondWeight = npBeratBadanSekunder?.value.toString()
-                vm.insertData(et_petname?.text.toString(), encodedImage,cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
+                vm.insertData(et_petname?.text.toString(), encodedImage, cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
                 toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
             }
         }
@@ -61,8 +58,9 @@ class AddPetFragment : Fragment() {
             pickImageFromGalerry()
         }
     }
+
     private fun pickImageFromGalerry() {
-    //intent to pick image
+        //intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_PICK_CODE)
@@ -73,12 +71,11 @@ class AddPetFragment : Fragment() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        when (requestCode){
+        when (requestCode) {
             PERMISSION_CODE -> {
-                if(grantResults.isNotEmpty() && grantResults [0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     pickImageFromGalerry()
-                }
-                else{
+                } else {
                     Toast.makeText(context, "Gallerry access denied", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -86,20 +83,20 @@ class AddPetFragment : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             ivProfileAdd.setImageURI(data?.data)
 
             val pickedImage: Uri? = data?.data
             val filePath = arrayOf(MediaStore.Images.Media.DATA)
-            val cursor:Cursor? = pickedImage?.let {
-                requireContext().contentResolver?.query(it,filePath,null,null,null)
+            val cursor: Cursor? = pickedImage?.let {
+                requireContext().contentResolver?.query(it, filePath, null, null, null)
             }
             cursor?.moveToFirst()
             val imagePath = cursor?.getString(cursor.getColumnIndex(filePath[0]))
             cursor?.close()
 
             val bitmap = BitmapFactory.decodeFile(imagePath)
-            val resizedBitmap = BitmapUtility.getResizedImage(bitmap,500)
+            val resizedBitmap = BitmapUtility.getResizedImage(bitmap, 500)
 
             encodedImage = BitmapUtility.getEncodedImage(resizedBitmap)
 
@@ -149,7 +146,7 @@ class AddPetFragment : Fragment() {
         return 0
     }
 
-    fun showDialog(){
+    fun showDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Other Category")
 
@@ -183,13 +180,13 @@ class AddPetFragment : Fragment() {
 //    sulthon <3 nuy
 
     private fun dialogOther() {
-        cbx_pettype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        cbx_pettype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 val selected = p0?.getItemAtPosition(p2).toString()
-                if ( selected == "Other"){
+                if (selected == "Other") {
                     showDialog()
                 }
             }
