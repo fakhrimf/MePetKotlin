@@ -3,7 +3,6 @@ package com.chewie.mepet.references.tips_references
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -17,22 +16,12 @@ import com.chewie.mepet.references.ReferencesVM
 import com.chewie.mepet.utils.TIPS_INTENT_KEY
 import kotlinx.android.synthetic.main.fragment_tips.*
 
-class ReferencesTipsFragment : Fragment(),
-    ReferencesTipsUserClickListener {
+class ReferencesTipsFragment : Fragment(), ReferencesTipsUserClickListener {
     private val vm: ReferencesVM by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory(requireActivity().application)
-        ).get(
-            ReferencesVM::class.java
-        )
+        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(ReferencesVM::class.java)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
         return inflater.inflate(R.layout.fragment_tips, container, false)
@@ -53,19 +42,13 @@ class ReferencesTipsFragment : Fragment(),
         rvTipsReferences.apply {
             vm.tipsLiveData.value?.let {
                 layoutManager = LinearLayoutManager(requireContext())
-                adapter = ReferencesTipsAdapter(
-                    it,
-                    this@ReferencesTipsFragment
-                )
+                adapter = ReferencesTipsAdapter(it, this@ReferencesTipsFragment)
             }
         }
         vm.tipsLiveData.observe(viewLifecycleOwner, Observer<ArrayList<ReferencesTipsModel>> {
             rvTipsReferences.apply {
                 layoutManager = LinearLayoutManager(requireContext())
-                adapter = ReferencesTipsAdapter(
-                    it,
-                    this@ReferencesTipsFragment
-                )
+                adapter = ReferencesTipsAdapter(it, this@ReferencesTipsFragment)
             }
             tipsSwipeRefresh.isRefreshing = false
         })
@@ -82,12 +65,13 @@ class ReferencesTipsFragment : Fragment(),
         val menuItem = menu.findItem(R.id.search_view)
         val searchView = menuItem.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.d("####", "$query")
+            override fun onQueryTextSubmit(query: String): Boolean {
+                vm.searchReferencesTips(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText == null || newText.isBlank()) vm.getAllDataTips()
                 return false
             }
         })

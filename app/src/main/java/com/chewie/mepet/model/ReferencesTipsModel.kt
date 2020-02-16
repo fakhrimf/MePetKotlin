@@ -6,8 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ReferencesTipsModel(
     var id:String? = "",
-    val image:String = "",
-    val backdrop:String = "",
+    val imageUri:String = "",
     val title:String = "",
     val content:String = ""
 ) : Parcelable

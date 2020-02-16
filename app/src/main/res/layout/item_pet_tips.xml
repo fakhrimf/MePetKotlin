@@ -16,58 +16,62 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_90sdp"
-        android:background="?android:selectableItemBackground">
+        android:layout_height="wrap_content"
+        tools:context=".references.pet_references.ReferencesPetDetailActivity">
 
-        <ImageView
-            android:id="@+id/icon_tips"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_90sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:padding="@dimen/_20sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_menu_manage"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/title_tips"
-            android:layout_width="0dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:ellipsize="end"
-            android:text="@{model.title}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="@dimen/_14ssp"
-            android:maxWidth="@dimen/_180sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/icon_tips"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Cara Merawat Kucing Apolo di rumah dengan benar" />
+            android:layout_marginTop="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_5sdp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintTop_toTopOf="@+id/cardViewImage">
 
-        <ImageView
-            android:id="@+id/icon_next_tips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_20sdp"
-            android:background="?android:selectableItemBackground"
-            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_74sdp"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{() -> listener.onClick(model)}">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/baloo_thambi"
+                    android:maxLength="20"
+                    android:maxLines="2"
+                    android:text="@{model.title}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="British Shorthair" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewImage"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginEnd="@dimen/_18sdp"
+            android:padding="0dp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_5sdp"
+            app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:alpha="0.1"
-            android:background="#000"
-            app:layout_constraintTop_toBottomOf="@id/icon_tips" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:selectableItemBackground"
-            android:onClick="@{()->listener.onClick(model)}" />
+            <ImageView
+                setImageByUri="@{model.imageUri}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:contentDescription="@string/cat_name"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/smudge" />
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
