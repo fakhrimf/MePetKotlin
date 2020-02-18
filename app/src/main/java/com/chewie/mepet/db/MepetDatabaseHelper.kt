@@ -28,8 +28,21 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         values.put(PET_AGE, petDetailProfile.petAge)
         values.put(PET_WEIGHT, petDetailProfile.petWeight)
         val mSuccess = db.insert(DETAIL_PROFILE_TABLE, null, values)
+        //db.close()
+        Log.v("InsertedID", "$mSuccess")
+        return (Integer.parseInt("$mSuccess") != -1)
+    }
 
-
+    fun editPet(petDetailProfile: PetDetailProfile): Boolean {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(PET_NAME, petDetailProfile.petName)
+        values.put(PET_IMAGE,petDetailProfile.petImage)
+        values.put(PET_TYPE, petDetailProfile.petType)
+        values.put(PET_AGE, petDetailProfile.petAge)
+        values.put(PET_WEIGHT, petDetailProfile.petWeight)
+        val whereClause = arrayOf(petDetailProfile.idPet.toString())
+        val mSuccess = db.update(DETAIL_PROFILE_TABLE, values, "$ID_DETAIL_PROFILE = ?", whereClause)
         //db.close()
         Log.v("InsertedID", "$mSuccess")
         return (Integer.parseInt("$mSuccess") != -1)

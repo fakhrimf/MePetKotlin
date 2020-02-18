@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class PetDetailProfile (
     val idPet:Int?,
-    val petImage:String?,
+    var petImage:String?,
     val petName: String,
     val petType:String,
     val petAge:Int,

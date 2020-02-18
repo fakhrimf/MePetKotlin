@@ -35,14 +35,17 @@
                 android:onClick="@{() -> listener.onClick(model)}">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/baloo_thambi"
+                    android:maxWidth="@dimen/_175sdp"
                     android:maxLines="2"
                     android:text="@{model.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="British Shorthair" />
             </androidx.constraintlayout.widget.ConstraintLayout>

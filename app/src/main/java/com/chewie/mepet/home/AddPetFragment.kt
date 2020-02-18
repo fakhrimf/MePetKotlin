@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
+import com.chewie.mepet.model.PetDetailProfile
 import com.chewie.mepet.utils.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -27,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class AddPetFragment : Fragment() {
     private lateinit var encodedImage: String
+    private lateinit var pet: PetDetailProfile
 
     private val vm by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(AddPetVM::class.java)
@@ -44,10 +46,13 @@ class AddPetFragment : Fragment() {
 
         encodedImage = ""
         btnAddPet.setOnClickListener {
-            if (checkEmpty() && tvMepet?.text != getString(R.string.edit_pet_data)) {
+            if (checkEmpty() && tvMepet?.text == getString(R.string.add_pet)) {
                 val firstWeight = npBeratBadanUtama?.value.toString()
                 val secondWeight = npBeratBadanSekunder?.value.toString()
                 vm.insertData(et_petname?.text.toString(), encodedImage, cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
+                toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
+            } else {
+                Toast.makeText(context, "Not Ready... Sorry", Toast.LENGTH_LONG).show()
                 toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
             }
         }
@@ -99,7 +104,6 @@ class AddPetFragment : Fragment() {
             val resizedBitmap = BitmapUtility.getResizedImage(bitmap, 500)
 
             encodedImage = BitmapUtility.getEncodedImage(resizedBitmap)
-
         }
     }
 
@@ -118,6 +122,7 @@ class AddPetFragment : Fragment() {
         if (id != null) {
             val detailProfile = dbManager.getPetById(id)
             detailProfile?.let {
+                pet = it
                 et_petname?.setText(it.petName)
                 et_age?.setText(it.petAge.toString())
                 cbx_pettype?.setSelection(getCbxIndex(it.petType))

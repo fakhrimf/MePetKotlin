@@ -40,7 +40,7 @@
                     android:layout_margin="@dimen/_10sdp"
                     android:ellipsize="end"
                     android:fontFamily="@font/baloo_thambi"
-                    android:maxLength="20"
+                    android:maxWidth="@dimen/_175sdp"
                     android:maxLines="2"
                     android:text="@{model.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
