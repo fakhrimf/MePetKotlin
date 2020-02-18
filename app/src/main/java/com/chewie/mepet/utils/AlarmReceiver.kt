@@ -71,9 +71,10 @@ class AlarmReceiver : BroadcastReceiver() {
             cal.timeInMillis = System.currentTimeMillis()
             cal.set(Calendar.HOUR_OF_DAY, jam.toInt())
             cal.set(Calendar.MINUTE, menit.toInt())
-            alarmManager.set(
+            alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                cal.timeInMillis, pendingIntent
+                cal.timeInMillis,
+                pendingIntent
             )
             alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
@@ -103,7 +104,7 @@ class AlarmReceiver : BroadcastReceiver() {
             cal.timeInMillis = System.currentTimeMillis()
             cal.set(Calendar.HOUR_OF_DAY, jam.toInt())
             cal.set(Calendar.MINUTE, menit.toInt())
-            alarmManager.set(
+            alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 cal.timeInMillis, pendingIntent
             )
@@ -129,13 +130,14 @@ class AlarmReceiver : BroadcastReceiver() {
         if (jamMalam.contains(":")) {
             val jam = jamMalam.split(":")[0]
             val menit = jamMalam.split(":")[1]
+            
 
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val cal = Calendar.getInstance()
             cal.timeInMillis = System.currentTimeMillis()
             cal.set(Calendar.HOUR_OF_DAY, jam.toInt())
             cal.set(Calendar.MINUTE, menit.toInt())
-            alarmManager.set(
+            alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 cal.timeInMillis, pendingIntent
             )

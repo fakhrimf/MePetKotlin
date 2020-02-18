@@ -11,7 +11,9 @@ import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.model.PetProfile
 import com.chewie.mepet.utils.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_reminder.*
+import kotlinx.android.synthetic.main.fragment_reminder.ivProfile
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,6 +59,15 @@ class ReminderFragment : Fragment() {
     private fun showData(id: Int) {
         val db = MepetDatabaseHelper(context)
         val profile = db.getReminder(id)
+        val detailProfile = db.getPetById(id)
+
+        detailProfile?.let {
+            if (!it.petImage.isNullOrBlank()){
+                ivProfile.setImageBitmap(BitmapUtility.getDecodedImage("${it.petImage}"))
+            }else{
+                ivProfile.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_cat))
+            }
+        }
 
         txtPagi.text = profile.jamPagi
         txtSiang.text = profile.jamSiang

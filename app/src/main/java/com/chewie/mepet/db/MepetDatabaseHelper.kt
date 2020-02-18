@@ -23,12 +23,26 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(PET_NAME, petDetailProfile.petName)
+        values.put(PET_IMAGE,petDetailProfile.petImage)
         values.put(PET_TYPE, petDetailProfile.petType)
         values.put(PET_AGE, petDetailProfile.petAge)
         values.put(PET_WEIGHT, petDetailProfile.petWeight)
         val mSuccess = db.insert(DETAIL_PROFILE_TABLE, null, values)
+        //db.close()
+        Log.v("InsertedID", "$mSuccess")
+        return (Integer.parseInt("$mSuccess") != -1)
+    }
 
-
+    fun editPet(petDetailProfile: PetDetailProfile): Boolean {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(PET_NAME, petDetailProfile.petName)
+        values.put(PET_IMAGE,petDetailProfile.petImage)
+        values.put(PET_TYPE, petDetailProfile.petType)
+        values.put(PET_AGE, petDetailProfile.petAge)
+        values.put(PET_WEIGHT, petDetailProfile.petWeight)
+        val whereClause = arrayOf(petDetailProfile.idPet.toString())
+        val mSuccess = db.update(DETAIL_PROFILE_TABLE, values, "$ID_DETAIL_PROFILE = ?", whereClause)
         //db.close()
         Log.v("InsertedID", "$mSuccess")
         return (Integer.parseInt("$mSuccess") != -1)
@@ -61,16 +75,17 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
     fun getAllProfile(): List<PetDetailProfile> {
         val petList = ArrayList<PetDetailProfile>()
         val db = this.readableDatabase
-        val column = arrayOf(ID_DETAIL_PROFILE, PET_NAME, PET_TYPE, PET_AGE, PET_WEIGHT)
+        val column = arrayOf(ID_DETAIL_PROFILE, PET_IMAGE,PET_NAME, PET_TYPE, PET_AGE, PET_WEIGHT)
         val cursor = db.query(DETAIL_PROFILE_TABLE, column, null, null, null, null, null)
 
         while (cursor.moveToNext()) {
             val id = cursor.getInt(0)
-            val name = cursor.getString(1)
-            val type = cursor.getString(2)
-            val age = cursor.getInt(3)
-            val weight = cursor.getFloat(4)
-            val petProfile = PetDetailProfile(id, name, type, age, weight)
+            val image = cursor.getString(1)
+            val name = cursor.getString(2)
+            val type = cursor.getString(3)
+            val age = cursor.getInt(4)
+            val weight = cursor.getFloat(5)
+            val petProfile = PetDetailProfile(id,image,name,type,age,weight)
             petList.add(petProfile)
             //cursor.close()
         }
@@ -85,12 +100,13 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         if (cursor.count > 0) {
             cursor.moveToFirst()
             val idPet = cursor.getInt(cursor.getColumnIndex(ID_DETAIL_PROFILE))
+            val petImage = cursor.getString(cursor.getColumnIndex(PET_IMAGE))
             val petName = cursor.getString(cursor.getColumnIndex(PET_NAME))
             val petType = cursor.getString(cursor.getColumnIndex(PET_TYPE))
             val petAge = cursor.getInt(cursor.getColumnIndex(PET_AGE))
             val petWeight = cursor.getFloat(cursor.getColumnIndex(PET_WEIGHT))
             Log.d("FIND THIS!", "IDPET: $idPet, ID: $id, NAME:$petName")
-            detailProfile = PetDetailProfile(idPet, petName, petType, petAge, petWeight)
+            detailProfile = PetDetailProfile(idPet, petImage,petName, petType, petAge, petWeight)
         }
 
         return detailProfile
@@ -115,7 +131,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
     }
 
     companion object {
-        const val CREATE_TABLE_DP = "Create table $DETAIL_PROFILE_TABLE ($ID_DETAIL_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $PET_NAME TEXT, $PET_TYPE TEXT,$PET_AGE Integer, $PET_WEIGHT REAL)"
+        const val CREATE_TABLE_DP = "Create table $DETAIL_PROFILE_TABLE ($ID_DETAIL_PROFILE Integer PRIMARY KEY AUTOINCREMENT,$PET_IMAGE TEXT,$PET_NAME TEXT, $PET_TYPE TEXT,$PET_AGE Integer, $PET_WEIGHT REAL)"
         const val CREATE_TABLE_PROFILE = "Create table $PROFILE_TABLE ($ID_PROFILE Integer PRIMARY KEY AUTOINCREMENT, $FK_ID_DETAIL_PROFILE Integer,$JAM_PAGI TEXT,$JAM_SIANG TEXT,$JAM_MALAM TEXT)"
     }
 }

@@ -5,34 +5,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import com.chewie.mepet.R
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_frag_references.*
 
 class ReferencesFragment : Fragment() {
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_frag_references, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        val drawablePaw = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_pawprint)
+        val drawableLight = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_tips)
         tabLayout?.let {
-            it.addTab(it.newTab().setIcon(R.drawable.pawprint))
-            it.addTab(it.newTab().setIcon(R.drawable.icons_light))
+            it.addTab(it.newTab().setIcon(drawablePaw))
+            it.addTab(it.newTab().setIcon(drawableLight))
             it.tabGravity = TabLayout.GRAVITY_FILL
         }
 
         var adapter: ReferencesSectionPagerAdapter? = null
         tabLayout?.let {
-            adapter = ReferencesSectionPagerAdapter(
-                childFragmentManager,
-                it.tabCount
-            )
+            adapter = ReferencesSectionPagerAdapter(childFragmentManager, it.tabCount)
         }
 
         viewPager?.let {
@@ -54,4 +50,5 @@ class ReferencesFragment : Fragment() {
             })
         }
     }
+
 }

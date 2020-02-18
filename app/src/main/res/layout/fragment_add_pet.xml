@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+<!--        TODO : tambahin image picker untuk profpict :)-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint1"
             android:layout_width="match_parent"
@@ -30,9 +30,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_100sdp"
+                app:cardBackgroundColor="@color/colorPrimary">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivProfile"
+                android:id="@+id/ivProfileAdd"
                 android:layout_width="@dimen/_85sdp"
                 android:layout_height="@dimen/_85sdp"
                 android:layout_margin="@dimen/_7sdp"
@@ -40,7 +44,32 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/edit_btn"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_84sdp"
+            android:layout_marginEnd="@dimen/_110sdp"
+            android:elevation="@dimen/_10sdp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="@dimen/_100sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_edit_white_24dp" />
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
