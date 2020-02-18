@@ -20,7 +20,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.model.PetDetailProfile
-import com.chewie.mepet.utils.*
+import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
+import com.chewie.mepet.utils.BitmapUtility
+import com.chewie.mepet.utils.IMAGE_PICK_CODE
+import com.chewie.mepet.utils.PERMISSION_CODE
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
@@ -46,25 +49,22 @@ class AddPetFragment : Fragment() {
 
         encodedImage = ""
         btnAddPet.setOnClickListener {
-            if (checkEmpty() && tvMepet?.text == getString(R.string.add_pet)) {
+            if (checkEmpty()) {
                 val firstWeight = npBeratBadanUtama?.value.toString()
                 val secondWeight = npBeratBadanSekunder?.value.toString()
                 vm.insertData(et_petname?.text.toString(), encodedImage, cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
                 toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
-            } else {
-                Toast.makeText(context, "Not Ready... Sorry", Toast.LENGTH_LONG).show()
-                toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
             }
         }
         ivProfileAdd.setOnClickListener {
-            pickImageFromGalerry()
+            pickImageFromGallery()
         }
         edit_btn.setOnClickListener {
-            pickImageFromGalerry()
+            pickImageFromGallery()
         }
     }
 
-    private fun pickImageFromGalerry() {
+    private fun pickImageFromGallery() {
         //intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -79,7 +79,7 @@ class AddPetFragment : Fragment() {
         when (requestCode) {
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pickImageFromGalerry()
+                    pickImageFromGallery()
                 } else {
                     Toast.makeText(context, "Gallerry access denied", Toast.LENGTH_SHORT).show()
                 }
