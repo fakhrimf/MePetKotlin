@@ -9,7 +9,7 @@ import com.chewie.mepet.model.PetDetailProfile
 import com.chewie.mepet.model.PetProfile
 import com.chewie.mepet.utils.*
 
-class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME, null, DB_VER) {
+class MepetDatabaseHelper(private val context: Context?) : SQLiteOpenHelper(context, DB_NAME, null, DB_VER) {
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(CREATE_TABLE_DP)
         db?.execSQL(CREATE_TABLE_PROFILE)
@@ -41,8 +41,7 @@ class MepetDatabaseHelper(context: Context?) : SQLiteOpenHelper(context, DB_NAME
         values.put(PET_TYPE, petDetailProfile.petType)
         values.put(PET_AGE, petDetailProfile.petAge)
         values.put(PET_WEIGHT, petDetailProfile.petWeight)
-        val whereClause = arrayOf(petDetailProfile.idPet.toString())
-        val mSuccess = db.update(DETAIL_PROFILE_TABLE, values, "$ID_DETAIL_PROFILE = ?", whereClause)
+        val mSuccess = db.update(DETAIL_PROFILE_TABLE, values, "$ID_DETAIL_PROFILE = ${petDetailProfile.idPet}",null)
         //db.close()
         Log.v("InsertedID", "$mSuccess")
         return (Integer.parseInt("$mSuccess") != -1)

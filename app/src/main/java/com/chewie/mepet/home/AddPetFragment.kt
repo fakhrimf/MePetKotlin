@@ -20,10 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.chewie.mepet.R
 import com.chewie.mepet.db.MepetDatabaseHelper
 import com.chewie.mepet.model.PetDetailProfile
-import com.chewie.mepet.utils.ARGUMENTS_ID_KEY
-import com.chewie.mepet.utils.BitmapUtility
-import com.chewie.mepet.utils.IMAGE_PICK_CODE
-import com.chewie.mepet.utils.PERMISSION_CODE
+import com.chewie.mepet.utils.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_add_pet.*
@@ -32,6 +29,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class AddPetFragment : Fragment() {
     private lateinit var encodedImage: String
     private lateinit var pet: PetDetailProfile
+    private lateinit var sharedPreference: SharedPreference
 
     private val vm by lazy {
         ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(AddPetVM::class.java)
@@ -43,17 +41,32 @@ class AddPetFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        encodedImage = ""
+        sharedPreference = SharedPreference(requireContext())
         setNpValue()
         dialogOther()
         editSet(arguments)
-
-        encodedImage = ""
         btnAddPet.setOnClickListener {
             if (checkEmpty()) {
-                val firstWeight = npBeratBadanUtama?.value.toString()
-                val secondWeight = npBeratBadanSekunder?.value.toString()
-                vm.insertData(et_petname?.text.toString(), encodedImage, cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
-                toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
+                if (btnAddPet.text.equals(getString(R.string.add))){
+                    val firstWeight = npBeratBadanUtama?.value.toString()
+                    val secondWeight = npBeratBadanSekunder?.value.toString()
+                    vm.insertData(et_petname?.text.toString(), encodedImage, cbx_pettype?.selectedItem.toString(), et_age?.text.toString().toInt(), ("$firstWeight.$secondWeight").toFloat())
+                    toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
+                }else{
+                    val firstWeight = npBeratBadanUtama?.value.toString()
+                    val secondWeight = npBeratBadanSekunder?.value.toString()
+                    val petDetailProfile = PetDetailProfile(
+                        sharedPreference.getId(),
+                        encodedImage,
+                        et_petname?.text.toString(),
+                        cbx_pettype?.selectedItem.toString(),
+                        et_age?.text.toString().toInt(),
+                        ("$firstWeight.$secondWeight").toFloat()
+                    )
+                    vm.editData(petDetailProfile)
+                    toFragment(HomeFragment(), getString(R.string.home), R.id.nav_home)
+                }
             }
         }
         ivProfileAdd.setOnClickListener {
@@ -124,6 +137,13 @@ class AddPetFragment : Fragment() {
             detailProfile?.let {
                 pet = it
                 et_petname?.setText(it.petName)
+                if (!it.petImage.isNullOrBlank()){
+                    ivProfileAdd.setImageBitmap(BitmapUtility.getDecodedImage("${it.petImage}"))
+                    val bitmap = BitmapUtility.getDecodedImage("${it.petImage}")
+                    encodedImage = BitmapUtility.getEncodedImage(bitmap)
+                }else{
+                    ivProfile.setImageDrawable(requireActivity().getDrawable(R.drawable.ic_cat))
+                }
                 et_age?.setText(it.petAge.toString())
                 cbx_pettype?.setSelection(getCbxIndex(it.petType))
                 val beratFirst = it.petWeight.toString().split(".")[0].toInt()

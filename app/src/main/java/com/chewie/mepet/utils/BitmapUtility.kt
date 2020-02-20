@@ -33,6 +33,7 @@ object BitmapUtility {
             height = maxSize
             width = (height * bitmapRatio).toInt()
         }
+
         return Bitmap.createScaledBitmap(bm, width, height, true)
     }
 }
